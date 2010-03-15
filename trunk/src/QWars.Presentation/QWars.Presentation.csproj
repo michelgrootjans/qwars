@@ -37,6 +37,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IBuyWeaponsPresenter.cs" />
+    <Compile Include="IBuyWeaponsView.cs" />
+    <Compile Include="IJoinGangPresenter.cs" />
+    <Compile Include="IJoinGangView.cs" />
     <Compile Include="ILogonPresenter.cs" />
     <Compile Include="IPlayerPresenter.cs" />
     <Compile Include="IPlayerView.cs" />

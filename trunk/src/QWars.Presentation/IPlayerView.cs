@@ -8,5 +8,6 @@ namespace QWars.Presentation
         int Money { set; }
         int XP { set; }
         IEnumerable<object> Weapons { set; }
+        object PlayerId { get; }
     }
 }

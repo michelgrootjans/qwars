@@ -5,7 +5,5 @@ namespace QWars.Presentation
         void Initialize();
         void MugPedestrian();
         void SellUnusedWeapons();
-        void LeaveGang();
-        void DisbandGang();
     }
 }
