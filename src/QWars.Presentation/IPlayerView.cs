@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace QWars.Presentation
 {
     public interface IPlayerView
@@ -5,5 +7,6 @@ namespace QWars.Presentation
         string PlayerName { set; }
         int Money { set; }
         int XP { set; }
+        IEnumerable<object> Weapons { set; }
     }
 }
