@@ -42,8 +42,8 @@
             this.tabGang = new System.Windows.Forms.TabPage();
             this.btnDisbandGang = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblMoney = new System.Windows.Forms.Label();
+            this.lblExperience = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -196,8 +196,8 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.lblMoney);
+            this.panel2.Controls.Add(this.lblExperience);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -206,23 +206,23 @@
             this.panel2.Size = new System.Drawing.Size(426, 63);
             this.panel2.TabIndex = 8;
             // 
-            // label4
+            // lblMoney
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(78, 31);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(39, 13);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Money";
+            this.lblMoney.AutoSize = true;
+            this.lblMoney.Location = new System.Drawing.Point(78, 31);
+            this.lblMoney.Name = "lblMoney";
+            this.lblMoney.Size = new System.Drawing.Size(39, 13);
+            this.lblMoney.TabIndex = 4;
+            this.lblMoney.Text = "Money";
             // 
-            // label1
+            // lblExperience
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(78, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(60, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Experience";
+            this.lblExperience.AutoSize = true;
+            this.lblExperience.Location = new System.Drawing.Point(78, 9);
+            this.lblExperience.Name = "lblExperience";
+            this.lblExperience.Size = new System.Drawing.Size(60, 13);
+            this.lblExperience.TabIndex = 3;
+            this.lblExperience.Text = "Experience";
             // 
             // label3
             // 
@@ -280,8 +280,8 @@
         private System.Windows.Forms.TabPage tabGang;
         private System.Windows.Forms.Button btnDisbandGang;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblMoney;
+        private System.Windows.Forms.Label lblExperience;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
     }
