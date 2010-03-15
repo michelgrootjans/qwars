@@ -2,11 +2,18 @@ using QWars.Presentation;
 
 namespace QWars.Dummy
 {
-    public class LogonPresenter : Presenter, ILogonPresenter
+    public class LogonPresenter : ILogonPresenter
     {
+        private readonly Logger logger;
+
+        public LogonPresenter()
+        {
+            logger = new Logger(this);
+        }
+
         public object LoginWithPlayerName(string playerName)
         {
-            Log(string.Format("{0} is logging in.", playerName));
+            logger.Log(string.Format("{0} is logging in.", playerName));
             return 25;
         }
     }

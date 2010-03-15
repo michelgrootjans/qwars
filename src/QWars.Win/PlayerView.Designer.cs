@@ -33,14 +33,12 @@
             this.btnCreateGang = new System.Windows.Forms.Button();
             this.btnMug = new System.Windows.Forms.Button();
             this.btnSellUnusedWeapons = new System.Windows.Forms.Button();
-            this.btnLeaveGang = new System.Windows.Forms.Button();
             this.lstWeapons = new System.Windows.Forms.DataGridView();
             this.tabs = new System.Windows.Forms.TabControl();
             this.tabTasks = new System.Windows.Forms.TabPage();
             this.tabWeapons = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tabGang = new System.Windows.Forms.TabPage();
-            this.btnDisbandGang = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblMoney = new System.Windows.Forms.Label();
             this.lblExperience = new System.Windows.Forms.Label();
@@ -106,16 +104,6 @@
             this.btnSellUnusedWeapons.UseVisualStyleBackColor = true;
             this.btnSellUnusedWeapons.Click += new System.EventHandler(this.btnSellUnusedWeapons_Click);
             // 
-            // btnLeaveGang
-            // 
-            this.btnLeaveGang.Location = new System.Drawing.Point(148, 10);
-            this.btnLeaveGang.Name = "btnLeaveGang";
-            this.btnLeaveGang.Size = new System.Drawing.Size(134, 23);
-            this.btnLeaveGang.TabIndex = 5;
-            this.btnLeaveGang.Text = "Leave Gang";
-            this.btnLeaveGang.UseVisualStyleBackColor = true;
-            this.btnLeaveGang.Click += new System.EventHandler(this.btnLeaveGang_Click);
-            // 
             // lstWeapons
             // 
             this.lstWeapons.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -172,9 +160,7 @@
             // 
             // tabGang
             // 
-            this.tabGang.Controls.Add(this.btnDisbandGang);
             this.tabGang.Controls.Add(this.btnJoinGang);
-            this.tabGang.Controls.Add(this.btnLeaveGang);
             this.tabGang.Controls.Add(this.btnCreateGang);
             this.tabGang.Location = new System.Drawing.Point(4, 22);
             this.tabGang.Name = "tabGang";
@@ -183,16 +169,6 @@
             this.tabGang.TabIndex = 2;
             this.tabGang.Text = "Gang";
             this.tabGang.UseVisualStyleBackColor = true;
-            // 
-            // btnDisbandGang
-            // 
-            this.btnDisbandGang.Location = new System.Drawing.Point(148, 39);
-            this.btnDisbandGang.Name = "btnDisbandGang";
-            this.btnDisbandGang.Size = new System.Drawing.Size(134, 23);
-            this.btnDisbandGang.TabIndex = 6;
-            this.btnDisbandGang.Text = "Disband Gang";
-            this.btnDisbandGang.UseVisualStyleBackColor = true;
-            this.btnDisbandGang.Click += new System.EventHandler(this.btnDisbandGang_Click);
             // 
             // panel2
             // 
@@ -271,14 +247,12 @@
         private System.Windows.Forms.Button btnCreateGang;
         private System.Windows.Forms.Button btnMug;
         private System.Windows.Forms.Button btnSellUnusedWeapons;
-        private System.Windows.Forms.Button btnLeaveGang;
         private System.Windows.Forms.DataGridView lstWeapons;
         private System.Windows.Forms.TabControl tabs;
         private System.Windows.Forms.TabPage tabTasks;
         private System.Windows.Forms.TabPage tabWeapons;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TabPage tabGang;
-        private System.Windows.Forms.Button btnDisbandGang;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lblMoney;
         private System.Windows.Forms.Label lblExperience;

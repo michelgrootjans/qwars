@@ -35,7 +35,7 @@ namespace QWars.Win
 
         private void btnBuyWeapon_Click(object sender, EventArgs e)
         {
-            var view = new BuyWeaponsView();
+            var view = new BuyWeaponsView{PlayerId = PlayerId};
             view.Show();
         }
 
@@ -49,16 +49,6 @@ namespace QWars.Win
         {
             var view = new CreateGangView();
             view.Show();
-        }
-
-        private void btnLeaveGang_Click(object sender, EventArgs e)
-        {
-            presenter.LeaveGang();
-        }
-
-        private void btnDisbandGang_Click(object sender, EventArgs e)
-        {
-            presenter.DisbandGang();
         }
 
         public string PlayerName
