@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QWars.Win", "QWars.Win\QWars.Win.csproj", "{E748C8FC-6063-4240-B0D1-8431D8731E8E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qwars.NHibernate", "Qwars.NHibernate\Qwars.NHibernate.csproj", "{EFD066F4-6E96-48EE-854C-EF54BC48AFB8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qwars.EntityFramework", "Qwars.EntityFramework\Qwars.EntityFramework.csproj", "{5E670B81-ACE3-4525-AA51-1799109141DD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E748C8FC-6063-4240-B0D1-8431D8731E8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E748C8FC-6063-4240-B0D1-8431D8731E8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E748C8FC-6063-4240-B0D1-8431D8731E8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E748C8FC-6063-4240-B0D1-8431D8731E8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFD066F4-6E96-48EE-854C-EF54BC48AFB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFD066F4-6E96-48EE-854C-EF54BC48AFB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFD066F4-6E96-48EE-854C-EF54BC48AFB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFD066F4-6E96-48EE-854C-EF54BC48AFB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E670B81-ACE3-4525-AA51-1799109141DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E670B81-ACE3-4525-AA51-1799109141DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E670B81-ACE3-4525-AA51-1799109141DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E670B81-ACE3-4525-AA51-1799109141DD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
