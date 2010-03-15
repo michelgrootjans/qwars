@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using QWars.Dummy;
 using QWars.Presentation;
@@ -73,6 +74,11 @@ namespace QWars.Win
         public int XP
         {
             set { lblExperience.Text = value.ToString(); }
+        }
+
+        public IEnumerable<object> Weapons
+        {
+            set { lstWeapons.DataSource = value; }
         }
     }
 }

@@ -34,7 +34,7 @@
             this.btnMug = new System.Windows.Forms.Button();
             this.btnSellUnusedWeapons = new System.Windows.Forms.Button();
             this.btnLeaveGang = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.lstWeapons = new System.Windows.Forms.DataGridView();
             this.tabs = new System.Windows.Forms.TabControl();
             this.tabTasks = new System.Windows.Forms.TabPage();
             this.tabWeapons = new System.Windows.Forms.TabPage();
@@ -46,7 +46,7 @@
             this.lblExperience = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lstWeapons)).BeginInit();
             this.tabs.SuspendLayout();
             this.tabTasks.SuspendLayout();
             this.tabWeapons.SuspendLayout();
@@ -116,14 +116,14 @@
             this.btnLeaveGang.UseVisualStyleBackColor = true;
             this.btnLeaveGang.Click += new System.EventHandler(this.btnLeaveGang_Click);
             // 
-            // dataGridView1
+            // lstWeapons
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(412, 201);
-            this.dataGridView1.TabIndex = 6;
+            this.lstWeapons.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.lstWeapons.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lstWeapons.Location = new System.Drawing.Point(3, 3);
+            this.lstWeapons.Name = "lstWeapons";
+            this.lstWeapons.Size = new System.Drawing.Size(412, 201);
+            this.lstWeapons.TabIndex = 6;
             // 
             // tabs
             // 
@@ -150,7 +150,7 @@
             // 
             // tabWeapons
             // 
-            this.tabWeapons.Controls.Add(this.dataGridView1);
+            this.tabWeapons.Controls.Add(this.lstWeapons);
             this.tabWeapons.Controls.Add(this.panel1);
             this.tabWeapons.Location = new System.Drawing.Point(4, 22);
             this.tabWeapons.Name = "tabWeapons";
@@ -252,7 +252,7 @@
             this.Name = "PlayerView";
             this.Text = "PlayerView";
             this.Load += new System.EventHandler(this.PlayerView_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lstWeapons)).EndInit();
             this.tabs.ResumeLayout(false);
             this.tabTasks.ResumeLayout(false);
             this.tabWeapons.ResumeLayout(false);
@@ -272,7 +272,7 @@
         private System.Windows.Forms.Button btnMug;
         private System.Windows.Forms.Button btnSellUnusedWeapons;
         private System.Windows.Forms.Button btnLeaveGang;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView lstWeapons;
         private System.Windows.Forms.TabControl tabs;
         private System.Windows.Forms.TabPage tabTasks;
         private System.Windows.Forms.TabPage tabWeapons;
