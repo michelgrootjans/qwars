@@ -8,8 +8,8 @@
     <ProjectGuid>{5E670B81-ACE3-4525-AA51-1799109141DD}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Qwars.EntityFramework</RootNamespace>
-    <AssemblyName>Qwars.EntityFramework</AssemblyName>
+    <RootNamespace>QWars.EntityFramework</RootNamespace>
+    <AssemblyName>QWars.EntityFramework</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

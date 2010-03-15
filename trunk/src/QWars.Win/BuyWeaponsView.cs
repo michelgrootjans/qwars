@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace QWars.Win
 {
-    public partial class Login : Form
+    public partial class BuyWeaponsView : Form
     {
-        public Login()
+        public BuyWeaponsView()
         {
             InitializeComponent();
         }

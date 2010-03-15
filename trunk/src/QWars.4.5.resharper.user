@@ -1,0 +1,52 @@
+<Configuration>
+  <SettingsComponent>
+    <string />
+    <integer />
+    <boolean>
+      <setting name="SolutionAnalysisEnabled">True</setting>
+    </boolean>
+  </SettingsComponent>
+  <NAntValidationSettings>
+    <NAntPath value="" />
+  </NAntValidationSettings>
+  <RecentFiles>
+    <RecentFiles>
+      <File id="C137CEEA-AE26-489D-ABD0-1C16D9EC982F/f:ILoginPresenter.cs" caret="112" fromTop="4" />
+      <File id="E748C8FC-6063-4240-B0D1-8431D8731E8E/f:Login.Designer.cs" caret="2926" fromTop="77" />
+      <File id="860BEB31-AFAE-44F5-BF0F-CFF10A456B36/d:Login/f:LoginPresenter.cs" caret="229" fromTop="9" />
+      <File id="E748C8FC-6063-4240-B0D1-8431D8731E8E/f:Login.cs" caret="331" fromTop="14" />
+      <File id="E748C8FC-6063-4240-B0D1-8431D8731E8E/f:PlayerView.cs" caret="226" fromTop="11" />
+      <File id="E748C8FC-6063-4240-B0D1-8431D8731E8E/f:Program.cs" caret="557" fromTop="20" />
+    </RecentFiles>
+    <RecentEdits>
+      <File id="E748C8FC-6063-4240-B0D1-8431D8731E8E/f:Login.cs" caret="0" fromTop="0" />
+      <File id="C137CEEA-AE26-489D-ABD0-1C16D9EC982F/f:ILoginPresenter.cs" caret="21" fromTop="0" />
+      <File id="C137CEEA-AE26-489D-ABD0-1C16D9EC982F/f:ILoginPresenter.cs" caret="130" fromTop="4" />
+      <File id="E748C8FC-6063-4240-B0D1-8431D8731E8E/f:Program.cs" caret="635" fromTop="19" />
+      <File id="E748C8FC-6063-4240-B0D1-8431D8731E8E/f:Login.cs" caret="203" fromTop="8" />
+      <File id="E748C8FC-6063-4240-B0D1-8431D8731E8E/f:Login.cs" caret="437" fromTop="18" />
+      <File id="E748C8FC-6063-4240-B0D1-8431D8731E8E/f:Login.cs" caret="535" fromTop="22" />
+      <File id="E748C8FC-6063-4240-B0D1-8431D8731E8E/f:Login.cs" caret="336" fromTop="14" />
+      <File id="860BEB31-AFAE-44F5-BF0F-CFF10A456B36/d:Login/f:LoginPresenter.cs" caret="111" fromTop="3" />
+      <File id="860BEB31-AFAE-44F5-BF0F-CFF10A456B36/d:Login/f:LoginPresenter.cs" caret="229" fromTop="7" />
+      <File id="E748C8FC-6063-4240-B0D1-8431D8731E8E/f:Program.cs" caret="601" fromTop="20" />
+      <File id="E748C8FC-6063-4240-B0D1-8431D8731E8E/f:Program.cs" caret="557" fromTop="20" />
+      <File id="E748C8FC-6063-4240-B0D1-8431D8731E8E/f:PlayerView.cs" caret="225" fromTop="18" />
+      <File id="E748C8FC-6063-4240-B0D1-8431D8731E8E/f:PlayerView.cs" caret="0" fromTop="0" />
+    </RecentEdits>
+  </RecentFiles>
+  <UnitTestRunner>
+    <Providers />
+  </UnitTestRunner>
+  <UnitTestRunnerMSTest>
+    <UseTestRunConfigFromMetadataFile>False</UseTestRunConfigFromMetadataFile>
+  </UnitTestRunnerMSTest>
+  <CompletionStatisticsManager>
+    <ItemStatistics item="Qualified:System.Windows.Forms.TextBox">
+      <Item value="Text" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:QWars.Win.Login">
+      <Item value="ShowDialog" priority="0" />
+    </ItemStatistics>
+  </CompletionStatisticsManager>
+</Configuration>
