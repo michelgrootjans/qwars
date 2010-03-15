@@ -15,7 +15,10 @@ namespace QWars.Win
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Login());
+
+            var logon = new Logon();
+            logon.ShowDialog();
+            Application.Run(new PlayerView{PlayerId = logon.PlayerId});
         }
     }
 }

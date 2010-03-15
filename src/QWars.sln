@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QWars.Win", "QWars.Win\QWars.Win.csproj", "{E748C8FC-6063-4240-B0D1-8431D8731E8E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qwars.NHibernate", "Qwars.NHibernate\Qwars.NHibernate.csproj", "{EFD066F4-6E96-48EE-854C-EF54BC48AFB8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QWars.NHibernate", "Qwars.NHibernate\QWars.NHibernate.csproj", "{EFD066F4-6E96-48EE-854C-EF54BC48AFB8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qwars.EntityFramework", "Qwars.EntityFramework\Qwars.EntityFramework.csproj", "{5E670B81-ACE3-4525-AA51-1799109141DD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QWars.EntityFramework", "Qwars.EntityFramework\QWars.EntityFramework.csproj", "{5E670B81-ACE3-4525-AA51-1799109141DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QWars.Presentation", "QWars.Presentation\QWars.Presentation.csproj", "{C137CEEA-AE26-489D-ABD0-1C16D9EC982F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QWars.Dummy", "QWars.Dummy\QWars.Dummy.csproj", "{860BEB31-AFAE-44F5-BF0F-CFF10A456B36}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,6 +29,14 @@ Global
 		{5E670B81-ACE3-4525-AA51-1799109141DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E670B81-ACE3-4525-AA51-1799109141DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5E670B81-ACE3-4525-AA51-1799109141DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C137CEEA-AE26-489D-ABD0-1C16D9EC982F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C137CEEA-AE26-489D-ABD0-1C16D9EC982F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C137CEEA-AE26-489D-ABD0-1C16D9EC982F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C137CEEA-AE26-489D-ABD0-1C16D9EC982F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{860BEB31-AFAE-44F5-BF0F-CFF10A456B36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{860BEB31-AFAE-44F5-BF0F-CFF10A456B36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{860BEB31-AFAE-44F5-BF0F-CFF10A456B36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{860BEB31-AFAE-44F5-BF0F-CFF10A456B36}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

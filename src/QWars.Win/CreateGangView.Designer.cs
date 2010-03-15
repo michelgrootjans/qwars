@@ -1,6 +1,6 @@
 ﻿namespace QWars.Win
 {
-    partial class Login
+    partial class CreateGangView
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "Login";
+            this.Text = "CreateGangView";
         }
 
         #endregion
