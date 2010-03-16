@@ -15,31 +15,40 @@ namespace QWars.Dummy.Presenters
         {
             this.view = view;
             logger = new Logger(this);
+        }
+
+        public void Initialize()
+        {
             members = new List<Player>
                           {
                               new Player("Calamity Jane"),
                               new Player("Jon Shannow")
                           };
-            tasks = new List<Task>();
-        }
-
-        public void Initialize()
-        {
-            view.GangName = "The Flowerpot Men";
-            view.GangMoney = 255;
-            view.Members = members;
-            view.NumberOfMembers = members.Count;
-            view.Tasks = tasks;
+            tasks = new List<Task>{new Task("Burn the police station")};
+            UpdateView();
         }
 
         public void CreateRandomTasks()
         {
-            logger.Log(string.Format("Boss {0} creates 20 random tasks", view.PlayerId));
+            const int numberOfTasks = 20;
+            logger.Log(string.Format("Boss {0} creates {1} random tasks", view.PlayerId, numberOfTasks));
+            for (var i = 0; i < numberOfTasks; i++)
+                tasks.Add(new Task("mug someone"));
+            UpdateView();
         }
 
         public void IncreaseRewardForAllTasks()
         {
             logger.Log(string.Format("Boss {0} increases reward for all tasks with 15%", view.PlayerId));
+        }
+
+        private void UpdateView()
+        {
+            view.GangName = "The Flowerpot Men";
+            view.GangMoney = 255;
+            view.NumberOfMembers = members.Count;
+            view.Members = members;
+            view.Tasks = tasks;
         }
     }
 }

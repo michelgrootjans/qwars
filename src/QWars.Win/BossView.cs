@@ -9,6 +9,7 @@ namespace QWars.Win
     public partial class BossView : Form, IBossView
     {
         private readonly IBossPresenter presenter;
+        public object PlayerId { get; set; }
 
         public BossView()
         {
@@ -16,12 +17,15 @@ namespace QWars.Win
             presenter = new BossPresenter(this);
         }
 
+        private void BossView_Load(object sender, EventArgs e)
+        {
+            presenter.Initialize();
+        }
+
         public string GangName
         {
             set { Text = value; }
         }
-
-        public object PlayerId { get; set; }
 
         public int GangMoney
         {
@@ -40,12 +44,7 @@ namespace QWars.Win
 
         public IEnumerable Tasks
         {
-            set { gridTasks.DataSource = value; }
-        }
-
-        private void BossView_Load(object sender, EventArgs e)
-        {
-            presenter.Initialize();
+            set { gridTasks.DataSource = value;} 
         }
 
         private void btnCreateTask_Click(object sender, EventArgs e)
@@ -56,6 +55,7 @@ namespace QWars.Win
         private void btnCreateRandomTasks_Click(object sender, EventArgs e)
         {
             presenter.CreateRandomTasks();
+            //BUG: grid doesn't refresh
         }
 
         private void btnIncreaseReward_Click(object sender, EventArgs e)
