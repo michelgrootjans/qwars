@@ -1,6 +1,12 @@
 namespace QWars.Dummy.Entities
 {
-    internal class Task
+    public class Task
     {
+        public string Description { get; private set; }
+
+        public Task(string description)
+        {
+            Description = description;
+        }
     }
 }

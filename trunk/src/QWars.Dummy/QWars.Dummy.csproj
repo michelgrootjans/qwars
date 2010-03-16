@@ -48,6 +48,7 @@
     <Compile Include="Presenters\BossPresenter.cs" />
     <Compile Include="Presenters\BuyWeaponsPresenter.cs" />
     <Compile Include="Presenters\CreateGangPresenter.cs" />
+    <Compile Include="Presenters\CreateTaskPresenter.cs" />
     <Compile Include="Presenters\JoinGangPresenter.cs" />
     <Compile Include="Presenters\LogonPresenter.cs" />
     <Compile Include="Entities\Player.cs" />

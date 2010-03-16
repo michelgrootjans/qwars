@@ -2,7 +2,7 @@
 
 namespace QWars.Win
 {
-    partial class BossView : IBossView
+    partial class BossView
     {
         /// <summary>
         /// Required designer variable.
