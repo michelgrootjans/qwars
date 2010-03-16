@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using QWars.Dummy;
+using QWars.Dummy.Presenters;
 using QWars.Presentation;
 
 namespace QWars.Win
@@ -17,10 +17,8 @@ namespace QWars.Win
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            PlayerId = presenter.LoginWithPlayerName(txtPlayerName.Text);
-            Close();
+            var playerId = presenter.LoginWithPlayerName(txtPlayerName.Text);
+            new PlayerView{PlayerId = playerId}.Show();
         }
-
-        public object PlayerId { get; private set; }
     }
 }

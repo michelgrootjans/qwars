@@ -1,8 +1,8 @@
 using System;
 
-namespace QWars.Dummy
+namespace QWars.Dummy.Presenters
 {
-    public class Logger
+    internal class Logger
     {
         private readonly object master;
 

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using QWars.Dummy;
+using QWars.Dummy.Presenters;
 using QWars.Presentation;
 
 namespace QWars.Win
@@ -17,27 +17,27 @@ namespace QWars.Win
 
         public object PlayerId { get; set; }
 
-        private void btnBuyClub_Click(object sender, System.EventArgs e)
+        private void btnBuyClub_Click(object sender, EventArgs e)
         {
             presenter.BuyClub();
         }
 
-        private void btnBuyKnife_Click(object sender, System.EventArgs e)
+        private void btnBuyKnife_Click(object sender, EventArgs e)
         {
             presenter.BuyKnife();
         }
 
-        private void btnBuyTaser_Click(object sender, System.EventArgs e)
+        private void btnBuyTaser_Click(object sender, EventArgs e)
         {
             presenter.BuyTaser();
         }
 
-        private void btnBuyGun_Click(object sender, System.EventArgs e)
+        private void btnBuyGun_Click(object sender, EventArgs e)
         {
             presenter.BuyGun();
         }
 
-        private void btnBuyBomb_Click(object sender, System.EventArgs e)
+        private void btnBuyBomb_Click(object sender, EventArgs e)
         {
             presenter.BuyBomb();
         }

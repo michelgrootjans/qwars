@@ -43,6 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BossView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BossView.Designer.cs">
+      <DependentUpon>BossView.cs</DependentUpon>
+    </Compile>
     <Compile Include="BuyWeaponsView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,6 +60,12 @@
     </Compile>
     <Compile Include="CreateGangView.Designer.cs">
       <DependentUpon>CreateGangView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreateTaskView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateTaskView.Designer.cs">
+      <DependentUpon>CreateTaskView.cs</DependentUpon>
     </Compile>
     <Compile Include="JoinGangView.cs">
       <SubType>Form</SubType>
@@ -75,9 +87,16 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="BossView.resx">
+      <DependentUpon>BossView.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="BuyWeaponsView.resx">
       <DependentUpon>BuyWeaponsView.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateGangView.resx">
+      <DependentUpon>CreateGangView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="JoinGangView.resx">
       <DependentUpon>JoinGangView.cs</DependentUpon>

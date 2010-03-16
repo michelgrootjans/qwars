@@ -1,5 +1,5 @@
 ﻿using System.Windows.Forms;
-using QWars.Dummy;
+using QWars.Dummy.Presenters;
 using QWars.Presentation;
 
 namespace QWars.Win

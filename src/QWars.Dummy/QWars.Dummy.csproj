@@ -45,13 +45,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BuyWeaponsPresenter.cs" />
-    <Compile Include="JoinGangPresenter.cs" />
-    <Compile Include="LogonPresenter.cs" />
-    <Compile Include="PlayerPresenter.cs" />
-    <Compile Include="Logger.cs" />
+    <Compile Include="Presenters\BossPresenter.cs" />
+    <Compile Include="Presenters\BuyWeaponsPresenter.cs" />
+    <Compile Include="Presenters\CreateGangPresenter.cs" />
+    <Compile Include="Presenters\JoinGangPresenter.cs" />
+    <Compile Include="Presenters\LogonPresenter.cs" />
+    <Compile Include="Entities\Player.cs" />
+    <Compile Include="Presenters\PlayerPresenter.cs" />
+    <Compile Include="Presenters\Logger.cs" />
+    <Compile Include="Entities\Task.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Weapon.cs" />
+    <Compile Include="Entities\Weapon.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\QWars.Presentation\QWars.Presentation.csproj">
