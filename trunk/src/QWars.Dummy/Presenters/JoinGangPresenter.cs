@@ -1,6 +1,6 @@
 using QWars.Presentation;
 
-namespace QWars.Dummy
+namespace QWars.Dummy.Presenters
 {
     public class JoinGangPresenter : IJoinGangPresenter
     {

@@ -1,4 +1,4 @@
-namespace QWars.Dummy
+namespace QWars.Dummy.Entities
 {
     internal class Weapon
     {

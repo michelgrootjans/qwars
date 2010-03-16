@@ -37,8 +37,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IBossPresenter.cs" />
+    <Compile Include="IBossView.cs" />
     <Compile Include="IBuyWeaponsPresenter.cs" />
     <Compile Include="IBuyWeaponsView.cs" />
+    <Compile Include="ICreateGangPresenter.cs" />
+    <Compile Include="ICreateGangView.cs" />
     <Compile Include="IJoinGangPresenter.cs" />
     <Compile Include="IJoinGangView.cs" />
     <Compile Include="ILogonPresenter.cs" />

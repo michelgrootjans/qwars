@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
+using QWars.Dummy.Entities;
 using QWars.Presentation;
 
-namespace QWars.Dummy
+namespace QWars.Dummy.Presenters
 {
     public class PlayerPresenter : IPlayerPresenter
     {

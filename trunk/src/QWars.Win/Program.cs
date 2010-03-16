@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace QWars.Win
@@ -16,9 +14,7 @@ namespace QWars.Win
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            var logon = new Logon();
-            logon.ShowDialog();
-            Application.Run(new PlayerView{PlayerId = logon.PlayerId});
+            Application.Run(new Logon());
         }
     }
 }

@@ -1,6 +1,6 @@
 using QWars.Presentation;
 
-namespace QWars.Dummy
+namespace QWars.Dummy.Presenters
 {
     public class LogonPresenter : ILogonPresenter
     {
@@ -14,7 +14,7 @@ namespace QWars.Dummy
         public object LoginWithPlayerName(string playerName)
         {
             logger.Log(string.Format("{0} is logging in.", playerName));
-            return 25;
+            return playerName.Length;
         }
     }
 }

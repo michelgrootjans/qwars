@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using QWars.Dummy;
+using QWars.Dummy.Presenters;
 using QWars.Presentation;
 
 namespace QWars.Win
@@ -47,7 +47,7 @@ namespace QWars.Win
 
         private void btnCreateGang_Click(object sender, EventArgs e)
         {
-            var view = new CreateGangView();
+            var view = new CreateGangView{PlayerId = PlayerId};
             view.Show();
         }
 
