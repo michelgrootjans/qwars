@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using QWars.Dummy.Presenters;
 using QWars.Presentation;
+using QWars.Presentation.Entities;
 
 namespace QWars.Win
 {
@@ -15,7 +16,7 @@ namespace QWars.Win
             presenter = new BuyWeaponsPresenter(this);
         }
 
-        public object PlayerId { get; set; }
+        public IPlayerInfo Player { get; set; }
 
         private void btnBuyClub_Click(object sender, EventArgs e)
         {

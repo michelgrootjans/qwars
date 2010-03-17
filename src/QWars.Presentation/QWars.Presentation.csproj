@@ -37,6 +37,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\IGang.cs" />
+    <Compile Include="Entities\IPlayerInfo.cs" />
+    <Compile Include="Entities\ITask.cs" />
+    <Compile Include="Entities\IWeapon.cs" />
     <Compile Include="IAdministratorView.cs" />
     <Compile Include="IAdministratorPresenter.cs" />
     <Compile Include="IBossPresenter.cs" />
@@ -52,6 +56,7 @@
     <Compile Include="IJoinGangPresenter.cs" />
     <Compile Include="IJoinGangView.cs" />
     <Compile Include="ILogonPresenter.cs" />
+    <Compile Include="Entities\IPlayer.cs" />
     <Compile Include="IPlayerPresenter.cs" />
     <Compile Include="IPlayerView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,7 +1,9 @@
+using QWars.Presentation.Entities;
+
 namespace QWars.Presentation
 {
     public interface ILogonPresenter
     {
-        object LoginWithPlayerName(string playerName);
+        IPlayerInfo LoginWithPlayerName(string playerName);
     }
 }

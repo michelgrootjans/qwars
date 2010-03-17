@@ -19,8 +19,8 @@ namespace QWars.Dummy.Presenters
             view.Title = "Top Players";
             view.Data = new List<Player>
                             {
-                                new Player("Dolly"),
-                                new Player("Annie")
+                                new Player(1, "Dolly"),
+                                new Player(2, "Annie")
                             };
         }
 
@@ -29,18 +29,18 @@ namespace QWars.Dummy.Presenters
             view.Title = "Richest Players";
             view.Data = new List<Player>
                             {
-                                new Player("Bill Gates"),
-                                new Player("Danny Gladines")
+                                new Player(3, "Bill Gates"),
+                                new Player(4, "Danny Gladines")
                             };
         }
 
         public void ShowBiggestGang()
         {
             view.Title = "Biggest Gang";
-            view.Data = new List<Player>
+            view.Data = new List<Gang>
                             {
-                                new Player("QFrame"),
-                                new Player("4C Technologies")
+                                new Gang("QFrame"),
+                                new Gang("4C Technologies")
                             };
         }
     }

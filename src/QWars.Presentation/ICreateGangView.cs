@@ -1,8 +1,10 @@
+using QWars.Presentation.Entities;
+
 namespace QWars.Presentation
 {
     public interface ICreateGangView
     {
-        object PlayerId { get; }
+        IPlayerInfo Player { get; }
         string GangName { get; }
         string BossBenefit { get; }
     }

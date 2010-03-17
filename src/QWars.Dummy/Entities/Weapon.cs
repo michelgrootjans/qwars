@@ -1,6 +1,8 @@
+using QWars.Presentation.Entities;
+
 namespace QWars.Dummy.Entities
 {
-    internal class Weapon
+    internal class Weapon : IWeapon
     {
         private readonly string name;
         private readonly double xpBonus;
@@ -19,6 +21,11 @@ namespace QWars.Dummy.Entities
         public string Name
         {
             get { return name; }
+        }
+
+        public override string ToString()
+        {
+            return string.Format("{0} (+{1})", Name, xpBonus);
         }
     }
 }

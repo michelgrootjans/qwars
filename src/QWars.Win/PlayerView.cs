@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using QWars.Dummy.Presenters;
 using QWars.Presentation;
+using QWars.Presentation.Entities;
 
 namespace QWars.Win
 {
@@ -16,7 +17,7 @@ namespace QWars.Win
             presenter = new PlayerPresenter(this);
         }
 
-        public object PlayerId { get; set; }
+        public IPlayerInfo Player { get; set; }
 
         private void PlayerView_Load(object sender, EventArgs e)
         {
@@ -35,19 +36,20 @@ namespace QWars.Win
 
         private void btnBuyWeapon_Click(object sender, EventArgs e)
         {
-            var view = new BuyWeaponsView{PlayerId = PlayerId};
-            view.Show();
+            var view = new BuyWeaponsView{Player = Player};
+            view.ShowDialog();
+            presenter.UpdateView();
         }
 
         private void btnJoinGang_Click(object sender, EventArgs e)
         {
-            var view = new JoinGangView{PlayerId = PlayerId};
+            var view = new JoinGangView{Player = Player};
             view.Show();
         }
 
         private void btnCreateGang_Click(object sender, EventArgs e)
         {
-            var view = new CreateGangView{PlayerId = PlayerId};
+            var view = new CreateGangView{Player = Player};
             view.Show();
         }
 
@@ -66,7 +68,7 @@ namespace QWars.Win
             set { lblExperience.Text = value.ToString(); }
         }
 
-        public IEnumerable<object> Weapons
+        public IEnumerable<IWeapon> Weapons
         {
             set { lstWeapons.DataSource = value; }
         }

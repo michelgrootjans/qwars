@@ -30,7 +30,7 @@ namespace QWars.Dummy.Presenters
 
         public void JoinGang()
         {
-            logger.Log(string.Format("Player {0} joins '{1}'", view.PlayerId, view.SelectedGang));
+            logger.Log(string.Format("Player {0} joins '{1}'", view.Player, view.SelectedGang));
         }
     }
 }

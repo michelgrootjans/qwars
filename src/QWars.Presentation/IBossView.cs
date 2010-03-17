@@ -1,15 +1,16 @@
-using System.Collections;
+using System.Collections.Generic;
+using QWars.Presentation.Entities;
 
 namespace QWars.Presentation
 {
     public interface IBossView
     {
-        object PlayerId { get; }
+        IPlayerInfo Player { get; }
 
         string GangName { set; }
         int GangMoney { set; }
-        IEnumerable Members { set;  }
-        int NumberOfMembers {  set; }
-        IEnumerable Tasks { set; }
+        IEnumerable<IPlayer> Members { set; }
+        int NumberOfMembers { set; }
+        IEnumerable<ITask> Tasks { set; }
     }
 }

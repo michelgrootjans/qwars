@@ -1,4 +1,6 @@
+using QWars.Dummy.Entities;
 using QWars.Presentation;
+using QWars.Presentation.Entities;
 
 namespace QWars.Dummy.Presenters
 {
@@ -11,10 +13,10 @@ namespace QWars.Dummy.Presenters
             logger = new Logger(this);
         }
 
-        public object LoginWithPlayerName(string playerName)
+        public IPlayerInfo LoginWithPlayerName(string playerName)
         {
             logger.Log(string.Format("{0} is logging in.", playerName));
-            return playerName.Length;
+            return new Player(playerName.Length, playerName);
         }
     }
 }

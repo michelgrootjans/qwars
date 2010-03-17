@@ -3,13 +3,14 @@ using System.Collections;
 using System.Windows.Forms;
 using QWars.Dummy.Presenters;
 using QWars.Presentation;
+using QWars.Presentation.Entities;
 
 namespace QWars.Win
 {
     public partial class JoinGangView : Form, IJoinGangView
     {
         private readonly IJoinGangPresenter presenter;
-        public object PlayerId { get; set; }
+        public IPlayerInfo Player { get; set; }
 
         public JoinGangView()
         {
@@ -26,7 +27,7 @@ namespace QWars.Win
         private void btnJoinGang_Click(object sender, EventArgs e)
         {
             presenter.JoinGang();
-            new GangMemberView {PlayerId = PlayerId}.Show();
+            new GangMemberView {PlayerId = Player}.Show();
             Close();
         }
 
@@ -35,13 +36,13 @@ namespace QWars.Win
             set { gridGangs.DataSource = value; }
         }
 
-        public object SelectedGang
+        public IGang SelectedGang
         {
             get
             {
                 if (gridGangs.SelectedRows.Count == 0) return null;
                 
-                return gridGangs.SelectedRows[0].DataBoundItem;
+                return gridGangs.SelectedRows[0].DataBoundItem as IGang;
             }
         }
     }
