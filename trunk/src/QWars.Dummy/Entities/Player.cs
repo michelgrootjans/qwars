@@ -1,12 +1,48 @@
+using System.Collections.Generic;
+using System.Linq;
+using QWars.Presentation.Entities;
+
 namespace QWars.Dummy.Entities
 {
-    public class Player
+    public class Player : IPlayer, IPlayerInfo
     {
+        public int Id { get; private set; }
         public string Name { get; private set; }
+        public int Money { get; private set; }
+        public int XP { get; private set; }
+        private readonly List<IWeapon> weapons;
 
-        public Player(string name)
+        public Player(int id, string name)
         {
+            Id = id;
             Name = name;
+            weapons = new List<IWeapon>();
+        }
+
+        public override string ToString()
+        {
+            return Name;
+        }
+
+        public IEnumerable<IWeapon> Weapons
+        {
+            get { return weapons.Cast<IWeapon>(); }
+        }
+
+
+        public void AddXp(int xp)
+        {
+            XP += xp;
+        }
+
+        public void AddMoney(int amount)
+        {
+            Money += amount;
+        }
+
+        public void Buy(IWeapon weapon)
+        {
+            weapons.Add(weapon);
         }
     }
 }

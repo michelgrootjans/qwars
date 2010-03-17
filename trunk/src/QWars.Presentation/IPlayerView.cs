@@ -1,13 +1,15 @@
 using System.Collections.Generic;
+using QWars.Presentation.Entities;
 
 namespace QWars.Presentation
 {
     public interface IPlayerView
     {
+        IPlayerInfo Player { get; }
+
         string PlayerName { set; }
         int Money { set; }
         int XP { set; }
-        IEnumerable<object> Weapons { set; }
-        object PlayerId { get; }
+        IEnumerable<IWeapon> Weapons { set; }
     }
 }

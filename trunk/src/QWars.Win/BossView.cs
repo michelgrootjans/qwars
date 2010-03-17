@@ -1,15 +1,16 @@
 ﻿using System;
-using System.Collections;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using QWars.Dummy.Presenters;
 using QWars.Presentation;
+using QWars.Presentation.Entities;
 
 namespace QWars.Win
 {
     public partial class BossView : Form, IBossView
     {
         private readonly IBossPresenter presenter;
-        public object PlayerId { get; set; }
+        public IPlayerInfo Player { get; set; }
 
         public BossView()
         {
@@ -32,7 +33,7 @@ namespace QWars.Win
             set { lblMoney.Text = string.Format("{0} $", value); }
         }
 
-        public IEnumerable Members
+        public IEnumerable<IPlayer> Members
         {
             set { gridMembers.DataSource = value; }
         }
@@ -42,14 +43,14 @@ namespace QWars.Win
             set { lblNumberOfMembers.Text = string.Format("{0} members", value); }
         }
 
-        public IEnumerable Tasks
+        public IEnumerable<ITask> Tasks
         {
-            set { gridTasks.DataSource = value;} 
+            set { gridTasks.DataSource = value; }
         }
 
         private void btnCreateTask_Click(object sender, EventArgs e)
         {
-            new CreateTaskView {PlayerId = PlayerId}.Show();
+            new CreateTaskView {Player = Player}.Show();
         }
 
         private void btnCreateRandomTasks_Click(object sender, EventArgs e)

@@ -1,6 +1,8 @@
 using System.Collections.Generic;
+using System.Linq;
 using QWars.Dummy.Entities;
 using QWars.Presentation;
+using QWars.Presentation.Entities;
 
 namespace QWars.Dummy.Presenters
 {
@@ -21,8 +23,8 @@ namespace QWars.Dummy.Presenters
         {
             members = new List<Player>
                           {
-                              new Player("Calamity Jane"),
-                              new Player("Jon Shannow")
+                              new Player(1, "Calamity Jane"),
+                              new Player(2, "Jon Shannow")
                           };
             tasks = new List<Task>{new Task("Burn the police station")};
             UpdateView();
@@ -31,7 +33,7 @@ namespace QWars.Dummy.Presenters
         public void CreateRandomTasks()
         {
             const int numberOfTasks = 20;
-            logger.Log(string.Format("Boss {0} creates {1} random tasks", view.PlayerId, numberOfTasks));
+            logger.Log(string.Format("Boss {0} creates {1} random tasks", view.Player, numberOfTasks));
             for (var i = 0; i < numberOfTasks; i++)
                 tasks.Add(new Task("mug someone"));
             UpdateView();
@@ -39,7 +41,7 @@ namespace QWars.Dummy.Presenters
 
         public void IncreaseRewardForAllTasks()
         {
-            logger.Log(string.Format("Boss {0} increases reward for all tasks with 15%", view.PlayerId));
+            logger.Log(string.Format("Boss {0} increases reward for all tasks with 15%", view.Player));
         }
 
         private void UpdateView()
@@ -47,8 +49,8 @@ namespace QWars.Dummy.Presenters
             view.GangName = "The Flowerpot Men";
             view.GangMoney = 255;
             view.NumberOfMembers = members.Count;
-            view.Members = members;
-            view.Tasks = tasks;
+            view.Members = members.Cast<IPlayer>();
+            view.Tasks = tasks.Cast<ITask>();
         }
     }
 }

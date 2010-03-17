@@ -2,12 +2,13 @@
 using System.Windows.Forms;
 using QWars.Dummy.Presenters;
 using QWars.Presentation;
+using QWars.Presentation.Entities;
 
 namespace QWars.Win
 {
     public partial class CreateGangView : Form, ICreateGangView
     {
-        private ICreateGangPresenter presenter;
+        private readonly ICreateGangPresenter presenter;
 
         public CreateGangView()
         {
@@ -23,11 +24,11 @@ namespace QWars.Win
         private void btnOK_Click(object sender, EventArgs e)
         {
             presenter.CreateGang();
-            new BossView {PlayerId = PlayerId}.Show();
+            new BossView {Player = Player}.Show();
             Close();
         }
 
-        public object PlayerId { get; set;}
+        public IPlayerInfo Player { get; set;}
 
         public string GangName
         {

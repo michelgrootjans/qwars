@@ -3,12 +3,13 @@ using System.Collections;
 using System.Windows.Forms;
 using QWars.Dummy.Presenters;
 using QWars.Presentation;
+using QWars.Presentation.Entities;
 
 namespace QWars.Win
 {
     public partial class GangMemberView : Form, IGangMemberView
     {
-        private IGangMemberPresenter presenter;
+        private readonly IGangMemberPresenter presenter;
 
         public GangMemberView()
         {
@@ -16,14 +17,15 @@ namespace QWars.Win
             presenter = new GangMemberPresenter(this);
         }
 
-        public object PlayerId { get; set; }
-        public object SelectedTask
+        public IPlayerInfo PlayerId { get; set; }
+
+        public ITask SelectedTask
         {
             get
             {
                 if (gridTasks.SelectedRows.Count == 0) return null;
 
-                return gridTasks.SelectedRows[0].DataBoundItem;
+                return gridTasks.SelectedRows[0].DataBoundItem as ITask;
             }
         }
 
@@ -32,12 +34,12 @@ namespace QWars.Win
             set { gridTasks.DataSource = value; }
         }
 
-        private void GangMemberView_Load(object sender, System.EventArgs e)
+        private void GangMemberView_Load(object sender, EventArgs e)
         {
             presenter.Initialize();
         }
 
-        private void btnExecuteTask_Click(object sender, System.EventArgs e)
+        private void btnExecuteTask_Click(object sender, EventArgs e)
         {
             presenter.ExecuteTask();
         }

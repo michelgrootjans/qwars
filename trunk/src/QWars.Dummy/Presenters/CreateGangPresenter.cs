@@ -21,7 +21,7 @@ namespace QWars.Dummy.Presenters
         public void CreateGang()
         {
             logger.Log(string.Format("Player {0} creating gang {1} with {2}% benefits for the boss", 
-                                     view.PlayerId, view.GangName, view.BossBenefit));
+                                     view.Player, view.GangName, view.BossBenefit));
         }
     }
 }

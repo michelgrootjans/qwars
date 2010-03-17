@@ -1,11 +1,12 @@
 using System.Collections;
+using QWars.Presentation.Entities;
 
 namespace QWars.Presentation
 {
     public interface IJoinGangView
     {
-        object PlayerId { get; }
-        object SelectedGang { get; }
+        IPlayerInfo Player { get; }
+        IGang SelectedGang { get; }
 
         IEnumerable Gangs { set; }
     }

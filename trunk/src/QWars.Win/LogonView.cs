@@ -17,8 +17,8 @@ namespace QWars.Win
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            var playerId = presenter.LoginWithPlayerName(txtPlayerName.Text);
-            new PlayerView{PlayerId = playerId}.Show();
+            var player = presenter.LoginWithPlayerName(txtPlayerName.Text);
+            new PlayerView{Player = player}.Show();
         }
     }
 }

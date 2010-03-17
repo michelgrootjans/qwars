@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using QWars.Dummy.Entities;
 using QWars.Presentation;
+using QWars.Presentation.Entities;
 
 namespace QWars.Dummy.Presenters
 {
@@ -10,9 +11,6 @@ namespace QWars.Dummy.Presenters
         private readonly Random random;
         private readonly Logger logger;
         private readonly IPlayerView view;
-
-        private int money;
-        private int xp;
 
         public PlayerPresenter(IPlayerView view)
         {
@@ -29,28 +27,28 @@ namespace QWars.Dummy.Presenters
 
         public void MugPedestrian()
         {
-            logger.Log(string.Format("Player {0} mugs a pedestrian", PlayerId));
-            xp += random.Next(80, 100);
-            money += random.Next(15,20);
+            logger.Log(string.Format("Player {0} mugs a pedestrian", view.Player));
+            GetPlayer().AddXp(random.Next(80, 100));
+            GetPlayer().AddMoney(random.Next(15, 20));
             UpdateView();
+        }
+
+        private IPlayer GetPlayer()
+        {
+            return view.Player as IPlayer;
         }
 
         public void SellUnusedWeapons()
         {
-            logger.Log(string.Format("Player {0} sells his unused weapons", PlayerId));
+            logger.Log(string.Format("Player {0} sells his unused weapons", view.Player));
         }
 
-        private object PlayerId
+        public void UpdateView()
         {
-            get { return view.PlayerId; }
-        }
-        
-        private void UpdateView()
-        {
-            view.PlayerName = string.Format("Armageddon ({0})", PlayerId);
-            view.Money = money;
-            view.XP = xp;
-            view.Weapons = new List<object> {new Weapon("knife", 1.2), new Weapon("gun", 5.0)};
+            view.PlayerName = string.Format("Armageddon ({0})", view.Player);
+            view.Money = GetPlayer().Money;
+            view.XP = GetPlayer().XP;
+            view.Weapons = GetPlayer().Weapons;
         }
     }
 }

@@ -1,7 +1,9 @@
+using QWars.Presentation.Entities;
+
 namespace QWars.Presentation
 {
     public interface IBuyWeaponsView
     {
-        object PlayerId { get; }
+        IPlayerInfo Player { get; }
     }
 }
