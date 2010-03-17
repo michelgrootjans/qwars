@@ -1,8 +1,8 @@
 namespace QWars.Presentation
 {
-    public interface IJoinGangPresenter
+    public interface IGangMemberPresenter
     {
         void Initialize();
-        void JoinGang();
+        void ExecuteTask();
     }
 }

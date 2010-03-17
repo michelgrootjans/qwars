@@ -30,9 +30,9 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnJoinGang = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.gridGangs = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridGangs)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -53,27 +53,29 @@
             this.btnJoinGang.TabIndex = 0;
             this.btnJoinGang.Text = "Join Gang";
             this.btnJoinGang.UseVisualStyleBackColor = true;
+            this.btnJoinGang.Click += new System.EventHandler(this.btnJoinGang_Click);
             // 
-            // dataGridView1
+            // gridGangs
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(292, 227);
-            this.dataGridView1.TabIndex = 1;
+            this.gridGangs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridGangs.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridGangs.Location = new System.Drawing.Point(0, 0);
+            this.gridGangs.Name = "gridGangs";
+            this.gridGangs.Size = new System.Drawing.Size(292, 227);
+            this.gridGangs.TabIndex = 1;
             // 
             // JoinGangView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(292, 273);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.gridGangs);
             this.Controls.Add(this.panel1);
             this.Name = "JoinGangView";
             this.Text = "Join gang";
+            this.Load += new System.EventHandler(this.JoinGangView_Load);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridGangs)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -82,6 +84,6 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnJoinGang;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView gridGangs;
     }
 }
