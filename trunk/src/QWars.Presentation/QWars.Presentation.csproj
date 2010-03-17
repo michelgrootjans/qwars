@@ -37,6 +37,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IAdministratorView.cs" />
+    <Compile Include="IAdministratorPresenter.cs" />
     <Compile Include="IBossPresenter.cs" />
     <Compile Include="IBossView.cs" />
     <Compile Include="IBuyWeaponsPresenter.cs" />

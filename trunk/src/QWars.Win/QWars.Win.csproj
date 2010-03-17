@@ -43,6 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdministratorView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdministratorView.Designer.cs">
+      <DependentUpon>AdministratorView.cs</DependentUpon>
+    </Compile>
     <Compile Include="BossView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,11 +85,11 @@
     <Compile Include="JoinGangView.Designer.cs">
       <DependentUpon>JoinGangView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Logon.cs">
+    <Compile Include="LogonView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Logon.Designer.cs">
-      <DependentUpon>Logon.cs</DependentUpon>
+    <Compile Include="LogonView.Designer.cs">
+      <DependentUpon>LogonView.cs</DependentUpon>
     </Compile>
     <Compile Include="PlayerView.cs">
       <SubType>Form</SubType>
@@ -93,6 +99,10 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AdministratorView.resx">
+      <DependentUpon>AdministratorView.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="BossView.resx">
       <DependentUpon>BossView.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -117,8 +127,8 @@
       <DependentUpon>JoinGangView.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Logon.resx">
-      <DependentUpon>Logon.cs</DependentUpon>
+    <EmbeddedResource Include="LogonView.resx">
+      <DependentUpon>LogonView.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="PlayerView.resx">

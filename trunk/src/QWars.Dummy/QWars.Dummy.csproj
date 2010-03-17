@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Presenters\AdminPresenter.cs" />
     <Compile Include="Presenters\BossPresenter.cs" />
     <Compile Include="Presenters\BuyWeaponsPresenter.cs" />
     <Compile Include="Presenters\CreateGangPresenter.cs" />
