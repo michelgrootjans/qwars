@@ -14,7 +14,8 @@ namespace QWars.Win
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            Application.Run(new Logon());
+
+            Application.Run(new AdministratorView());
         }
     }
 }

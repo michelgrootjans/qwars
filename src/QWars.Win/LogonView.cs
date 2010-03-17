@@ -5,11 +5,11 @@ using QWars.Presentation;
 
 namespace QWars.Win
 {
-    public partial class Logon : Form
+    public partial class LogonView : Form
     {
         private readonly ILogonPresenter presenter;
 
-        public Logon()
+        public LogonView()
         {
             InitializeComponent();
             presenter = new LogonPresenter();

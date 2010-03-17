@@ -1,6 +1,6 @@
 ﻿namespace QWars.Win
 {
-    partial class Logon
+    partial class LogonView
     {
         /// <summary>
         /// Required designer variable.
