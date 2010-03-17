@@ -43,12 +43,7 @@ namespace QWars.Dummy.Presenters
 
         private IPlayer Player
         {
-            get
-            {
-                //get the player from the db
-                //here we just cast the player from the view
-                return view.Player as IPlayer;
-            }
+            get {return Repository.FindPlayer(view.Player.Id);}
         }
     }
 }

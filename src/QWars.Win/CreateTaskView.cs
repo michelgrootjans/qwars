@@ -9,7 +9,7 @@ namespace QWars.Win
     public partial class CreateTaskView : Form, ICreateTaskView
     {
         private readonly ICreateTaskPresenter presenter;
-        public IPlayerInfo Player { get; set; }
+        public PlayerInfo Player { get; set; }
 
         public CreateTaskView()
         {

@@ -10,7 +10,7 @@ namespace QWars.Win
     public partial class BossView : Form, IBossView
     {
         private readonly IBossPresenter presenter;
-        public IPlayerInfo Player { get; set; }
+        public PlayerInfo Player { get; set; }
 
         public BossView()
         {

@@ -13,10 +13,11 @@ namespace QWars.Dummy.Presenters
             logger = new Logger(this);
         }
 
-        public IPlayerInfo LoginWithPlayerName(string playerName)
+        public PlayerInfo LoginWithPlayerName(string playerName)
         {
             logger.Log(string.Format("{0} is logging in.", playerName));
-            return new Player(playerName.Length, playerName);
+            var player = Repository.Create(playerName);
+            return new PlayerInfo(player.Id, player.Name); 
         }
     }
 }

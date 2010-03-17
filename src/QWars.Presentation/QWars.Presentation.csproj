@@ -38,7 +38,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\IGang.cs" />
-    <Compile Include="Entities\IPlayerInfo.cs" />
+    <Compile Include="Entities\PlayerInfo.cs" />
     <Compile Include="Entities\ITask.cs" />
     <Compile Include="Entities\IWeapon.cs" />
     <Compile Include="IAdministratorView.cs" />

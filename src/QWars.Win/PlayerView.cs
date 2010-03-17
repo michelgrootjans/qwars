@@ -17,7 +17,7 @@ namespace QWars.Win
             presenter = new PlayerPresenter(this);
         }
 
-        public IPlayerInfo Player { get; set; }
+        public PlayerInfo Player { get; set; }
 
         private void PlayerView_Load(object sender, EventArgs e)
         {

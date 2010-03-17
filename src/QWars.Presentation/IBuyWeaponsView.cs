@@ -4,6 +4,6 @@ namespace QWars.Presentation
 {
     public interface IBuyWeaponsView
     {
-        IPlayerInfo Player { get; }
+        PlayerInfo Player { get; }
     }
 }

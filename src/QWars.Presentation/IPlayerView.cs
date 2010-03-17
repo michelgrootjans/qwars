@@ -5,7 +5,7 @@ namespace QWars.Presentation
 {
     public interface IPlayerView
     {
-        IPlayerInfo Player { get; }
+        PlayerInfo Player { get; }
 
         string PlayerName { set; }
         int Money { set; }

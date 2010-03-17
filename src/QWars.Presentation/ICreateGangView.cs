@@ -4,7 +4,7 @@ namespace QWars.Presentation
 {
     public interface ICreateGangView
     {
-        IPlayerInfo Player { get; }
+        PlayerInfo Player { get; }
         string GangName { get; }
         string BossBenefit { get; }
     }
