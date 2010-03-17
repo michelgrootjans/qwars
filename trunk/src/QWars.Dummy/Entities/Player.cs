@@ -1,10 +1,15 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using QWars.Presentation.Entities;
 
 namespace QWars.Dummy.Entities
 {
-    public class Player : IPlayer, IPlayerInfo
+    //NOTE: do not implement both IPlayer and PlayerInfo in the same class!
+    //They are for different purposes:
+    //IPlayer is an entity
+    //PlayerInfo is a DTO passsed between different forms
+    public class Player : IPlayer
     {
         public int Id { get; private set; }
         public string Name { get; private set; }

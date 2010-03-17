@@ -10,7 +10,7 @@ namespace QWars.Win
     public partial class JoinGangView : Form, IJoinGangView
     {
         private readonly IJoinGangPresenter presenter;
-        public IPlayerInfo Player { get; set; }
+        public PlayerInfo Player { get; set; }
 
         public JoinGangView()
         {

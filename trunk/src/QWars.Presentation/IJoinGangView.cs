@@ -5,7 +5,7 @@ namespace QWars.Presentation
 {
     public interface IJoinGangView
     {
-        IPlayerInfo Player { get; }
+        PlayerInfo Player { get; }
         IGang SelectedGang { get; }
 
         IEnumerable Gangs { set; }

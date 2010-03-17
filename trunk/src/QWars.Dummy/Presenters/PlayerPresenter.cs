@@ -35,7 +35,7 @@ namespace QWars.Dummy.Presenters
 
         private IPlayer GetPlayer()
         {
-            return view.Player as IPlayer;
+            return Repository.FindPlayer(view.Player.Id);
         }
 
         public void SellUnusedWeapons()

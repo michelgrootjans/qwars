@@ -16,7 +16,7 @@ namespace QWars.Win
             presenter = new BuyWeaponsPresenter(this);
         }
 
-        public IPlayerInfo Player { get; set; }
+        public PlayerInfo Player { get; set; }
 
         private void btnBuyClub_Click(object sender, EventArgs e)
         {

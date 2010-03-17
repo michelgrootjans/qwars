@@ -5,7 +5,7 @@ namespace QWars.Presentation
 {
     public interface IBossView
     {
-        IPlayerInfo Player { get; }
+        PlayerInfo Player { get; }
 
         string GangName { set; }
         int GangMoney { set; }

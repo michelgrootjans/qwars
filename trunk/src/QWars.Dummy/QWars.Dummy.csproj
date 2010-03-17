@@ -58,6 +58,7 @@
     <Compile Include="Presenters\PlayerPresenter.cs" />
     <Compile Include="Presenters\Logger.cs" />
     <Compile Include="Entities\Task.cs" />
+    <Compile Include="Presenters\Repository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entities\Weapon.cs" />
   </ItemGroup>

@@ -28,7 +28,7 @@ namespace QWars.Win
             Close();
         }
 
-        public IPlayerInfo Player { get; set;}
+        public PlayerInfo Player { get; set;}
 
         public string GangName
         {
