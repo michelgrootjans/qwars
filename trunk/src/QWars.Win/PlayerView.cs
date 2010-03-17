@@ -41,7 +41,7 @@ namespace QWars.Win
 
         private void btnJoinGang_Click(object sender, EventArgs e)
         {
-            var view = new JoinGangView();
+            var view = new JoinGangView{PlayerId = PlayerId};
             view.Show();
         }
 

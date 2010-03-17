@@ -67,6 +67,12 @@
     <Compile Include="CreateTaskView.Designer.cs">
       <DependentUpon>CreateTaskView.cs</DependentUpon>
     </Compile>
+    <Compile Include="GangMemberView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GangMemberView.Designer.cs">
+      <DependentUpon>GangMemberView.cs</DependentUpon>
+    </Compile>
     <Compile Include="JoinGangView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,6 +107,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CreateTaskView.resx">
       <DependentUpon>CreateTaskView.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GangMemberView.resx">
+      <DependentUpon>GangMemberView.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="JoinGangView.resx">

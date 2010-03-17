@@ -8,5 +8,10 @@ namespace QWars.Dummy.Entities
         {
             Description = description;
         }
+
+        public override string ToString()
+        {
+            return Description;
+        }
     }
 }

@@ -45,6 +45,8 @@
     <Compile Include="ICreateGangView.cs" />
     <Compile Include="ICreateTaskPresenter.cs" />
     <Compile Include="ICreateTaskView.cs" />
+    <Compile Include="IGangMemberPresenter.cs" />
+    <Compile Include="IGangMemberView.cs" />
     <Compile Include="IJoinGangPresenter.cs" />
     <Compile Include="IJoinGangView.cs" />
     <Compile Include="ILogonPresenter.cs" />
