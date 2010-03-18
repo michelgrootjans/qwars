@@ -53,7 +53,7 @@ namespace QWars.Win
             view.Show();
         }
 
-        public string PlayerName
+        public string Title
         {
             set { Text = "Player: " + value; }
         }

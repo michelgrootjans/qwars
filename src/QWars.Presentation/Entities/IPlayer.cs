@@ -4,12 +4,14 @@ namespace QWars.Presentation.Entities
 {
     public interface IPlayer
     {
+        string Name { get; }
         IEnumerable<IWeapon> Weapons { get; }
         int Money { get; }
         int XP { get; }
 
-        void AddXp(int xp);
-        void AddMoney(int amount);
         void Buy(IWeapon weapon);
+        void SellUnusedWeapons();
+        void Execute(ITask task);
+        void Join(IGang gang);
     }
 }

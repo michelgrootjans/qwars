@@ -7,7 +7,7 @@ namespace QWars.Presentation
     {
         PlayerInfo Player { get; }
 
-        string PlayerName { set; }
+        string Title { set; }
         int Money { set; }
         int XP { set; }
         IEnumerable<IWeapon> Weapons { set; }

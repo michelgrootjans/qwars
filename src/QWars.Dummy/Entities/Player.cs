@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using QWars.Presentation.Entities;
+using QWars.Presentation.Helpers;
 
 namespace QWars.Dummy.Entities
 {
@@ -34,20 +35,27 @@ namespace QWars.Dummy.Entities
             get { return weapons.Cast<IWeapon>(); }
         }
 
-
-        public void AddXp(int xp)
-        {
-            XP += xp;
-        }
-
-        public void AddMoney(int amount)
-        {
-            Money += amount;
-        }
-
         public void Buy(IWeapon weapon)
         {
+            //TODO: price handling
             weapons.Add(weapon);
+        }
+
+        public void Execute(ITask task)
+        {
+            var calculator = new TaskCalculator(this, task);
+            Money += calculator.MoneyEarned;
+            XP += calculator.XpEarned;
+        }
+
+        public void Join(IGang gang)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SellUnusedWeapons()
+        {
+            throw new NotImplementedException();
         }
     }
 }

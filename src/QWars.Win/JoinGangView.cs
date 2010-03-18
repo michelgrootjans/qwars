@@ -27,7 +27,7 @@ namespace QWars.Win
         private void btnJoinGang_Click(object sender, EventArgs e)
         {
             presenter.JoinGang();
-            new GangMemberView {PlayerId = Player}.Show();
+            new GangMemberView {Player = Player}.Show();
             Close();
         }
 

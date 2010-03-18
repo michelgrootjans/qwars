@@ -5,7 +5,7 @@ using QWars.Presentation.Entities;
 
 namespace QWars.Dummy.Presenters
 {
-    public static class Repository
+    public static class InMemoryRepository
     {
         private static readonly List<Player> dummyPlayers = new List<Player>();
         private static readonly List<Gang> dummyGangs = new List<Gang>();

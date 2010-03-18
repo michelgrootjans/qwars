@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{860BEB31-AFAE-44F5-BF0F-CFF10A456B36}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -55,10 +55,11 @@
     <Compile Include="Presenters\JoinGangPresenter.cs" />
     <Compile Include="Presenters\LogonPresenter.cs" />
     <Compile Include="Entities\Player.cs" />
+    <Compile Include="Entities\Mugging.cs" />
     <Compile Include="Presenters\PlayerPresenter.cs" />
     <Compile Include="Presenters\Logger.cs" />
     <Compile Include="Entities\Task.cs" />
-    <Compile Include="Presenters\Repository.cs" />
+    <Compile Include="Presenters\InMemoryRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entities\Weapon.cs" />
   </ItemGroup>

@@ -5,7 +5,7 @@ namespace QWars.Presentation
 {
     public interface IGangMemberView
     {
-        PlayerInfo PlayerId { get; }
+        PlayerInfo Player { get; }
         ITask SelectedTask { get; }
         IEnumerable Tasks { set; }
     }
