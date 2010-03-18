@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using QWars.Dummy.Entities;
 using QWars.Presentation;
@@ -27,7 +26,9 @@ namespace QWars.Dummy.Presenters
 
         public void ExecuteTask()
         {
-            logger.Log(string.Format("Player {0} executes {1}", view.PlayerId, view.SelectedTask));
+            logger.Log(string.Format("Player {0} executes {1}", view.Player, view.SelectedTask));
+            var player = InMemoryRepository.FindPlayer(view.Player.Id);
+            player.Execute(view.SelectedTask);
         }
     }
 }

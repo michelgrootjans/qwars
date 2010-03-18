@@ -17,7 +17,7 @@ namespace QWars.Win
             presenter = new GangMemberPresenter(this);
         }
 
-        public PlayerInfo PlayerId { get; set; }
+        public PlayerInfo Player { get; set; }
 
         public ITask SelectedTask
         {

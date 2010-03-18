@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Windows.Forms;
 using QWars.Dummy.Presenters;
 using QWars.Presentation;
@@ -8,7 +7,7 @@ namespace QWars.Win
 {
     public partial class AdministratorView : Form, IAdministratorView
     {
-        private IAdministratorPresenter presenter;
+        private readonly IAdministratorPresenter presenter;
 
         public AdministratorView()
         {

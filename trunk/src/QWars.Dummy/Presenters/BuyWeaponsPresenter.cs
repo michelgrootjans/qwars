@@ -43,7 +43,7 @@ namespace QWars.Dummy.Presenters
 
         private IPlayer Player
         {
-            get {return Repository.FindPlayer(view.Player.Id);}
+            get {return InMemoryRepository.FindPlayer(view.Player.Id);}
         }
     }
 }

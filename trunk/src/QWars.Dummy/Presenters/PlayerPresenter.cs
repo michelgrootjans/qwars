@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using QWars.Dummy.Entities;
 using QWars.Presentation;
 using QWars.Presentation.Entities;
@@ -8,47 +6,46 @@ namespace QWars.Dummy.Presenters
 {
     public class PlayerPresenter : IPlayerPresenter
     {
-        private readonly Random random;
         private readonly Logger logger;
         private readonly IPlayerView view;
 
         public PlayerPresenter(IPlayerView view)
         {
-            logger = new Logger(this); 
+            logger = new Logger(this);
             this.view = view;
-            random = new Random();
         }
 
         public void Initialize()
         {
-            logger.Log("Initialize");
             UpdateView();
         }
 
         public void MugPedestrian()
         {
             logger.Log(string.Format("Player {0} mugs a pedestrian", view.Player));
-            GetPlayer().AddXp(random.Next(80, 100));
-            GetPlayer().AddMoney(random.Next(15, 20));
+            GetPlayer().Execute(new Mugging());
             UpdateView();
-        }
-
-        private IPlayer GetPlayer()
-        {
-            return Repository.FindPlayer(view.Player.Id);
         }
 
         public void SellUnusedWeapons()
         {
             logger.Log(string.Format("Player {0} sells his unused weapons", view.Player));
+            GetPlayer().SellUnusedWeapons();
+            UpdateView();
         }
 
         public void UpdateView()
         {
-            view.PlayerName = string.Format("Armageddon ({0})", view.Player);
-            view.Money = GetPlayer().Money;
-            view.XP = GetPlayer().XP;
-            view.Weapons = GetPlayer().Weapons;
+            var player = GetPlayer();
+            view.Title = string.Format("{0}", player.Name);
+            view.Money = player.Money;
+            view.XP = player.XP;
+            view.Weapons = player.Weapons;
+        }
+
+        private IPlayer GetPlayer()
+        {
+            return InMemoryRepository.FindPlayer(view.Player.Id);
         }
     }
 }

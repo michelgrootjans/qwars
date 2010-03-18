@@ -1,6 +1,4 @@
-using System.Collections.Generic;
 using System.Linq;
-using QWars.Dummy.Entities;
 using QWars.Presentation;
 
 namespace QWars.Dummy.Presenters
@@ -17,19 +15,19 @@ namespace QWars.Dummy.Presenters
         public void ShowTopPlayers()
         {
             view.Title = "Top Players";
-            view.Data = Repository.GetAllPlayers().OrderBy(p => p.XP);
+            view.Data = InMemoryRepository.GetAllPlayers().OrderByDescending(p => p.XP).ToList();
         }
 
         public void ShowRichestPlayers()
         {
             view.Title = "Richest Players";
-            view.Data = Repository.GetAllPlayers().OrderBy(p => p.Money);
+            view.Data = InMemoryRepository.GetAllPlayers().OrderByDescending(p => p.Money).ToList();
         }
 
         public void ShowBiggestGang()
         {
             view.Title = "Biggest Gang";
-            view.Data = Repository.GetAllGangs();
+            view.Data = InMemoryRepository.GetAllGangs().ToList();
         }
     }
 }
