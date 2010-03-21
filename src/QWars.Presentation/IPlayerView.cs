@@ -9,7 +9,7 @@ namespace QWars.Presentation
 
         string Title { set; }
         int Money { set; }
-        int XP { set; }
+        string XP { set; }
         IEnumerable<IWeapon> Weapons { set; }
     }
 }

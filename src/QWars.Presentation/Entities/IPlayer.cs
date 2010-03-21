@@ -8,6 +8,8 @@ namespace QWars.Presentation.Entities
         IEnumerable<IWeapon> Weapons { get; }
         int Money { get; }
         int XP { get; }
+        int XPWithWeaponBonus { get; }
+        int XPBonus { get; }
 
         void Buy(IWeapon weapon);
         void SellUnusedWeapons();

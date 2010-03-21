@@ -11,7 +11,7 @@ namespace QWars.Dummy.Entities
 
         public Mugging()
         {
-            Reward = random.Next(80, 100);
+            Reward = random.Next(0, 6);
             XP = random.Next(15, 20);
         }
 
