@@ -1,6 +1,7 @@
 using QWars.Dummy.Entities;
 using QWars.Presentation;
 using QWars.Presentation.Entities;
+using System.Linq;
 
 namespace QWars.Dummy.Presenters
 {
@@ -39,8 +40,8 @@ namespace QWars.Dummy.Presenters
             var player = GetPlayer();
             view.Title = string.Format("{0}", player.Name);
             view.Money = player.Money;
-            view.XP = player.XP;
-            view.Weapons = player.Weapons;
+            view.XP = string.Format("{0} + {1}", player.XP, player.XPBonus);
+            view.Weapons = player.Weapons.ToList();
         }
 
         private IPlayer GetPlayer()

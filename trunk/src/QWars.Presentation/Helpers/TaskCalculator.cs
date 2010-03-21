@@ -20,9 +20,9 @@ namespace QWars.Presentation.Helpers
 
         private void CalculateOutcome()
         {
-            var attack = TenPercentUncertainty(player.XP);
+            var attack = TenPercentUncertainty(player.XPWithWeaponBonus);
             var defense = TenPercentUncertainty(task.Difficulty);
-            if (attack > defense)
+            if (attack >= defense)
             {
                 moneyEarned = task.Reward;
                 xpEarned = task.XP;

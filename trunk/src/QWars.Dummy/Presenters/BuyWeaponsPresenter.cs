@@ -1,4 +1,3 @@
-using QWars.Dummy.Entities;
 using QWars.Presentation;
 using QWars.Presentation.Entities;
 
@@ -17,28 +16,32 @@ namespace QWars.Dummy.Presenters
 
         public void BuyClub()
         {
-            logger.Log(string.Format("Player {0} buys a new club", Player));
-            Player.Buy(new Weapon("Club", 1.05));
+            logger.Log(string.Format(Player + " buys a new Club", Player));
+            Player.Buy(WeaponFactory.Club);
         }
 
         public void BuyKnife()
         {
-            logger.Log(string.Format("Player {0} buys a new knife", Player));
+            logger.Log(string.Format(Player + " buys a new Knife", Player));
+            Player.Buy(WeaponFactory.Knife);
         }
 
         public void BuyTaser()
         {
-            logger.Log(string.Format("Player {0} buys a new taser", Player));
+            logger.Log(string.Format(Player + " buys a new Taser", Player));
+            Player.Buy(WeaponFactory.Taser);
         }
 
         public void BuyGun()
         {
-            logger.Log(string.Format("Player {0} buys a new gun", Player));
+            logger.Log(string.Format(Player + " buys a new Gun", Player));
+            Player.Buy(WeaponFactory.Gun);
         }
 
         public void BuyBomb()
         {
-            logger.Log(string.Format("Player {0} buys a new bomb", Player));
+            logger.Log(string.Format(Player + " buys a new Bomb", Player));
+            Player.Buy(WeaponFactory.Bomb);
         }
 
         private IPlayer Player

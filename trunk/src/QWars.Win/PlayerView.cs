@@ -63,9 +63,9 @@ namespace QWars.Win
             set { lblMoney.Text = value.ToString(); }
         }
 
-        public int XP
+        public string XP
         {
-            set { lblExperience.Text = value.ToString(); }
+            set { lblExperience.Text = value; }
         }
 
         public IEnumerable<IWeapon> Weapons
