@@ -22,6 +22,9 @@ namespace QWars.Dummy.Presenters
         {
             logger.Log(string.Format("Player {0} creating gang {1} with {2}% benefits for the boss", 
                                      view.Player, view.GangName, view.BossBenefit));
+            var player = InMemoryRepository.FindPlayer(view.Player.Id);
+            var gang = player.CreateGang(view.GangName, view.BossBenefit);
+            InMemoryRepository.Save(gang);
         }
     }
 }

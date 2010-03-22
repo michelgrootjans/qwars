@@ -1,23 +1,13 @@
 using System;
-using QWars.Presentation.Entities;
 
 namespace QWars.Dummy.Entities
 {
-    public class Mugging : ITask
+    public class Mugging : Task
     {
         private static readonly Random random = new Random();
-        public int XP { get; private set; }
-        public int Reward { get; private set; }
 
-        public Mugging()
+        public Mugging() : base("Mugging", 0, random.Next(0, 6), random.Next(15, 20))
         {
-            Reward = random.Next(0, 6);
-            XP = random.Next(15, 20);
-        }
-
-        public int Difficulty
-        {
-            get { return 0; }
         }
     }
 }

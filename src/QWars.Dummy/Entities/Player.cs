@@ -10,12 +10,15 @@ namespace QWars.Dummy.Entities
     //They are for different purposes:
     //IPlayer is an entity
     //PlayerInfo is a DTO passsed between different forms
-    public class Player : IPlayer
+    public class Player : IPlayer, IBoss
     {
         public int Id { get; private set; }
         public string Name { get; private set; }
         public int Money { get; private set; }
         public int XP { get; private set; }
+        private List<IWeapon> weapons;
+        private IGang memberOf;
+        private IGang ownedGang;
 
         public int XPWithWeaponBonus
         {
@@ -33,7 +36,6 @@ namespace QWars.Dummy.Entities
             }
         }
 
-        private readonly List<IWeapon> weapons;
 
         public Player(int id, string name)
         {
@@ -67,13 +69,13 @@ namespace QWars.Dummy.Entities
 
         public void Join(IGang gang)
         {
-            throw new NotImplementedException();
+            memberOf = gang;
         }
 
         public void SellUnusedWeapons()
         {
             if (weapons.Count() == 0) return;
-            
+
             var bestWepon = weapons.OrderByDescending(w => w.XpBonus).First();
             foreach (var weapon in weapons.Where(w => !w.Equals(bestWepon)).ToList())
                 Sell(weapon);
@@ -83,6 +85,52 @@ namespace QWars.Dummy.Entities
         {
             weapons.Remove(weapon);
             Money += weapon.SellPrice;
+        }
+
+        public IEnumerable<ITask> GetGangTasks()
+        {
+            return IsBoss ? ownedGang.Tasks : memberOf.Tasks;
+        }
+
+        private bool IsBoss
+        {
+            get { return ownedGang != null; }
+        }
+
+        public ITask CreateTask(string description, int difficulty, int reward, int xp)
+        {
+            return ownedGang.CreateTask(description, difficulty, reward, xp);
+        }
+
+        public IGang CreateGang(string name, string bossBenefit)
+        {
+            ownedGang = new Gang(name, bossBenefit);
+            return ownedGang;
+        }
+
+        public void IncreaseAllRewardsWith(double percent)
+        {
+            ownedGang.IncreaseAllRewardsWith(percent);
+        }
+
+        public IGang Gang
+        {
+            get { return ownedGang; }
+        }
+
+        public string GangName
+        {
+            get { return ownedGang.Name; }
+        }
+
+        public int GangMoney
+        {
+            get { return ownedGang.Money; }
+        }
+
+        public IEnumerable<IPlayer> GangMembers
+        {
+            get { return ownedGang.Members; }
         }
     }
 }

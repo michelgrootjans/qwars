@@ -10,26 +10,30 @@ namespace QWars.Win
     {
         private readonly ICreateTaskPresenter presenter;
         public PlayerInfo Player { get; set; }
-
         public CreateTaskView()
         {
             InitializeComponent();
             presenter = new CreateTaskPresenter(this);
         }
 
-        public string Difficulty
+        public string Description
         {
-            get { return txtDifficulty.Text; }
+            get { return txtDescription.Text; }
         }
 
-        public string Reward
+        public int Difficulty
         {
-            get { return txtReward.Text; }
+            get { return Convert.ToInt32(txtDifficulty.Text); }
         }
 
-        public string XP
+        public int Reward
         {
-            get { return txtXP.Text; }
+            get { return Convert.ToInt32(txtReward.Text); }
+        }
+
+        public int XP
+        {
+            get { return Convert.ToInt32(txtXP.Text); }
         }
 
 

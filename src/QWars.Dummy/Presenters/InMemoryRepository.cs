@@ -8,7 +8,7 @@ namespace QWars.Dummy.Presenters
     public static class InMemoryRepository
     {
         private static readonly List<Player> dummyPlayers = new List<Player>();
-        private static readonly List<Gang> dummyGangs = new List<Gang>();
+        private static readonly List<IGang> dummyGangs = new List<IGang>();
 
         public static Player Create(string name)
         {
@@ -22,14 +22,19 @@ namespace QWars.Dummy.Presenters
             return dummyPlayers.Cast<IPlayer>();
         }
 
-        public static IPlayer FindPlayer(int id)
+        public static Player FindPlayer(int id)
         {
             return dummyPlayers.Where(p => p.Id == id).FirstOrDefault();
         }
 
         public static IEnumerable<IGang> GetAllGangs()
         {
-            return dummyGangs.Cast<IGang>();
+            return dummyGangs;
+        }
+
+        public static void Save(IGang gang)
+        {
+            dummyGangs.Add(gang);
         }
     }
 }

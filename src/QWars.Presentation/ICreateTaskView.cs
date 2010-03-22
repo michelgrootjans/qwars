@@ -5,8 +5,9 @@ namespace QWars.Presentation
     public interface ICreateTaskView
     {
         PlayerInfo Player { get; }
-        string Difficulty { get; }
-        string Reward { get; }
-        string XP { get; }
+        string Description { get; }
+        int Difficulty { get; }
+        int Reward { get; }
+        int XP { get; }
     }
 }

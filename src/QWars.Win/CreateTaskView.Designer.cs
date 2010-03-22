@@ -37,12 +37,14 @@ namespace QWars.Win
             this.txtReward = new System.Windows.Forms.TextBox();
             this.txtXP = new System.Windows.Forms.TextBox();
             this.btnOK = new System.Windows.Forms.Button();
+            this.txtDescription = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(7, 60);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(47, 13);
             this.label1.TabIndex = 0;
@@ -51,7 +53,7 @@ namespace QWars.Win
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 35);
+            this.label2.Location = new System.Drawing.Point(7, 86);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(44, 13);
             this.label2.TabIndex = 1;
@@ -60,7 +62,7 @@ namespace QWars.Win
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 61);
+            this.label3.Location = new System.Drawing.Point(7, 112);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(21, 13);
             this.label3.TabIndex = 2;
@@ -68,41 +70,60 @@ namespace QWars.Win
             // 
             // txtDifficulty
             // 
-            this.txtDifficulty.Location = new System.Drawing.Point(65, 6);
+            this.txtDifficulty.Location = new System.Drawing.Point(73, 57);
             this.txtDifficulty.Name = "txtDifficulty";
-            this.txtDifficulty.Size = new System.Drawing.Size(100, 20);
+            this.txtDifficulty.Size = new System.Drawing.Size(140, 20);
             this.txtDifficulty.TabIndex = 3;
             // 
             // txtReward
             // 
-            this.txtReward.Location = new System.Drawing.Point(65, 32);
+            this.txtReward.Location = new System.Drawing.Point(73, 83);
             this.txtReward.Name = "txtReward";
-            this.txtReward.Size = new System.Drawing.Size(100, 20);
+            this.txtReward.Size = new System.Drawing.Size(140, 20);
             this.txtReward.TabIndex = 4;
             // 
             // txtXP
             // 
-            this.txtXP.Location = new System.Drawing.Point(65, 58);
+            this.txtXP.Location = new System.Drawing.Point(73, 109);
             this.txtXP.Name = "txtXP";
-            this.txtXP.Size = new System.Drawing.Size(100, 20);
+            this.txtXP.Size = new System.Drawing.Size(140, 20);
             this.txtXP.TabIndex = 5;
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(90, 94);
+            this.btnOK.Location = new System.Drawing.Point(140, 145);
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(75, 23);
+            this.btnOK.Size = new System.Drawing.Size(73, 23);
             this.btnOK.TabIndex = 6;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
+            // 
+            // txtDescription
+            // 
+            this.txtDescription.Location = new System.Drawing.Point(73, 12);
+            this.txtDescription.Multiline = true;
+            this.txtDescription.Name = "txtDescription";
+            this.txtDescription.Size = new System.Drawing.Size(140, 39);
+            this.txtDescription.TabIndex = 8;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(7, 15);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(60, 13);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Description";
             // 
             // CreateTaskView
             // 
             this.AcceptButton = this.btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(179, 123);
+            this.ClientSize = new System.Drawing.Size(225, 172);
+            this.Controls.Add(this.txtDescription);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.txtXP);
             this.Controls.Add(this.txtReward);
@@ -127,5 +148,7 @@ namespace QWars.Win
         private System.Windows.Forms.TextBox txtReward;
         private System.Windows.Forms.TextBox txtXP;
         private System.Windows.Forms.Button btnOK;
+        private System.Windows.Forms.TextBox txtDescription;
+        private System.Windows.Forms.Label label4;
     }
 }

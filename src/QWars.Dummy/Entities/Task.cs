@@ -1,17 +1,26 @@
+using System;
+using QWars.Presentation.Entities;
+
 namespace QWars.Dummy.Entities
 {
-    public class Task
+    public class Task : ITask
     {
-        public string Description { get; private set; }
+        public string Description { get; protected set; }
+        public int Difficulty { get; protected set; }
+        public int Reward { get; protected set; }
+        public int XP { get; protected set; }
 
-        public Task(string description)
+        public void IncreaseRewardWith(double bonus)
         {
-            Description = description;
+            Reward = Convert.ToInt32((1 + bonus) * Reward);
         }
 
-        public override string ToString()
+        public Task(string description, int difficulty, int reward, int xp)
         {
-            return Description;
+            Description = description;
+            Difficulty = difficulty;
+            Reward = reward;
+            XP = xp;
         }
     }
 }
