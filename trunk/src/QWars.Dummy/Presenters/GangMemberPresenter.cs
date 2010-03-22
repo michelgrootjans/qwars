@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using QWars.Dummy.Entities;
 using QWars.Presentation;
 
 namespace QWars.Dummy.Presenters
@@ -17,11 +15,8 @@ namespace QWars.Dummy.Presenters
 
         public void Initialize()
         {
-            view.Tasks = new List<Task>
-                             {
-                                 new Task("Steal a car"),
-                                 new Task("Poison Obama")
-                             };
+            var player = InMemoryRepository.FindPlayer(view.Player.Id);
+            view.Tasks = player.GetGangTasks();
         }
 
         public void ExecuteTask()

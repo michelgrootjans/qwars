@@ -1,4 +1,3 @@
-using System;
 using QWars.Presentation;
 
 namespace QWars.Dummy.Presenters
@@ -21,8 +20,10 @@ namespace QWars.Dummy.Presenters
 
         public void CreateTask()
         {
-            logger.Log(string.Format("Player {0} creates a new task: Diff {1} - Reward {2} - XP {3}", 
-                view.Player, view.Difficulty, view.Reward, view.XP));
+            logger.Log(string.Format("Player {0} creates a new task: Diff {1} - Reward {2} - XP {3}",
+                                     view.Player, view.Difficulty, view.Reward, view.XP));
+            var boss = InMemoryRepository.FindPlayer(view.Player.Id);
+            boss.CreateTask(view.Description, view.Difficulty, view.Reward, view.XP);
         }
     }
 }
