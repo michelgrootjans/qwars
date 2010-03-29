@@ -12,7 +12,7 @@ namespace QWars.Dummy.Entities
     //PlayerInfo is a DTO passsed between different forms
     public class Player : IPlayer, IBoss
     {
-        public int Id { get; private set; }
+        public object Id { get; private set; }
         public string Name { get; private set; }
         public int Money { get; private set; }
         public int XP { get; private set; }
