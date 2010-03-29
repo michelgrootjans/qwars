@@ -22,7 +22,7 @@ namespace QWars.Dummy.Presenters
             return dummyPlayers.Cast<IPlayer>();
         }
 
-        public static Player FindPlayer(int id)
+        public static Player FindPlayer(object id)
         {
             return dummyPlayers.Where(p => p.Id == id).FirstOrDefault();
         }

@@ -5,9 +5,9 @@ namespace QWars.Presentation.Entities
     /// </summary>
     public class PlayerInfo
     {
-        public int Id { get; private set; }
+        public object Id { get; private set; }
 
-        public PlayerInfo(int id, string name)
+        public PlayerInfo(object id, string name)
         {
             Id = id;
         }
