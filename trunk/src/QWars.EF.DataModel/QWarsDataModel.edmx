@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl" Namespace="QWarsDataModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005">
+        <EntityContainer Name="QWarsDataModelTargetContainer" >
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="QWars.EF.DataModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+        <EntityContainer Name="QWarsContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Gangs" EntityType="QWars.EF.DataModel.Gang" />
+          <EntitySet Name="Players" EntityType="QWars.EF.DataModel.Player" />
+          <EntitySet Name="Tasks" EntityType="QWars.EF.DataModel.Task" />
+          <EntitySet Name="Weapons" EntityType="QWars.EF.DataModel.Weapon" />
+          <AssociationSet Name="PlayerWeapon" Association="QWars.EF.DataModel.PlayerWeapon">
+            <End Role="Player" EntitySet="Players" />
+            <End Role="Weapon" EntitySet="Weapons" />
+          </AssociationSet>
+          <AssociationSet Name="PlayerGang" Association="QWars.EF.DataModel.PlayerGang">
+            <End Role="Player" EntitySet="Players" />
+            <End Role="Gang" EntitySet="Gangs" />
+          </AssociationSet>
+          <AssociationSet Name="GangPlayer" Association="QWars.EF.DataModel.GangPlayer">
+            <End Role="Gang" EntitySet="Gangs" />
+            <End Role="Player" EntitySet="Players" />
+          </AssociationSet>
+          <AssociationSet Name="GangTask" Association="QWars.EF.DataModel.GangTask">
+            <End Role="Gang" EntitySet="Gangs" />
+            <End Role="Task" EntitySet="Tasks" />
+          </AssociationSet>
+          <AssociationSet Name="PlayerTask" Association="QWars.EF.DataModel.PlayerTask">
+            <End Role="Player" EntitySet="Players" />
+            <End Role="Task" EntitySet="Tasks" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Gang">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Boss" Relationship="QWars.EF.DataModel.PlayerGang" FromRole="Gang" ToRole="Player" />
+          <NavigationProperty Name="Members" Relationship="QWars.EF.DataModel.GangPlayer" FromRole="Gang" ToRole="Player" />
+          <Property Type="String" Name="Name" Nullable="false" cg:SetterAccess="Private" />
+          <Property Type="Int32" Name="Money" Nullable="false" cg:SetterAccess="Private" />
+          <NavigationProperty Name="Tasks" Relationship="QWars.EF.DataModel.GangTask" FromRole="Gang" ToRole="Task" cg:SetterAccess="Private" />
+        </EntityType>
+        <EntityType Name="Player">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" cg:SetterAccess="Private" MaxLength="50" />
+          <Property Type="Int32" Name="Money" Nullable="false" cg:SetterAccess="Private" />
+          <Property Type="Int32" Name="XP" Nullable="false" cg:SetterAccess="Private" />
+          <NavigationProperty Name="Weapons" Relationship="QWars.EF.DataModel.PlayerWeapon" FromRole="Player" ToRole="Weapon" />
+          <NavigationProperty Name="OwnedGang" Relationship="QWars.EF.DataModel.PlayerGang" FromRole="Player" ToRole="Gang" />
+          <NavigationProperty Name="JoinedGang" Relationship="QWars.EF.DataModel.GangPlayer" FromRole="Player" ToRole="Gang" />
+          <NavigationProperty Name="Tasks" Relationship="QWars.EF.DataModel.PlayerTask" FromRole="Player" ToRole="Task" />
+        </EntityType>
+        <EntityType Name="Task">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Gang" Relationship="QWars.EF.DataModel.GangTask" FromRole="Task" ToRole="Gang" />
+          <Property Type="String" Name="Description" Nullable="false" />
+          <Property Type="Int32" Name="Difficulty" Nullable="false" />
+          <Property Type="Int32" Name="Reward" Nullable="false" />
+          <Property Type="Int32" Name="XP" Nullable="false" />
+          <NavigationProperty Name="ExecutedByPlayer" Relationship="QWars.EF.DataModel.PlayerTask" FromRole="Task" ToRole="Player" />
+        </EntityType>
+        <EntityType Name="Weapon" Abstract="true">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" cg:SetterAccess="Protected" />
+          <Property Type="Double" Name="XpBonus" Nullable="false" cg:SetterAccess="Protected" />
+          <Property Type="Int32" Name="Price" Nullable="false" cg:SetterAccess="Protected" />
+        </EntityType>
+        <EntityType Name="Club" BaseType="QWars.EF.DataModel.Weapon">
+        </EntityType>
+        <EntityType Name="Knife" BaseType="QWars.EF.DataModel.Weapon">
+        </EntityType>
+        <EntityType Name="Taser" BaseType="QWars.EF.DataModel.Weapon">
+        </EntityType>
+        <EntityType Name="Gun" BaseType="QWars.EF.DataModel.Weapon">
+        </EntityType>
+        <EntityType Name="Bomb" BaseType="QWars.EF.DataModel.Weapon">
+        </EntityType>
+        <EntityType Name="Mug" BaseType="QWars.EF.DataModel.Task">
+          </EntityType>
+        <Association Name="PlayerWeapon">
+          <End Type="QWars.EF.DataModel.Player" Role="Player" Multiplicity="*" />
+          <End Type="QWars.EF.DataModel.Weapon" Role="Weapon" Multiplicity="*" />
+        </Association>
+        <Association Name="PlayerGang">
+          <End Type="QWars.EF.DataModel.Player" Role="Player" Multiplicity="1" />
+          <End Type="QWars.EF.DataModel.Gang" Role="Gang" Multiplicity="0..1" />
+        </Association>
+        <Association Name="GangPlayer">
+          <End Type="QWars.EF.DataModel.Gang" Role="Gang" Multiplicity="0..1" />
+          <End Type="QWars.EF.DataModel.Player" Role="Player" Multiplicity="*" />
+        </Association>
+        <Association Name="GangTask">
+          <End Type="QWars.EF.DataModel.Gang" Role="Gang" Multiplicity="0..1" />
+          <End Type="QWars.EF.DataModel.Task" Role="Task" Multiplicity="*" />
+        </Association>
+        <Association Name="PlayerTask">
+          <End Type="QWars.EF.DataModel.Player" Role="Player" Multiplicity="0..1" />
+          <End Type="QWars.EF.DataModel.Task" Role="Task" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs" Space="C-S">
+        <Alias Key="Model" Value="QWarsDataModel" />
+        <Alias Key="Target" Value="QWarsDataModel.Store" />
+        <EntityContainerMapping CdmEntityContainer="QWarsContext" StorageEntityContainer="QWarsDataModelTargetContainer">
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram Name="QWarsDataModel" ShowGrid="true" DisplayType="true" >
+        <EntityTypeShape EntityType="QWars.EF.DataModel.Gang" Width="1.5" PointX="4" PointY="0.5" Height="1.9802864583333335" />
+        <EntityTypeShape EntityType="QWars.EF.DataModel.Player" Width="1.5" PointX="0.5" PointY="0.5" Height="2.3648893229166665" />
+        <EntityTypeShape EntityType="QWars.EF.DataModel.Task" Width="1.5" PointX="4" PointY="4" Height="2.1725878906249996" />
+        <EntityTypeShape EntityType="QWars.EF.DataModel.Weapon" Width="1.5" PointX="0.5" PointY="4" Height="1.7879850260416665" />
+        <EntityTypeShape EntityType="QWars.EF.DataModel.Club" Width="1.5" PointX="0.5" PointY="7.25" Height="1.0187792968749996" />
+        <EntityTypeShape EntityType="QWars.EF.DataModel.Knife" Width="1.5" PointX="2.125" PointY="7.25" Height="1.0187792968749996" />
+        <InheritanceConnector EntityType="QWars.EF.DataModel.Club" >
+          <ConnectorPoint PointX="1.25" PointY="5.7879850260416665" />
+          <ConnectorPoint PointX="1.25" PointY="7.25" />
+        </InheritanceConnector>
+        <InheritanceConnector EntityType="QWars.EF.DataModel.Knife" >
+          <ConnectorPoint PointX="1.25" PointY="5.7879850260416665" />
+          <ConnectorPoint PointX="1.25" PointY="6.875" />
+          <ConnectorPoint PointX="2.875" PointY="6.875" />
+          <ConnectorPoint PointX="2.875" PointY="7.25" />
+        </InheritanceConnector>
+        <EntityTypeShape EntityType="QWars.EF.DataModel.Taser" Width="1.5" PointX="3.75" PointY="7.25" Height="1.0187792968749996" />
+        <EntityTypeShape EntityType="QWars.EF.DataModel.Gun" Width="1.5" PointX="5.375" PointY="7.25" Height="1.0187792968749996" />
+        <InheritanceConnector EntityType="QWars.EF.DataModel.Taser" >
+          <ConnectorPoint PointX="1.25" PointY="5.7879850260416665" />
+          <ConnectorPoint PointX="1.25" PointY="6.875" />
+          <ConnectorPoint PointX="4.5" PointY="6.875" />
+          <ConnectorPoint PointX="4.5" PointY="7.25" />
+        </InheritanceConnector>
+        <InheritanceConnector EntityType="QWars.EF.DataModel.Gun" >
+          <ConnectorPoint PointX="1.25" PointY="5.7879850260416665" />
+          <ConnectorPoint PointX="1.25" PointY="6.875" />
+          <ConnectorPoint PointX="6.125" PointY="6.875" />
+          <ConnectorPoint PointX="6.125" PointY="7.25" />
+        </InheritanceConnector>
+        <EntityTypeShape EntityType="QWars.EF.DataModel.Bomb" Width="1.5" PointX="7" PointY="7.25" Height="1.0187792968749996" />
+        <InheritanceConnector EntityType="QWars.EF.DataModel.Bomb" >
+          <ConnectorPoint PointX="1.25" PointY="5.7879850260416665" />
+          <ConnectorPoint PointX="1.25" PointY="6.875" />
+          <ConnectorPoint PointX="7.75" PointY="6.875" />
+          <ConnectorPoint PointX="7.75" PointY="7.25" />
+        </InheritanceConnector>
+        <EntityTypeShape EntityType="QWars.EF.DataModel.Mug" Width="1.5" PointX="6.25" PointY="4" Height="1.0187792968749996" />
+        <InheritanceConnector EntityType="QWars.EF.DataModel.Mug" >
+          <ConnectorPoint PointX="5.5" PointY="4.5093896484375" />
+          <ConnectorPoint PointX="6.25" PointY="4.5093896484375" />
+        </InheritanceConnector>
+        <AssociationConnector Association="QWars.EF.DataModel.PlayerWeapon">
+          <ConnectorPoint PointX="1.25" PointY="3.0571907552083331" />
+          <ConnectorPoint PointX="1.25" PointY="4" />
+        </AssociationConnector>
+        <AssociationConnector Association="QWars.EF.DataModel.PlayerGang" ManuallyRouted="false">
+          <ConnectorPoint PointX="2" PointY="1.8214005390803019" />
+          <ConnectorPoint PointX="4" PointY="1.8214005390803019" />
+        </AssociationConnector>
+        <AssociationConnector Association="QWars.EF.DataModel.GangPlayer">
+          <ConnectorPoint PointX="4" PointY="1.0982002695401509" />
+          <ConnectorPoint PointX="2" PointY="1.0982002695401509" />
+        </AssociationConnector>
+        <AssociationConnector Association="QWars.EF.DataModel.GangTask">
+          <ConnectorPoint PointX="4.75" PointY="2.672587890625" />
+          <ConnectorPoint PointX="4.75" PointY="4" />
+        </AssociationConnector>
+        <AssociationConnector Association="QWars.EF.DataModel.PlayerTask" ManuallyRouted="true">
+          <ConnectorPoint PointX="2" PointY="2.6252823138155068" />
+          <ConnectorPoint PointX="3.03125" PointY="2.6252823138155068" />
+          <ConnectorPoint PointX="3.03125" PointY="4.7687663652254564" />
+          <ConnectorPoint PointX="4" PointY="4.7687663652254564" />
+        </AssociationConnector>
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
