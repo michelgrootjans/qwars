@@ -25,6 +25,7 @@ namespace QWars.NHibernate.Tests
                 sessionFactory = configuration.BuildSessionFactory();
                 new SchemaExport(configuration).Create(false, true);
             }
+
             session = sessionFactory.OpenSession();
             transaction = session.BeginTransaction();
             PrepareData();

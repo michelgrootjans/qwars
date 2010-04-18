@@ -6,7 +6,7 @@ using QWars.Presentation.Entities;
 namespace QWars.NHibernate.Tests
 {
     [TestFixture]
-    public class PlayerCrudTests : DataAccessTest
+    public class PlayerCrudTests : InMemoryDatabaseTest<Player>
     {
         private object playerId;
 
