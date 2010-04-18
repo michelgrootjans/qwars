@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using QWars.Dummy.Presenters;
+using QWars.NHibernate.Presenters;
 using QWars.Presentation;
 using QWars.Presentation.Entities;
 
@@ -14,7 +14,7 @@ namespace QWars.Win
         public PlayerView()
         {
             InitializeComponent();
-            presenter = new PlayerPresenter(this);
+            presenter = new NHPlayerPresenter(this);
         }
 
         public PlayerInfo Player { get; set; }
@@ -36,20 +36,20 @@ namespace QWars.Win
 
         private void btnBuyWeapon_Click(object sender, EventArgs e)
         {
-            var view = new BuyWeaponsView{Player = Player};
+            var view = new BuyWeaponsView {Player = Player};
             view.ShowDialog();
             presenter.UpdateView();
         }
 
         private void btnJoinGang_Click(object sender, EventArgs e)
         {
-            var view = new JoinGangView{Player = Player};
+            var view = new JoinGangView {Player = Player};
             view.Show();
         }
 
         private void btnCreateGang_Click(object sender, EventArgs e)
         {
-            var view = new CreateGangView{Player = Player};
+            var view = new CreateGangView {Player = Player};
             view.Show();
         }
 

@@ -159,6 +159,20 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\QWars.Dummy\QWars.Dummy.csproj">
+      <Project>{860BEB31-AFAE-44F5-BF0F-CFF10A456B36}</Project>
+      <Name>QWars.Dummy</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Qwars.NHibernate\QWars.NHibernate.csproj">
+      <Project>{EFD066F4-6E96-48EE-854C-EF54BC48AFB8}</Project>
+      <Name>QWars.NHibernate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QWars.Presentation\QWars.Presentation.csproj">
+      <Project>{C137CEEA-AE26-489D-ABD0-1C16D9EC982F}</Project>
+      <Name>QWars.Presentation</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="hibernate.cfg.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using QWars.Dummy.Presenters;
+using QWars.NHibernate.Presenters;
 using QWars.Presentation;
 
 namespace QWars.Win
@@ -12,13 +12,13 @@ namespace QWars.Win
         public LogonView()
         {
             InitializeComponent();
-            presenter = new LogonPresenter();
+            presenter = new NHLogonPresenter();
         }
 
         private void btnOK_Click(object sender, EventArgs e)
         {
             var player = presenter.LoginWithPlayerName(txtPlayerName.Text);
-            new PlayerView{Player = player}.Show();
+            new PlayerView {Player = player}.Show();
         }
     }
 }

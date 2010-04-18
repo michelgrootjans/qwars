@@ -13,8 +13,6 @@ namespace QWars.Win
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
-
             Application.Run(new AdministratorView());
         }
     }

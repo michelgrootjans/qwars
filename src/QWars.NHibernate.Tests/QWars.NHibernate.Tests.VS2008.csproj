@@ -64,9 +64,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\QWars.Presentation\QWars.Presentation.csproj">
+    <ProjectReference Include="..\Qwars.NHibernate\Qwars.NHibernate.VS2008.csproj">
+      <Project>{EFD066F4-6E96-48EE-854C-EF54BC48AFB8}</Project>
+      <Name>Qwars.NHibernate.VS2008</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QWars.Presentation\QWars.Presentation.VS2008.csproj">
       <Project>{C137CEEA-AE26-489D-ABD0-1C16D9EC982F}</Project>
-      <Name>QWars.Presentation</Name>
+      <Name>QWars.Presentation.VS2008</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

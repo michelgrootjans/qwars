@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using QWars.Dummy.Presenters;
+using QWars.NHibernate.Presenters;
 using QWars.Presentation;
 using QWars.Presentation.Entities;
 
@@ -10,10 +10,11 @@ namespace QWars.Win
     {
         private readonly ICreateTaskPresenter presenter;
         public PlayerInfo Player { get; set; }
+
         public CreateTaskView()
         {
             InitializeComponent();
-            presenter = new CreateTaskPresenter(this);
+            presenter = new NHCreateTaskPresenter(this);
         }
 
         public string Description

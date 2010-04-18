@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using QWars.Dummy.Presenters;
+using QWars.NHibernate.Presenters;
 using QWars.Presentation;
 using QWars.Presentation.Entities;
 
@@ -13,7 +13,7 @@ namespace QWars.Win
         public CreateGangView()
         {
             InitializeComponent();
-            presenter = new CreateGangPresenter(this);
+            presenter = new NHCreateGangPresenter(this);
         }
 
         private void CreateGangView_Load(object sender, EventArgs e)
@@ -28,7 +28,7 @@ namespace QWars.Win
             Close();
         }
 
-        public PlayerInfo Player { get; set;}
+        public PlayerInfo Player { get; set; }
 
         public string GangName
         {

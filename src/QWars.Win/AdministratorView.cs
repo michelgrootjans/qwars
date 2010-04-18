@@ -1,6 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Windows.Forms;
-using QWars.Dummy.Presenters;
+using QWars.NHibernate.Presenters;
 using QWars.Presentation;
 
 namespace QWars.Win
@@ -12,25 +13,25 @@ namespace QWars.Win
         public AdministratorView()
         {
             InitializeComponent();
-            presenter = new AdminPresenter(this);
+            presenter = new NHAdminPresenter(this);
         }
 
-        private void AdministratorView_Load(object sender, System.EventArgs e)
+        private void AdministratorView_Load(object sender, EventArgs e)
         {
             new LogonView().Show();
         }
 
-        private void btnTopPlayers_Click(object sender, System.EventArgs e)
+        private void btnTopPlayers_Click(object sender, EventArgs e)
         {
             presenter.ShowTopPlayers();
         }
 
-        private void btnRichestPlayer_Click(object sender, System.EventArgs e)
+        private void btnRichestPlayer_Click(object sender, EventArgs e)
         {
             presenter.ShowRichestPlayers();
         }
 
-        private void btnBiggestGangs_Click(object sender, System.EventArgs e)
+        private void btnBiggestGangs_Click(object sender, EventArgs e)
         {
             presenter.ShowBiggestGang();
         }

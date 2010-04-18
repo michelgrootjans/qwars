@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Windows.Forms;
-using QWars.Dummy.Presenters;
+using QWars.NHibernate.Presenters;
 using QWars.Presentation;
 using QWars.Presentation.Entities;
 
@@ -14,7 +14,7 @@ namespace QWars.Win
         public GangMemberView()
         {
             InitializeComponent();
-            presenter = new GangMemberPresenter(this);
+            presenter = new NHGangMemberPresenter(this);
         }
 
         public PlayerInfo Player { get; set; }
