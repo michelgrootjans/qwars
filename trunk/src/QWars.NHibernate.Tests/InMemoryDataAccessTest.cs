@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Text;
+using HibernatingRhinos.Profiler.Appender.NHibernate;
 using NHibernate;
 using NHibernate.ByteCode.Castle;
 using NHibernate.Cfg;
@@ -17,42 +18,44 @@ namespace QWars.NHibernate.Tests
         private static Configuration configuration;
         private static ISessionFactory sessionFactory;
         protected ISession session;
-        private ITransaction transaction;
 
         protected InMemoryDatabaseTest()
         {
-            if (configuration == null)
-            {
-                /// Initialize NHibernate and builds a session factory
-                /// Note: this is a costly call so it will be executed only once.            
-                configuration = new Configuration()
-                    .SetProperty(Environment.ReleaseConnections, "on_close")
-                    .SetProperty(Environment.Dialect, typeof (SQLiteDialect).AssemblyQualifiedName)
-                    .SetProperty(Environment.ConnectionDriver, typeof (SQLite20Driver).AssemblyQualifiedName)
-                    .SetProperty(Environment.ConnectionString, "data source=:memory:")
-                    .SetProperty(Environment.ProxyFactoryFactoryClass,
-                                 typeof (ProxyFactoryFactory).AssemblyQualifiedName)
-                    .AddAssembly(typeof (T).Assembly);
+            if (configuration != null) return;
 
-                sessionFactory = configuration.BuildSessionFactory();
-            }
-            session = sessionFactory.OpenSession();
-            new SchemaExport(configuration).Execute(false, true, false, session.Connection, new NullOutputter());
+            NHibernateProfiler.Initialize();
+
+            /// Initialize NHibernate and builds a session factory
+            /// Note: this is a costly call so it will be executed only once.            
+            configuration = new Configuration()
+                .SetProperty(Environment.ReleaseConnections, "on_close")
+                .SetProperty(Environment.Dialect, typeof (SQLiteDialect).AssemblyQualifiedName)
+                .SetProperty(Environment.ConnectionDriver, typeof (SQLite20Driver).AssemblyQualifiedName)
+                .SetProperty(Environment.ConnectionString, "data source=:memory:")
+                .SetProperty(Environment.ProxyFactoryFactoryClass,
+                             typeof (ProxyFactoryFactory).AssemblyQualifiedName)
+                .AddAssembly(typeof (T).Assembly);
+
+            sessionFactory = configuration.BuildSessionFactory();
         }
 
         [SetUp]
         public void SetUp()
         {
-            transaction = session.BeginTransaction();
-            PrepareData();
-            session.Flush();
-            session.Clear();
-        }
+            // create a new NH session
+            session = sessionFactory.OpenSession();
 
-        [TearDown]
-        public void TearDown()
-        {
-            transaction.Rollback();
+            // create a clean in mem database schema
+            new SchemaExport(configuration).Execute(false, true, false, session.Connection, new NullOutputter());
+
+            // fill the DB with setup data
+            PrepareData();
+
+            // commit setup data before exectuing the test
+            session.Flush();
+
+            // clear the level 1 cache
+            session.Clear();
         }
 
 
