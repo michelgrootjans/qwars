@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Windows.Forms;
-using QWars.Dummy.Presenters;
+using QWars.NHibernate.Presenters;
 using QWars.Presentation;
 using QWars.Presentation.Entities;
 
@@ -15,9 +15,8 @@ namespace QWars.Win
         public JoinGangView()
         {
             InitializeComponent();
-            presenter = new JoinGangPresenter(this);
+            presenter = new NHJoinGangPresenter(this);
         }
-
 
         private void JoinGangView_Load(object sender, EventArgs e)
         {
@@ -41,7 +40,7 @@ namespace QWars.Win
             get
             {
                 if (gridGangs.SelectedRows.Count == 0) return null;
-                
+
                 return gridGangs.SelectedRows[0].DataBoundItem as IGang;
             }
         }

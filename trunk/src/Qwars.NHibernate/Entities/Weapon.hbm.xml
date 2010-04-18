@@ -4,19 +4,15 @@
                    namespace="QWars.NHibernate.Entities"
                    default-lazy="true">
   
-  <class name="Player">
+  <class name="Weapon">
     <id column="Id" type="Guid">
       <generator class="guid" />
     </id>
 
     <property name="Name" />
-    <property name="Money" />
-    <property name="XP" />
+    <property name="XpBonus" />
+    <property name="Price" />
 
-    <set name ="weapons" access="field" cascade="all">
-      <key column="PlayerId" />
-      <one-to-many class="Weapon" />
-    </set>
   </class>
   
 </hibernate-mapping>

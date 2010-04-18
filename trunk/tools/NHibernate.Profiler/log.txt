@@ -3,3 +3,20 @@
 2010-03-28 17:01:32,067 [11] INFO  Rhino.Licensing.LicenseValidator [(null)] - License C:\Documents and Settings\Administrator\Local Settings\Application Data\NHibernate Profiler\license.xml expiration date is 12/31/9999 23:59:59
 2010-03-28 17:06:32,351 [12] INFO  Rhino.Licensing.LicenseValidator [(null)] - License C:\Documents and Settings\Administrator\Local Settings\Application Data\NHibernate Profiler\license.xml expiration date is 12/31/9999 23:59:59
 2010-03-28 17:11:32,451 [11] INFO  Rhino.Licensing.LicenseValidator [(null)] - License C:\Documents and Settings\Administrator\Local Settings\Application Data\NHibernate Profiler\license.xml expiration date is 12/31/9999 23:59:59
+2010-04-15 07:18:25,075 [1] INFO  Rhino.Licensing.LicenseValidator [(null)] - License C:\Documents and Settings\Administrator\Local Settings\Application Data\NHibernate Profiler\license.xml expiration date is 12/31/9999 23:59:59
+2010-04-15 07:18:25,388 [1] DEBUG Rhino.Licensing.LicenseValidator [(null)] - License accepted for NHibernate Profiler
+2010-04-15 07:18:29,466 [4] ERROR HibernatingRhinos.Profiler.Client.Services.VersionChecker [(null)] - Failed update check
+System.Net.WebException: The proxy name could not be resolved: 'proxy.iconos.be'
+   at System.Net.HttpWebRequest.GetResponse()
+   at HibernatingRhinos.Profiler.Client.Services.VersionChecker.<Check>b__0(Object state)
+2010-04-15 07:23:25,071 [3] INFO  Rhino.Licensing.LicenseValidator [(null)] - License C:\Documents and Settings\Administrator\Local Settings\Application Data\NHibernate Profiler\license.xml expiration date is 12/31/9999 23:59:59
+2010-04-15 07:28:25,050 [10] INFO  Rhino.Licensing.LicenseValidator [(null)] - License C:\Documents and Settings\Administrator\Local Settings\Application Data\NHibernate Profiler\license.xml expiration date is 12/31/9999 23:59:59
+2010-04-15 08:28:42,747 [6] INFO  Rhino.Licensing.LicenseValidator [(null)] - License C:\Documents and Settings\Administrator\Local Settings\Application Data\NHibernate Profiler\license.xml expiration date is 12/31/9999 23:59:59
+2010-04-15 08:33:42,794 [3] INFO  Rhino.Licensing.LicenseValidator [(null)] - License C:\Documents and Settings\Administrator\Local Settings\Application Data\NHibernate Profiler\license.xml expiration date is 12/31/9999 23:59:59
+2010-04-15 08:38:42,775 [13] INFO  Rhino.Licensing.LicenseValidator [(null)] - License C:\Documents and Settings\Administrator\Local Settings\Application Data\NHibernate Profiler\license.xml expiration date is 12/31/9999 23:59:59
+2010-04-15 08:43:42,753 [14] INFO  Rhino.Licensing.LicenseValidator [(null)] - License C:\Documents and Settings\Administrator\Local Settings\Application Data\NHibernate Profiler\license.xml expiration date is 12/31/9999 23:59:59
+2010-04-15 16:01:48,279 [13] INFO  Rhino.Licensing.LicenseValidator [(null)] - License C:\Documents and Settings\Administrator\Local Settings\Application Data\NHibernate Profiler\license.xml expiration date is 12/31/9999 23:59:59
+2010-04-15 16:06:48,259 [3] INFO  Rhino.Licensing.LicenseValidator [(null)] - License C:\Documents and Settings\Administrator\Local Settings\Application Data\NHibernate Profiler\license.xml expiration date is 12/31/9999 23:59:59
+2010-04-15 16:11:48,235 [6] INFO  Rhino.Licensing.LicenseValidator [(null)] - License C:\Documents and Settings\Administrator\Local Settings\Application Data\NHibernate Profiler\license.xml expiration date is 12/31/9999 23:59:59
+2010-04-15 16:16:48,214 [12] INFO  Rhino.Licensing.LicenseValidator [(null)] - License C:\Documents and Settings\Administrator\Local Settings\Application Data\NHibernate Profiler\license.xml expiration date is 12/31/9999 23:59:59
+2010-04-15 16:21:48,193 [6] INFO  Rhino.Licensing.LicenseValidator [(null)] - License C:\Documents and Settings\Administrator\Local Settings\Application Data\NHibernate Profiler\license.xml expiration date is 12/31/9999 23:59:59

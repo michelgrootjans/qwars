@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using QWars.Dummy.Presenters;
+using QWars.NHibernate.Presenters;
 using QWars.Presentation;
 using QWars.Presentation.Entities;
 
@@ -13,7 +13,7 @@ namespace QWars.Win
         public BuyWeaponsView()
         {
             InitializeComponent();
-            presenter = new BuyWeaponsPresenter(this);
+            presenter = new NHBuyWeaponsPresenter(this);
         }
 
         public PlayerInfo Player { get; set; }

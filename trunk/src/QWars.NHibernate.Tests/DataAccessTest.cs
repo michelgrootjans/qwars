@@ -37,7 +37,7 @@ namespace QWars.NHibernate.Tests
         [TearDown]
         public void TearDown()
         {
-            transaction.Commit();
+            transaction.Rollback();
             transaction.Dispose();
             session.Dispose();
         }

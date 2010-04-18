@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using QWars.Dummy.Presenters;
+using QWars.NHibernate.Presenters;
 using QWars.Presentation;
 using QWars.Presentation.Entities;
 
@@ -15,7 +15,7 @@ namespace QWars.Win
         public BossView()
         {
             InitializeComponent();
-            presenter = new BossPresenter(this);
+            presenter = new NHBossPresenter(this);
         }
 
         private void BossView_Load(object sender, EventArgs e)
