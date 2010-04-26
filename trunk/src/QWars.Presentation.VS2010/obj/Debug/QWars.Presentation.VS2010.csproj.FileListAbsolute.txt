@@ -1,0 +1,5 @@
+D:\QFrame\QWars\src\QWars.Presentation.VS2010\bin\Debug\QWars.Presentation.VS2010.dll
+D:\QFrame\QWars\src\QWars.Presentation.VS2010\bin\Debug\QWars.Presentation.VS2010.pdb
+D:\QFrame\QWars\src\QWars.Presentation.VS2010\obj\Debug\ResolveAssemblyReference.cache
+D:\QFrame\QWars\src\QWars.Presentation.VS2010\obj\Debug\QWars.Presentation.VS2010.dll
+D:\QFrame\QWars\src\QWars.Presentation.VS2010\obj\Debug\QWars.Presentation.VS2010.pdb

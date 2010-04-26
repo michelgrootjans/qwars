@@ -56,7 +56,7 @@
     <None Include="QWarsContext.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>QWarsContext.cs</LastGenOutput>
-      <CustomToolNamespace>QWars.EF.Entities</CustomToolNamespace>
+      <CustomToolNamespace>QWars.EF.DataModel</CustomToolNamespace>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -66,6 +66,10 @@
     <ProjectReference Include="..\QWars.EF.Entities\QWars.EF.Entities.csproj">
       <Project>{D9D7C4CA-2937-42E3-9CF9-8AED74B02B89}</Project>
       <Name>QWars.EF.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QWars.Presentation.VS2010\QWars.Presentation.VS2010.csproj">
+      <Project>{C0CB3104-46C2-442F-8ECD-7DE5C7E943AC}</Project>
+      <Name>QWars.Presentation.VS2010</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,0 +1,11 @@
+D:\QFrame\QWars\src\QWars.EF.Presentation\bin\Debug\QWars.EF.Presentation.dll
+D:\QFrame\QWars\src\QWars.EF.Presentation\bin\Debug\QWars.EF.Presentation.pdb
+D:\QFrame\QWars\src\QWars.EF.Presentation\bin\Debug\QWars.EF.DataModel.dll
+D:\QFrame\QWars\src\QWars.EF.Presentation\bin\Debug\QWars.EF.Entities.dll
+D:\QFrame\QWars\src\QWars.EF.Presentation\bin\Debug\QWars.Presentation.VS2010.dll
+D:\QFrame\QWars\src\QWars.EF.Presentation\bin\Debug\QWars.EF.DataModel.pdb
+D:\QFrame\QWars\src\QWars.EF.Presentation\bin\Debug\QWars.EF.Entities.pdb
+D:\QFrame\QWars\src\QWars.EF.Presentation\bin\Debug\QWars.Presentation.VS2010.pdb
+D:\QFrame\QWars\src\QWars.EF.Presentation\obj\Debug\ResolveAssemblyReference.cache
+D:\QFrame\QWars\src\QWars.EF.Presentation\obj\Debug\QWars.EF.Presentation.dll
+D:\QFrame\QWars\src\QWars.EF.Presentation\obj\Debug\QWars.EF.Presentation.pdb
