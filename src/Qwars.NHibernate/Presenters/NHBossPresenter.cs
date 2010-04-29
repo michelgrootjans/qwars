@@ -1,9 +1,10 @@
-﻿using System;
+﻿using System.Linq;
+using QWars.NHibernate.Entities;
 using QWars.Presentation;
 
 namespace QWars.NHibernate.Presenters
 {
-    public class NHBossPresenter : IBossPresenter
+    public class NHBossPresenter :NHPresenter, IBossPresenter
     {
         private readonly IBossView view;
 
@@ -14,17 +15,30 @@ namespace QWars.NHibernate.Presenters
 
         public void Initialize()
         {
-            throw new NotImplementedException();
+            using (var session = sessionFactory.OpenSession())
+            using (var transaction = session.BeginTransaction())
+            {
+                var player= session.Get<Player>(view.Player.Id);
+                var gang = session.CreateQuery("from Gang where Boss=:boss")
+                    .SetEntity("boss", player)
+                    .UniqueResult<Gang>();
+
+                view.GangName = gang.Name;
+                view.GangMoney = gang.Money;
+                view.Members = gang.Members;
+                view.NumberOfMembers = gang.Members.Count();
+                view.Tasks = gang.Tasks;
+                
+                transaction.Commit();
+            }
         }
 
         public void CreateRandomTasks()
         {
-            throw new NotImplementedException();
         }
 
         public void IncreaseRewardForAllTasks()
         {
-            throw new NotImplementedException();
         }
     }
 }

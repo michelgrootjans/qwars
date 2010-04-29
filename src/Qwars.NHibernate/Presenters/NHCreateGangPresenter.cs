@@ -1,23 +1,32 @@
-﻿using System;
+﻿using QWars.NHibernate.Entities;
 using QWars.Presentation;
 
 namespace QWars.NHibernate.Presenters
 {
-    public class NHCreateGangPresenter : ICreateGangPresenter
+    public class NHCreateGangPresenter : NHPresenter, ICreateGangPresenter
     {
+        private readonly ICreateGangView view;
+
         public NHCreateGangPresenter(ICreateGangView view)
         {
-            throw new NotImplementedException();
+            this.view = view;
         }
 
         public void Initialize()
         {
-            throw new NotImplementedException();
         }
 
         public void CreateGang()
         {
-            throw new NotImplementedException();
+            using (var session = sessionFactory.OpenSession())
+            using (var transaction = session.BeginTransaction())
+            {
+                var player = session.Get<Player>(view.Player.Id);
+                var gang = new Gang(player, view.GangName);
+                session.Save(gang);
+                transaction.Commit();
+            }
+
         }
     }
 }

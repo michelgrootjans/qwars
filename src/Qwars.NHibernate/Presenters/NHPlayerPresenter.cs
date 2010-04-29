@@ -1,4 +1,3 @@
-using System;
 using System.Linq;
 using QWars.NHibernate.Entities;
 using QWars.Presentation;
@@ -17,58 +16,48 @@ namespace QWars.NHibernate.Presenters
 
         public void Initialize()
         {
+            UpdateView();
+        }
+
+        public void MugPedestrian()
+        {
             using (var session = sessionFactory.OpenSession())
+            using (var transaction = session.BeginTransaction())
             {
-                var player = session.Get<Player>(view.Player.Id);
-                view.Title = player.Name;
-                view.Money = player.Money;
-                view.XP = player.XP.ToString();
+                var player = GetPlayer(view.Player.Id, session);
+                player.Execute(new Mugging());
+                transaction.Commit();
+                UpdateView(player);
+            }
+        }
+
+        public void SellUnusedWeapons()
+        {
+            using (var session = sessionFactory.OpenSession())
+            using (var transaction = session.BeginTransaction())
+            {
+                var player = GetPlayer(view.Player.Id, session);
+                player.SellUnusedWeapons();
+                transaction.Commit();
+                UpdateView(player);
             }
         }
 
         public void UpdateView()
         {
-            Get(view.Player.Id).AndExecute(p =>
-                                               {
-                                                   view.Title = p.Name;
-                                                   view.Money = p.Money;
-                                                   view.XP = p.XP.ToString();
-                                                   view.Weapons = p.Weapons.ToList();
-                                               });
+            using (var session = sessionFactory.OpenSession())
+            {
+                var player = GetPlayer(view.Player.Id, session);
+                UpdateView(player);
+            }
         }
 
-        public void MugPedestrian()
+        private void UpdateView(IPlayer player)
         {
-            Get(view.Player.Id).AndExecute(p => p.Execute(new Mugging()));
-            UpdateView();
-        }
-
-        public void SellUnusedWeapons()
-        {
-            Get(view.Player.Id).AndExecute(p => p.SellUnusedWeapons());
-        }
-    }
-
-    public class Mugging : ITask
-    {
-        public int Difficulty
-        {
-            get { return 0; }
-        }
-
-        public int Reward
-        {
-            get { return 10; }
-        }
-
-        public int XP
-        {
-            get { return 10; }
-        }
-
-        public void IncreaseRewardWith(double bonus)
-        {
-            // do nothing
+            view.Title = player.Name;
+            view.Money = player.Money;
+            view.XP = player.XP.ToString();
+            view.Weapons = player.Weapons.ToList();
         }
     }
 }
