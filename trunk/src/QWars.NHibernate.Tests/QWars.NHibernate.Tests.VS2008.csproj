@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataAccessTest.cs" />
+    <Compile Include="GangCrudTests.cs" />
     <Compile Include="InMemoryDataAccessTest.cs" />
     <Compile Include="PlayerCrudTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

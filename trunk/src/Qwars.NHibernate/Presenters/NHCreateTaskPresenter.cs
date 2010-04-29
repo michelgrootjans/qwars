@@ -1,23 +1,22 @@
-﻿using System;
-using QWars.Presentation;
+﻿using QWars.Presentation;
 
 namespace QWars.NHibernate.Presenters
 {
     public class NHCreateTaskPresenter : ICreateTaskPresenter
     {
+        private readonly ICreateTaskView view;
+
         public NHCreateTaskPresenter(ICreateTaskView view)
         {
-            throw new NotImplementedException();
+            this.view = view;
         }
 
         public void Initialize()
         {
-            throw new NotImplementedException();
         }
 
         public void CreateTask()
         {
-            throw new NotImplementedException();
         }
     }
 }

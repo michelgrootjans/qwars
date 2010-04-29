@@ -11,5 +11,6 @@ namespace QWars.Presentation.Entities
 
         ITask CreateTask(string description, int difficulty, int reward, int xp);
         void IncreaseAllRewardsWith(double percent);
+        void AddMember(IPlayer member);
     }
 }

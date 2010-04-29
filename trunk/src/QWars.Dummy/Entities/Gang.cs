@@ -7,13 +7,18 @@ namespace QWars.Dummy.Entities
     {
         public string Name { get; private set; }
         public int Money { get; set; }
-        public IEnumerable<IPlayer> Members { get; set; }
+        private ICollection<IPlayer> members;
+
         public ICollection<ITask> Tasks { get; private set; }
+
+        protected Gang()
+        {
+        }
 
         public Gang(string name, string benefit)
         {
             Tasks = new List<ITask>();
-            Members = new List<IPlayer>();
+            members = new List<IPlayer>();
             Name = name;
         }
 
@@ -22,17 +27,27 @@ namespace QWars.Dummy.Entities
             return Name;
         }
 
-        public ITask CreateTask(string description, int difficulty, int reward, int xp)
+        public virtual ITask CreateTask(string description, int difficulty, int reward, int xp)
         {
             var task = new Task(description, difficulty, reward, xp);
             Tasks.Add(task);
             return task;
         }
 
-        public void IncreaseAllRewardsWith(double percent)
+        public virtual IEnumerable<IPlayer> Members
+        {
+            get { return members; }
+        }
+
+        public virtual void IncreaseAllRewardsWith(double percent)
         {
             foreach (var task in Tasks)
                 task.IncreaseRewardWith(percent);
+        }
+
+        public virtual void AddMember(IPlayer member)
+        {
+            members.Add(member);
         }
     }
 }

@@ -10,6 +10,7 @@ namespace QWars.NHibernate.Entities
     public class Player : IPlayer
     {
         private ISet<IWeapon> weapons;
+        private IGang memberOf;
         public virtual string Name { get; private set; }
         public virtual int Money { get; private set; }
         public virtual int XP { get; private set; }
@@ -60,7 +61,10 @@ namespace QWars.NHibernate.Entities
 
         private IWeapon BestWepon
         {
-            get { return weapons.OrderByDescending(w => w.XpBonus).First(); }
+            get
+            {
+                return weapons == null ? null : weapons.OrderByDescending(w => w.XpBonus).First();
+            }
         }
 
         private void Sell(IWeapon weapon)
@@ -77,7 +81,8 @@ namespace QWars.NHibernate.Entities
 
         public virtual void Join(IGang gang)
         {
-            throw new NotImplementedException();
+            memberOf = gang;
+            gang.AddMember(this);
         }
     }
 }

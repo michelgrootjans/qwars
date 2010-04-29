@@ -65,10 +65,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Gang.cs" />
     <Compile Include="Entities\Player.cs" />
     <Compile Include="Entities\Weapon.cs" />
     <Compile Include="Entities\WeaponFactory.cs" />
     <Compile Include="Presenters\INHibernateAction.cs" />
+    <Compile Include="Entities\Mugging.cs" />
     <Compile Include="Presenters\NHAdminPresenter.cs" />
     <Compile Include="Presenters\NHBossPresenter.cs" />
     <Compile Include="Presenters\NHBuyWeaponsPresenter.cs" />
@@ -92,6 +94,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Entities\Weapon.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Entities\Gang.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
