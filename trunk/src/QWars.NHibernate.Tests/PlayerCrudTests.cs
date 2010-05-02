@@ -1,4 +1,5 @@
 using System.Linq;
+using NHibernate.Criterion;
 using NUnit.Framework;
 using QWars.NHibernate.Entities;
 using QWars.Presentation.Entities;
@@ -18,10 +19,21 @@ namespace QWars.NHibernate.Tests
         }
 
         [Test]
+        public void get_player_by_polymorphism()
+        {
+            var o = session.CreateCriteria<object>()
+                .Add(Restrictions.IdEq(playerId))
+                .UniqueResult();
+            
+            Assert.IsInstanceOf<Player>(o);
+            Assert.AreEqual("Michel", (o as Player).Name);
+        }
+
+        [Test]
         public void save_player()
         {
             var player = session.Get<Player>(playerId);
-            Assert.IsInstanceOf<Player>(player);
+            Assert.IsNotNull(player);
             Assert.AreEqual("Michel", player.Name);
             Assert.AreEqual(0, player.Money);
             Assert.AreEqual(0, player.XP);

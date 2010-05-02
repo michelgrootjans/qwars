@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{EFD066F4-6E96-48EE-854C-EF54BC48AFB8}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -67,9 +67,9 @@
   <ItemGroup>
     <Compile Include="Entities\Gang.cs" />
     <Compile Include="Entities\Player.cs" />
+    <Compile Include="Entities\Task.cs" />
     <Compile Include="Entities\Weapon.cs" />
     <Compile Include="Entities\WeaponFactory.cs" />
-    <Compile Include="Presenters\INHibernateAction.cs" />
     <Compile Include="Entities\Mugging.cs" />
     <Compile Include="Presenters\NHAdminPresenter.cs" />
     <Compile Include="Presenters\NHBossPresenter.cs" />
@@ -97,6 +97,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Entities\Gang.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Presenters\TODO.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

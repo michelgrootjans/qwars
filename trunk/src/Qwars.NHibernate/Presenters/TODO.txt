@@ -1,0 +1,13 @@
+﻿TODO
+****
+CreateRandomTasks
+IncreaseRewardForAllTasks
+ShowTopPlayers
+ShowRichestPlayers
+ShowBiggestGang
+
+DONE
+****
+JoinGang
+CreateTask
+ExecuteTask

@@ -35,10 +35,22 @@ namespace QWars.NHibernate.Presenters
 
         public void CreateRandomTasks()
         {
+            using (var session = sessionFactory.OpenSession())
+            using (var transaction = session.BeginTransaction())
+            {
+
+                transaction.Commit();
+            }
         }
 
         public void IncreaseRewardForAllTasks()
         {
+            using (var session = sessionFactory.OpenSession())
+            using (var transaction = session.BeginTransaction())
+            {
+
+                transaction.Commit();
+            }
         }
     }
 }

@@ -3,7 +3,7 @@ using QWars.Presentation;
 
 namespace QWars.NHibernate.Presenters
 {
-    public class NHAdminPresenter : IAdministratorPresenter
+    public class NHAdminPresenter : NHPresenter, IAdministratorPresenter
     {
         private readonly IAdministratorView view;
 
@@ -14,17 +14,32 @@ namespace QWars.NHibernate.Presenters
 
         public void ShowTopPlayers()
         {
-            throw new NotImplementedException();
+            using (var session = sessionFactory.OpenSession())
+            using (var transaction = session.BeginTransaction())
+            {
+
+                transaction.Commit();
+            }
         }
 
         public void ShowRichestPlayers()
         {
-            throw new NotImplementedException();
+            using (var session = sessionFactory.OpenSession())
+            using (var transaction = session.BeginTransaction())
+            {
+
+                transaction.Commit();
+            }
         }
 
         public void ShowBiggestGang()
         {
-            throw new NotImplementedException();
+            using (var session = sessionFactory.OpenSession())
+            using (var transaction = session.BeginTransaction())
+            {
+
+                transaction.Commit();
+            }
         }
     }
 }
