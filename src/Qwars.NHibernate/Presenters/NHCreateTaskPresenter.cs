@@ -1,8 +1,9 @@
-﻿using QWars.Presentation;
+﻿using QWars.NHibernate.Entities;
+using QWars.Presentation;
 
 namespace QWars.NHibernate.Presenters
 {
-    public class NHCreateTaskPresenter : ICreateTaskPresenter
+    public class NHCreateTaskPresenter : NHPresenter, ICreateTaskPresenter
     {
         private readonly ICreateTaskView view;
 
@@ -17,6 +18,14 @@ namespace QWars.NHibernate.Presenters
 
         public void CreateTask()
         {
+            using (var session = sessionFactory.OpenSession())
+            using (var transaction = session.BeginTransaction())
+            {
+                var task = new Task(view.Description, view.Difficulty, view.Reward, view.XP);
+                session.Save(task);
+
+                transaction.Commit();
+            }
         }
     }
 }

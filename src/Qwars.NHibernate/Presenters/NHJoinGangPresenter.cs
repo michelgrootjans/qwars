@@ -1,23 +1,37 @@
-﻿using System;
-using QWars.Presentation;
+﻿using QWars.Presentation;
+using QWars.Presentation.Entities;
 
 namespace QWars.NHibernate.Presenters
 {
-    public class NHJoinGangPresenter : IJoinGangPresenter
+    public class NHJoinGangPresenter : NHPresenter, IJoinGangPresenter
     {
+        private readonly IJoinGangView view;
+
         public NHJoinGangPresenter(IJoinGangView joinGangView)
         {
-            throw new NotImplementedException();
+            view = joinGangView;
         }
 
         public void Initialize()
         {
-            throw new NotImplementedException();
+            using (var session = sessionFactory.OpenSession())
+            {
+                view.Gangs = session.CreateCriteria<IGang>().List<IGang>();
+            }
         }
 
         public void JoinGang()
         {
-            throw new NotImplementedException();
+            using (var session = sessionFactory.OpenSession())
+            using (var transaction = session.BeginTransaction())
+            {
+                var player = GetPlayer(view.Player.Id, session);
+                var gang = view.SelectedGang;
+
+                player.Join(gang);
+
+                transaction.Commit();
+            }
         }
     }
 }
