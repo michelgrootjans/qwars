@@ -1,36 +1,23 @@
-using HibernatingRhinos.Profiler.Appender.NHibernate;
 using NHibernate;
-using NHibernate.Cfg;
-using NHibernate.Tool.hbm2ddl;
 using NUnit.Framework;
+using QWars.NHibernate.Entities;
 
 namespace QWars.NHibernate.Tests
 {
     [TestFixture]
     public abstract class DataAccessTest
     {
-        private static ISessionFactory sessionFactory;
+        private IDatabaseContext databaseContext;
         protected ISession session;
-        private ITransaction transaction;
 
         [SetUp]
         public void SetUp()
         {
-            if (sessionFactory == null)
-            {
-                /// Initialize NHibernate and builds a session factory
-                /// Note: this is a costly call so it will be executed only once.            
-                NHibernateProfiler.Initialize();
-                var configuration = new Configuration().Configure();
-                sessionFactory = configuration.BuildSessionFactory();
-                new SchemaExport(configuration).Create(false, true);
-            }
-
-            session = sessionFactory.OpenSession();
-            transaction = session.BeginTransaction();
+            databaseContext = new InMemoryDatabaseContext<Player>();
+            //databaseContext = new SqlServerDatabaseContext();
+            session = databaseContext.GetSession();
             PrepareData();
-            session.Flush();
-            session.Clear();
+            databaseContext.FlushAndClear();
         }
 
         protected abstract void PrepareData();
@@ -38,9 +25,12 @@ namespace QWars.NHibernate.Tests
         [TearDown]
         public void TearDown()
         {
-            transaction.Rollback();
-            transaction.Dispose();
-            session.Dispose();
+            databaseContext.Rollback();
+        }
+
+        protected void FlushAndClear()
+        {
+            databaseContext.FlushAndClear();
         }
     }
 }

@@ -80,9 +80,11 @@
   <ItemGroup>
     <Compile Include="DataAccessTest.cs" />
     <Compile Include="GangCrudTests.cs" />
+    <Compile Include="IDatabaseContext.cs" />
     <Compile Include="InMemoryDataAccessTest.cs" />
     <Compile Include="PlayerCrudTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SqlServerDatabaseContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\QWars.Win\hibernate.cfg.xml">

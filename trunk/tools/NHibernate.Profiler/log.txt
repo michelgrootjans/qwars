@@ -20,3 +20,19 @@ System.Net.WebException: The proxy name could not be resolved: 'proxy.iconos.be'
 2010-04-15 16:11:48,235 [6] INFO  Rhino.Licensing.LicenseValidator [(null)] - License C:\Documents and Settings\Administrator\Local Settings\Application Data\NHibernate Profiler\license.xml expiration date is 12/31/9999 23:59:59
 2010-04-15 16:16:48,214 [12] INFO  Rhino.Licensing.LicenseValidator [(null)] - License C:\Documents and Settings\Administrator\Local Settings\Application Data\NHibernate Profiler\license.xml expiration date is 12/31/9999 23:59:59
 2010-04-15 16:21:48,193 [6] INFO  Rhino.Licensing.LicenseValidator [(null)] - License C:\Documents and Settings\Administrator\Local Settings\Application Data\NHibernate Profiler\license.xml expiration date is 12/31/9999 23:59:59
+2010-05-03 22:09:26,808 [1] WARN  Rhino.Licensing.LicenseValidator [(null)] - Could not find license file: I:\Documents and Settings\Michel\Local Settings\Application Data\NHibernate Profiler\license.xml
+2010-05-03 22:12:00,808 [1] INFO  Rhino.Licensing.LicenseValidator [(null)] - License I:\Documents and Settings\Michel\My Documents\Downloads\Michel.xml expiration date is 12/31/9999 23:59:59
+2010-05-03 22:12:01,808 [1] DEBUG Rhino.Licensing.LicenseValidator [(null)] - License accepted for NHibernate Profiler
+2010-05-03 22:12:02,965 [1] INFO  Rhino.Licensing.LicenseValidator [(null)] - License I:\Documents and Settings\Michel\Local Settings\Application Data\NHibernate Profiler\license.xml expiration date is 12/31/9999 23:59:59
+2010-05-03 22:12:02,980 [1] DEBUG Rhino.Licensing.LicenseValidator [(null)] - License accepted for NHibernate Profiler
+2010-05-03 22:12:44,027 [1] INFO  Rhino.Licensing.LicenseValidator [(null)] - License expiration date is 12/31/9999 23:59:59
+2010-05-03 22:12:44,199 [1] DEBUG Rhino.Licensing.LicenseValidator [(null)] - License accepted for NHibernate Profiler
+2010-05-03 22:14:23,496 [4] DEBUG HibernatingRhinos.Profiler.Client.Services.StackTraceExplorer [(null)] - Need to display in VS: I:\projects\QWars\src\QWars.NHibernate.Tests\PlayerCrudTests.cs
+2010-05-03 22:14:24,293 [4] WARN  HibernatingRhinos.Profiler.Client.Services.StackTraceExplorer [(null)] - Trying to ask nicely from VS to activate has failed, trying to use SetForegroundWindow for the task
+2010-05-03 22:14:24,293 [4] DEBUG HibernatingRhinos.Profiler.Client.Services.StackTraceExplorer [(null)] - SetForegroundWindow returned: False
+2010-05-03 22:17:44,058 [4] INFO  Rhino.Licensing.LicenseValidator [(null)] - License expiration date is 12/31/9999 23:59:59
+2010-05-03 22:22:44,074 [3] INFO  Rhino.Licensing.LicenseValidator [(null)] - License expiration date is 12/31/9999 23:59:59
+2010-05-03 22:27:44,074 [11] INFO  Rhino.Licensing.LicenseValidator [(null)] - License expiration date is 12/31/9999 23:59:59
+2010-05-03 22:32:44,136 [3] INFO  Rhino.Licensing.LicenseValidator [(null)] - License expiration date is 12/31/9999 23:59:59
+2010-05-03 22:37:44,136 [12] INFO  Rhino.Licensing.LicenseValidator [(null)] - License expiration date is 12/31/9999 23:59:59
+2010-05-03 22:42:44,152 [3] INFO  Rhino.Licensing.LicenseValidator [(null)] - License expiration date is 12/31/9999 23:59:59

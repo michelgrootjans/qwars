@@ -11,20 +11,21 @@ namespace QWars.NHibernate.Entities
     {
         private ISet<IWeapon> weapons;
         private IGang memberOf;
+        private IGang ownedGang;
         public virtual string Name { get; private set; }
         public virtual int Money { get; private set; }
         public virtual int XP { get; private set; }
 
         protected Player()
         {
+            weapons = new HashedSet<IWeapon>();
         }
 
-        public Player(string name)
+        public Player(string name) : this()
         {
             Name = name;
             Money = 0;
             XP = 0;
-            weapons = new HashedSet<IWeapon>();
         }
 
         public virtual IEnumerable<IWeapon> Weapons
@@ -94,7 +95,8 @@ namespace QWars.NHibernate.Entities
 
         public virtual IGang CreateGang(string name, string bossBenefit)
         {
-            throw new NotImplementedException();
+            ownedGang = new Gang(this, name);
+            return ownedGang;
         }
 
         public virtual void IncreaseAllRewardsWith(double percent)
@@ -104,12 +106,12 @@ namespace QWars.NHibernate.Entities
 
         public virtual IGang Gang
         {
-            get { throw new NotImplementedException(); }
+            get { return ownedGang; }
         }
 
         public virtual string GangName
         {
-            get { throw new NotImplementedException(); }
+            get { return Gang.Name; }
         }
 
         public virtual int GangMoney

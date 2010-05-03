@@ -21,16 +21,15 @@ namespace QWars.NHibernate.Entities
 
         protected Gang()
         {
+            members = new HashedSet<IPlayer>();
+            Tasks = new HashedSet<ITask>();
         }
 
-        public Gang(IPlayer boss, string gangName)
+        public Gang(IPlayer boss, string gangName) : this()
         {
             Boss = boss;
             Name = gangName;
             Money = 0;
-
-            members = new HashedSet<IPlayer>();
-            Tasks = new HashedSet<ITask>();
         }
 
         public virtual ITask CreateTask(string description, int difficulty, int reward, int xp)
