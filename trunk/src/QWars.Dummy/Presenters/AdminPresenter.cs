@@ -15,13 +15,15 @@ namespace QWars.Dummy.Presenters
         public void ShowTopPlayers()
         {
             view.Title = "Top Players";
-            view.Data = InMemoryRepository.GetAllPlayers().OrderByDescending(p => p.XP).ToList();
+            view.Data = InMemoryRepository.GetAllPlayers()
+                .OrderByDescending(p => p.XP).ToList();
         }
 
         public void ShowRichestPlayers()
         {
             view.Title = "Richest Players";
-            view.Data = InMemoryRepository.GetAllPlayers().OrderByDescending(p => p.Money).ToList();
+            view.Data = InMemoryRepository.GetAllPlayers()
+                .OrderByDescending(p => p.Money).ToList();
         }
 
         public void ShowBiggestGang()

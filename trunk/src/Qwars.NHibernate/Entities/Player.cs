@@ -7,7 +7,7 @@ using QWars.Presentation.Helpers;
 
 namespace QWars.NHibernate.Entities
 {
-    public class Player : IPlayer
+    public class Player : IPlayer, IBoss
     {
         private ISet<IWeapon> weapons;
         private IGang memberOf;
@@ -61,10 +61,7 @@ namespace QWars.NHibernate.Entities
 
         private IWeapon BestWepon
         {
-            get
-            {
-                return weapons == null ? null : weapons.OrderByDescending(w => w.XpBonus).First();
-            }
+            get{return weapons == null ? null : weapons.OrderByDescending(w => w.XpBonus).First();}
         }
 
         private void Sell(IWeapon weapon)
@@ -83,6 +80,46 @@ namespace QWars.NHibernate.Entities
         {
             memberOf = gang;
             gang.AddMember(this);
+        }
+
+        public virtual IEnumerable<ITask> GetGangTasks()
+        {
+            throw new NotImplementedException();
+        }
+
+        public virtual ITask CreateTask(string description, int difficulty, int reward, int xp)
+        {
+            throw new NotImplementedException();
+        }
+
+        public virtual IGang CreateGang(string name, string bossBenefit)
+        {
+            throw new NotImplementedException();
+        }
+
+        public virtual void IncreaseAllRewardsWith(double percent)
+        {
+            throw new NotImplementedException();
+        }
+
+        public virtual IGang Gang
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public virtual string GangName
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public virtual int GangMoney
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public virtual IEnumerable<IPlayer> GangMembers
+        {
+            get { throw new NotImplementedException(); }
         }
     }
 }

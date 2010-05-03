@@ -1,5 +1,5 @@
-﻿using System;
-using QWars.Presentation;
+﻿using QWars.Presentation;
+using QWars.Presentation.Entities;
 
 namespace QWars.NHibernate.Presenters
 {
@@ -14,31 +14,29 @@ namespace QWars.NHibernate.Presenters
 
         public void ShowTopPlayers()
         {
-            using (var session = sessionFactory.OpenSession())
-            using (var transaction = session.BeginTransaction())
-            {
+            view.Title = "Top Players according to NHibernate";
 
-                transaction.Commit();
+            using (var session = sessionFactory.OpenSession())
+            {
+                view.Data = session.CreateCriteria<IPlayer>().List();
             }
         }
 
         public void ShowRichestPlayers()
         {
+            view.Title = "Richest Players according to NHibernate";
             using (var session = sessionFactory.OpenSession())
-            using (var transaction = session.BeginTransaction())
             {
-
-                transaction.Commit();
+                view.Data = session.CreateCriteria<IPlayer>().List();
             }
         }
 
         public void ShowBiggestGang()
         {
+            view.Title = "Biggest Gang according to NHibernate";
             using (var session = sessionFactory.OpenSession())
-            using (var transaction = session.BeginTransaction())
             {
-
-                transaction.Commit();
+                view.Data = session.CreateCriteria<IGang>().List();
             }
         }
     }

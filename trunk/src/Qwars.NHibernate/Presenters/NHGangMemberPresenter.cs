@@ -1,5 +1,4 @@
-﻿using NHibernate.Criterion;
-using QWars.Presentation;
+﻿using QWars.Presentation;
 using QWars.Presentation.Entities;
 
 namespace QWars.NHibernate.Presenters
@@ -17,12 +16,8 @@ namespace QWars.NHibernate.Presenters
         {
             using (var session = sessionFactory.OpenSession())
             {
-                var player = GetPlayer(view.Player.Id, session);
-                var gang = session.CreateCriteria<IGang>()
-                    .Add(Restrictions.In("Members", new[] {player}))
-                    .UniqueResult<IGang>();
-
-                view.Tasks = gang.Tasks;
+                var boss = Get<IBoss>(view.Player.Id, session);
+                view.Tasks = boss.GetGangTasks();
             }
         }
 
@@ -31,9 +26,8 @@ namespace QWars.NHibernate.Presenters
             using (var session = sessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
             {
-                var player = GetPlayer(view.Player.Id, session);
+                var player = Get<IPlayer>(view.Player.Id, session);
                 player.Execute(view.SelectedTask);
-
                 transaction.Commit();
             }
         }

@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using QWars.NHibernate.Entities;
 using QWars.Presentation;
+using QWars.Presentation.Entities;
 
 namespace QWars.NHibernate.Presenters
 {
@@ -16,20 +17,9 @@ namespace QWars.NHibernate.Presenters
         public void Initialize()
         {
             using (var session = sessionFactory.OpenSession())
-            using (var transaction = session.BeginTransaction())
             {
-                var player= session.Get<Player>(view.Player.Id);
-                var gang = session.CreateQuery("from Gang where Boss=:boss")
-                    .SetEntity("boss", player)
-                    .UniqueResult<Gang>();
-
-                view.GangName = gang.Name;
-                view.GangMoney = gang.Money;
-                view.Members = gang.Members;
-                view.NumberOfMembers = gang.Members.Count();
-                view.Tasks = gang.Tasks;
-                
-                transaction.Commit();
+                var boss = Get<IBoss>(view.Player.Id, session);
+                UpdateView(boss);
             }
         }
 
@@ -38,7 +28,12 @@ namespace QWars.NHibernate.Presenters
             using (var session = sessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
             {
+                const int numberOfTasks = 20;
 
+                var boss = Get<IBoss>(view.Player.Id, session);
+                for (var i = 0; i < numberOfTasks; i++)
+                    boss.CreateTask("Mug someone", 0, 15, 20);
+                UpdateView(boss);
                 transaction.Commit();
             }
         }
@@ -48,9 +43,20 @@ namespace QWars.NHibernate.Presenters
             using (var session = sessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
             {
-
+                var boss = Get<IBoss>(view.Player.Id, session);
+                boss.IncreaseAllRewardsWith(0.15);
+                UpdateView(boss);
                 transaction.Commit();
             }
+        }
+
+        private void UpdateView(IBoss boss)
+        {
+            view.GangName = boss.GangName;
+            view.GangMoney = boss.GangMoney;
+            view.NumberOfMembers = boss.GangMembers.Count();
+            view.Members = boss.GangMembers;
+            view.Tasks = boss.GetGangTasks();
         }
     }
 }

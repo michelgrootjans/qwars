@@ -24,7 +24,7 @@ namespace QWars.NHibernate.Presenters
             using (var session = sessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
             {
-                var player = GetPlayer(view.Player.Id, session);
+                var player = Get<IPlayer>(view.Player.Id, session);
                 player.Execute(new Mugging());
                 transaction.Commit();
                 UpdateView(player);
@@ -36,7 +36,7 @@ namespace QWars.NHibernate.Presenters
             using (var session = sessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
             {
-                var player = GetPlayer(view.Player.Id, session);
+                var player = Get<IPlayer>(view.Player.Id, session);
                 player.SellUnusedWeapons();
                 transaction.Commit();
                 UpdateView(player);
@@ -47,7 +47,7 @@ namespace QWars.NHibernate.Presenters
         {
             using (var session = sessionFactory.OpenSession())
             {
-                var player = GetPlayer(view.Player.Id, session);
+                var player = Get<IPlayer>(view.Player.Id, session);
                 UpdateView(player);
             }
         }
