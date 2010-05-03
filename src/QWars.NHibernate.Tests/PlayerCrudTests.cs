@@ -7,7 +7,7 @@ using QWars.Presentation.Entities;
 namespace QWars.NHibernate.Tests
 {
     [TestFixture]
-    public class PlayerCrudTests : InMemoryDatabaseTest<Player>
+    public class PlayerCrudTests : DataAccessTest
     {
         private object playerId;
 
@@ -44,9 +44,8 @@ namespace QWars.NHibernate.Tests
         public void execute_mugging()
         {
             var player = session.Get<Player>(playerId);
-            player.Execute(new Mugging());
-            session.Flush();
-            session.Clear();
+            player.Execute(new TestMugging());
+            FlushAndClear();
 
             var playerFromDb = session.Get<Player>(playerId);
             Assert.IsTrue(playerFromDb.Money > 0);
@@ -58,15 +57,31 @@ namespace QWars.NHibernate.Tests
         {
             var player = session.Get<Player>(playerId);
             player.Buy(new Weapon("Gun", 4000, .4));
-            session.Flush();
-            session.Clear();
+            FlushAndClear();
 
             var playerFromDb = session.Get<Player>(playerId);
             Assert.IsTrue(playerFromDb.Weapons.Count() == 1);
         }
+
+        [Test]
+        public void create_gang()
+        {
+            var player = session.Get<Player>(playerId);
+            player.CreateGang("gangName", "20");
+            FlushAndClear();
+
+            var boss = session.CreateCriteria<IBoss>()
+                .Add(Restrictions.IdEq(playerId))
+                .UniqueResult<IBoss>();
+
+            Assert.IsNotNull(boss);
+            Assert.IsNotNull(boss.Gang);
+            Assert.AreEqual("gangName", boss.GangName);
+        }
+
     }
 
-    public class Mugging : ITask
+    public class TestMugging : ITask
     {
         public int Difficulty
         {

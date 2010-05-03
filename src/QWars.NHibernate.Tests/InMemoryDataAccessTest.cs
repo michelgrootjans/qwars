@@ -1,4 +1,3 @@
-using System;
 using System.IO;
 using System.Text;
 using HibernatingRhinos.Profiler.Appender.NHibernate;
@@ -8,18 +7,16 @@ using NHibernate.Cfg;
 using NHibernate.Dialect;
 using NHibernate.Driver;
 using NHibernate.Tool.hbm2ddl;
-using NUnit.Framework;
-using Environment=NHibernate.Cfg.Environment;
 
 namespace QWars.NHibernate.Tests
 {
-    public abstract class InMemoryDatabaseTest<T> : IDisposable
+    public class InMemoryDatabaseContext<T> : IDatabaseContext
     {
         private static Configuration configuration;
         private static ISessionFactory sessionFactory;
         protected ISession session;
 
-        protected InMemoryDatabaseTest()
+        internal InMemoryDatabaseContext()
         {
             if (configuration != null) return;
 
@@ -29,18 +26,17 @@ namespace QWars.NHibernate.Tests
             /// Note: this is a costly call so it will be executed only once.            
             configuration = new Configuration()
                 .SetProperty(Environment.ReleaseConnections, "on_close")
-                .SetProperty(Environment.Dialect, typeof (SQLiteDialect).AssemblyQualifiedName)
-                .SetProperty(Environment.ConnectionDriver, typeof (SQLite20Driver).AssemblyQualifiedName)
+                .SetProperty(Environment.Dialect, typeof(SQLiteDialect).AssemblyQualifiedName)
+                .SetProperty(Environment.ConnectionDriver, typeof(SQLite20Driver).AssemblyQualifiedName)
                 .SetProperty(Environment.ConnectionString, "data source=:memory:")
                 .SetProperty(Environment.ProxyFactoryFactoryClass,
-                             typeof (ProxyFactoryFactory).AssemblyQualifiedName)
-                .AddAssembly(typeof (T).Assembly);
+                             typeof(ProxyFactoryFactory).AssemblyQualifiedName)
+                .AddAssembly(typeof(T).Assembly);
 
             sessionFactory = configuration.BuildSessionFactory();
         }
 
-        [SetUp]
-        public void SetUp()
+        public ISession GetSession()
         {
             // create a new NH session
             session = sessionFactory.OpenSession();
@@ -48,26 +44,23 @@ namespace QWars.NHibernate.Tests
             // create a clean in mem database schema
             new SchemaExport(configuration).Execute(false, true, false, session.Connection, new NullOutputter());
 
-            // fill the DB with setup data
-            PrepareData();
+            return session;
+        }
 
-            // commit setup data before exectuing the test
+        public void FlushAndClear()
+        {
             session.Flush();
-
-            // clear the level 1 cache
             session.Clear();
         }
 
-
-        protected abstract void PrepareData();
-
-        public void Dispose()
+        public void Rollback()
         {
-            session.Dispose();
+            //not necessary, always starting with a clean database
         }
     }
 
-    class NullOutputter : TextWriter
+
+    internal class NullOutputter : TextWriter
     {
         public override Encoding Encoding
         {

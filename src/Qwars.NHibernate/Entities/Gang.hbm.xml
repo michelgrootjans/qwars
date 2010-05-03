@@ -12,11 +12,13 @@
     <property name="Name" />
     <property name="Money" />
 
-    <many-to-one name="Boss" class="Player" />
+    <many-to-one name="Boss" class="Player" unique="true" />
+    
     <set name="members" access="field">
       <key column="GangId" />
       <one-to-many class="Player"/>
     </set>
+  
   </class>
   
 </hibernate-mapping>
