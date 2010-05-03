@@ -1,5 +1,5 @@
-﻿using QWars.NHibernate.Entities;
-using QWars.Presentation;
+﻿using QWars.Presentation;
+using QWars.Presentation.Entities;
 
 namespace QWars.NHibernate.Presenters
 {
@@ -14,6 +14,7 @@ namespace QWars.NHibernate.Presenters
 
         public void Initialize()
         {
+            //Do nothing...nothing to do ;-)
         }
 
         public void CreateTask()
@@ -21,9 +22,8 @@ namespace QWars.NHibernate.Presenters
             using (var session = sessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
             {
-                var task = new Task(view.Description, view.Difficulty, view.Reward, view.XP);
-                session.Save(task);
-
+                var boss = Get<IBoss>(view.Player.Id, session);
+                boss.CreateTask(view.Description, view.Difficulty, view.Reward, view.XP);
                 transaction.Commit();
             }
         }

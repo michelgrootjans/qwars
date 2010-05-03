@@ -14,11 +14,6 @@ namespace QWars.NHibernate.Presenters
             sessionFactory = new Configuration().Configure().BuildSessionFactory();
         }
 
-        protected IPlayer GetPlayer(object playerId, ISession session)
-        {
-            return Get<IPlayer>(playerId, session);
-        }
-
         protected T Get<T>(object entityId, ISession session) where T : class
         {
             return session.CreateCriteria<T>()

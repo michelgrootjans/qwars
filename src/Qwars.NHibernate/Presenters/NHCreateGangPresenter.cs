@@ -1,5 +1,6 @@
 ﻿using QWars.NHibernate.Entities;
 using QWars.Presentation;
+using QWars.Presentation.Entities;
 
 namespace QWars.NHibernate.Presenters
 {
@@ -14,6 +15,7 @@ namespace QWars.NHibernate.Presenters
 
         public void Initialize()
         {
+            //Do nothing... nothing to do ;-)
         }
 
         public void CreateGang()
@@ -21,9 +23,8 @@ namespace QWars.NHibernate.Presenters
             using (var session = sessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
             {
-                var player = session.Get<Player>(view.Player.Id);
-                var gang = new Gang(player, view.GangName);
-                session.Save(gang);
+                var boss = session.Get<IBoss>(view.Player.Id);
+                boss.CreateGang(view.GangName, view.BossBenefit);
                 transaction.Commit();
             }
 

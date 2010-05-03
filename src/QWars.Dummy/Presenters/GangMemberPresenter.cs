@@ -5,7 +5,7 @@ namespace QWars.Dummy.Presenters
     public class GangMemberPresenter : IGangMemberPresenter
     {
         private readonly IGangMemberView view;
-        private Logger logger;
+        private readonly Logger logger;
 
         public GangMemberPresenter(IGangMemberView view)
         {

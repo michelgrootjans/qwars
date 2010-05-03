@@ -7,9 +7,9 @@ namespace QWars.NHibernate.Presenters
     {
         private readonly IJoinGangView view;
 
-        public NHJoinGangPresenter(IJoinGangView joinGangView)
+        public NHJoinGangPresenter(IJoinGangView view)
         {
-            view = joinGangView;
+            this.view = view;
         }
 
         public void Initialize()
@@ -25,11 +25,8 @@ namespace QWars.NHibernate.Presenters
             using (var session = sessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
             {
-                var player = GetPlayer(view.Player.Id, session);
-                var gang = view.SelectedGang;
-
-                player.Join(gang);
-
+                var player = Get<IPlayer>(view.Player.Id, session);
+                player.Join(view.SelectedGang);
                 transaction.Commit();
             }
         }
