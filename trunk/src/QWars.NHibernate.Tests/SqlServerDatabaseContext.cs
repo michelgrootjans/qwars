@@ -1,3 +1,4 @@
+using System;
 using HibernatingRhinos.Profiler.Appender.NHibernate;
 using NHibernate;
 using NHibernate.Cfg;
@@ -37,6 +38,13 @@ namespace QWars.NHibernate.Tests
         public void Rollback()
         {
             transaction.Rollback();
+            transaction.Dispose();
+            session.Dispose();
+        }
+
+        public void Commit()
+        {
+            transaction.Commit();
             transaction.Dispose();
             session.Dispose();
         }

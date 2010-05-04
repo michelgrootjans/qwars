@@ -13,12 +13,18 @@
     <property name="Money" />
     <property name="XP" />
 
-    <set name ="weapons" access="field" cascade="all">
+    <set name ="weapons" access="field" cascade="all-delete-orphan">
       <key column="PlayerId" />
       <one-to-many class="Weapon" />
     </set>
 
-    <one-to-one name="ownedGang" access="field" class="Gang" cascade="all-delete-orphan" />
+    <one-to-one name="ownedGang" access="field" 
+                class="Gang" cascade="all-delete-orphan"
+                property-ref="Boss"
+                />
+    
+    <many-to-one name="memberOf" access="field"
+                 class="Gang" column="memberOf" />
   </class>
   
 </hibernate-mapping>

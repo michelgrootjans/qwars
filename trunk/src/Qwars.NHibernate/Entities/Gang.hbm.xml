@@ -5,7 +5,7 @@
                    default-lazy="true">
   
   <class name="Gang">
-    <id column="Id" type="Guid">
+    <id name="id" access="field">
       <generator class="guid" />
     </id>
 
@@ -14,9 +14,14 @@
 
     <many-to-one name="Boss" class="Player" unique="true" />
     
-    <set name="members" access="field">
-      <key column="GangId" />
+    <set name="members" access="field" inverse="true">
+      <key column="memberOf" />
       <one-to-many class="Player"/>
+    </set>
+    
+    <set name="Tasks" cascade="all-delete-orphan">
+      <key column="GangId" />
+      <one-to-many class="Task"/>
     </set>
   
   </class>

@@ -9,7 +9,7 @@ namespace QWars.NHibernate.Entities
 {
     public class Player : IPlayer, IBoss
     {
-        private ISet<IWeapon> weapons;
+        private readonly ISet<IWeapon> weapons;
         private IGang memberOf;
         private IGang ownedGang;
         public virtual string Name { get; private set; }
@@ -43,7 +43,7 @@ namespace QWars.NHibernate.Entities
             get
             {
                 if (weapons.Count() == 0) return 0;
-                return Convert.ToInt32(XP * BestWepon.XpBonus);
+                return Convert.ToInt32(XP*BestWepon.XpBonus);
             }
         }
 
@@ -62,7 +62,7 @@ namespace QWars.NHibernate.Entities
 
         private IWeapon BestWepon
         {
-            get{return weapons == null ? null : weapons.OrderByDescending(w => w.XpBonus).First();}
+            get { return weapons == null ? null : weapons.OrderByDescending(w => w.XpBonus).First(); }
         }
 
         private void Sell(IWeapon weapon)
@@ -83,14 +83,14 @@ namespace QWars.NHibernate.Entities
             gang.AddMember(this);
         }
 
-        public virtual IEnumerable<ITask> GetGangTasks()
+        private IGang Gang
         {
-            throw new NotImplementedException();
+            get { return ownedGang ?? memberOf; }
         }
 
-        public virtual ITask CreateTask(string description, int difficulty, int reward, int xp)
+        public virtual IEnumerable<ITask> GetGangTasks()
         {
-            throw new NotImplementedException();
+            return Gang.Tasks;
         }
 
         public virtual IGang CreateGang(string name, string bossBenefit)
@@ -99,14 +99,14 @@ namespace QWars.NHibernate.Entities
             return ownedGang;
         }
 
-        public virtual void IncreaseAllRewardsWith(double percent)
+        public virtual ITask CreateTask(string description, int difficulty, int reward, int xp)
         {
-            throw new NotImplementedException();
+            return ownedGang.CreateTask(description, difficulty, reward, XP);
         }
 
-        public virtual IGang Gang
+        public virtual void IncreaseAllRewardsWith(double percent)
         {
-            get { return ownedGang; }
+            ownedGang.IncreaseAllRewardsWith(percent);
         }
 
         public virtual string GangName
@@ -116,12 +116,12 @@ namespace QWars.NHibernate.Entities
 
         public virtual int GangMoney
         {
-            get { throw new NotImplementedException(); }
+            get { return Gang.Money; }
         }
 
         public virtual IEnumerable<IPlayer> GangMembers
         {
-            get { throw new NotImplementedException(); }
+            get { return Gang.Members; }
         }
     }
 }
