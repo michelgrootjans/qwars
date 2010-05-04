@@ -75,7 +75,6 @@ namespace QWars.NHibernate.Tests
                 .UniqueResult<IBoss>();
 
             Assert.IsNotNull(boss);
-            Assert.IsNotNull(boss.Gang);
             Assert.AreEqual("gangName", boss.GangName);
         }
 

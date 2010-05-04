@@ -1,4 +1,3 @@
-using System;
 using System.Linq;
 using NUnit.Framework;
 using QWars.NHibernate.Entities;
@@ -9,17 +8,16 @@ namespace QWars.NHibernate.Tests
     public class GangCrudTests : DataAccessTest
     {
         private object gangId;
-        private object playerId;
+        private object bossId;
         private const string gangName = "Los Techies";
 
         protected override void PrepareData()
         {
-            var player = new Player("hero");
-            var gang = new Gang(player, gangName);
-            session.Save(player);
-            session.Save(gang);
+            var boss = new Player("boss");
+            var gang = boss.CreateGang(gangName, "yeah");
+            session.Save(boss);
             gangId = session.GetIdentifier(gang);
-            playerId = session.GetIdentifier(player);
+            bossId = session.GetIdentifier(boss);
         }
 
         [Test]
@@ -32,7 +30,7 @@ namespace QWars.NHibernate.Tests
         [Test]
         public void gang_boss_should_be_player()
         {
-            var player = session.Get<Player>(playerId);
+            var player = session.Get<Player>(bossId);
             var gang = session.Get<Gang>(gangId);
             Assert.AreSame(player, gang.Boss);
         }
@@ -44,11 +42,21 @@ namespace QWars.NHibernate.Tests
             var member = new Player("member");
             session.Save(member);
             member.Join(gang);
-            session.Flush();
-            session.Clear();
+            FlushAndClear();
 
             gang = session.Get<Gang>(gangId);
             Assert.AreEqual(1, gang.Members.Count());
+        }
+
+        [Test]
+        public void added_task_should_be_persisted()
+        {
+            var gang = session.Get<Gang>(gangId);
+            gang.CreateTask("do it", 1, 2, 3);
+            FlushAndClear();
+
+            gang = session.Get<Gang>(gangId);
+            Assert.AreEqual(1, gang.Tasks.Count());
         }
 
     }

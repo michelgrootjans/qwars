@@ -17,7 +17,7 @@ namespace QWars.NHibernate.Presenters
             using (var session = sessionFactory.OpenSession())
             {
                 var boss = Get<IBoss>(view.Player.Id, session);
-                view.Tasks = boss.GetGangTasks();
+                UpdateView(boss);
             }
         }
 
@@ -30,6 +30,11 @@ namespace QWars.NHibernate.Presenters
                 player.Execute(view.SelectedTask);
                 transaction.Commit();
             }
+        }
+
+        private void UpdateView(IBoss boss)
+        {
+            view.Tasks = boss.GetGangTasks();
         }
     }
 }

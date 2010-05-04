@@ -7,5 +7,6 @@ namespace QWars.NHibernate.Tests
         ISession GetSession();
         void FlushAndClear();
         void Rollback();
+        void Commit();
     }
 }

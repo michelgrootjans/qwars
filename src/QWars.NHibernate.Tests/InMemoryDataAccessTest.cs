@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using System.Text;
 using HibernatingRhinos.Profiler.Appender.NHibernate;
@@ -7,6 +8,7 @@ using NHibernate.Cfg;
 using NHibernate.Dialect;
 using NHibernate.Driver;
 using NHibernate.Tool.hbm2ddl;
+using Environment=NHibernate.Cfg.Environment;
 
 namespace QWars.NHibernate.Tests
 {
@@ -18,7 +20,7 @@ namespace QWars.NHibernate.Tests
 
         internal InMemoryDatabaseContext()
         {
-            if (configuration != null) return;
+            if (sessionFactory != null) return;
 
             NHibernateProfiler.Initialize();
 
@@ -56,6 +58,11 @@ namespace QWars.NHibernate.Tests
         public void Rollback()
         {
             //not necessary, always starting with a clean database
+        }
+
+        public void Commit()
+        {
+            //not possible, always starting with a clean database
         }
     }
 

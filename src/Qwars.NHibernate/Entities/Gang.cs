@@ -5,12 +5,14 @@ using QWars.Presentation.Entities;
 
 namespace QWars.NHibernate.Entities
 {
-    public class Gang    : IGang
+    public class Gang : IGang
     {
+        private Guid id;
         public virtual IPlayer Boss { get; private set; }
         public virtual string Name { get; private set; }
         public virtual int Money { get; private set; }
-        private ICollection<IPlayer> members;
+        private readonly ISet<IPlayer> members;
+
         public virtual IEnumerable<IPlayer> Members
         {
             get { return members; }
@@ -34,12 +36,15 @@ namespace QWars.NHibernate.Entities
 
         public virtual ITask CreateTask(string description, int difficulty, int reward, int xp)
         {
-            throw new NotImplementedException();
+            var task = new Task(description, difficulty, reward, xp);
+            Tasks.Add(task);
+            return task;
         }
 
         public virtual void IncreaseAllRewardsWith(double percent)
         {
-            throw new NotImplementedException();
+            foreach (var task in Tasks)
+                task.IncreaseRewardWith(percent);
         }
 
         public virtual void AddMember(IPlayer member)

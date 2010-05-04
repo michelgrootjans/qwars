@@ -12,7 +12,7 @@ namespace QWars.Dummy.Entities
 
         public void IncreaseRewardWith(double bonus)
         {
-            Reward = Convert.ToInt32((1 + bonus) * Reward);
+            Reward = Convert.ToInt32((1 + bonus)*Reward);
         }
 
         public Task(string description, int difficulty, int reward, int xp)

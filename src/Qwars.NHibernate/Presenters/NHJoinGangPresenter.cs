@@ -16,7 +16,8 @@ namespace QWars.NHibernate.Presenters
         {
             using (var session = sessionFactory.OpenSession())
             {
-                view.Gangs = session.CreateCriteria<IGang>().List<IGang>();
+                view.Gangs = session.CreateCriteria<IGang>()
+                    .List<IGang>();
             }
         }
 
@@ -26,7 +27,9 @@ namespace QWars.NHibernate.Presenters
             using (var transaction = session.BeginTransaction())
             {
                 var player = Get<IPlayer>(view.Player.Id, session);
-                player.Join(view.SelectedGang);
+                var gang = view.SelectedGang;
+                session.Update(gang);
+                player.Join(gang);
                 transaction.Commit();
             }
         }
