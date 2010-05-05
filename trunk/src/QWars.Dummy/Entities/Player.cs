@@ -36,6 +36,11 @@ namespace QWars.Dummy.Entities
             }
         }
 
+        public bool IsMember
+        {
+            get { return memberOf != null; }
+        }
+
 
         public Player(int id, string name)
         {
@@ -92,7 +97,7 @@ namespace QWars.Dummy.Entities
             return IsBoss ? ownedGang.Tasks : memberOf.Tasks;
         }
 
-        private bool IsBoss
+        public bool IsBoss
         {
             get { return ownedGang != null; }
         }

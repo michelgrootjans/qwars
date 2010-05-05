@@ -20,10 +20,9 @@ namespace QWars.NHibernate.Presenters
 
         public void CreateGang()
         {
-            using (var session = sessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
             {
-                var boss = Get<IBoss>(view.Player.Id, session);
+                var boss = Get<IBoss>(view.Player.Id);
                 boss.CreateGang(view.GangName, view.BossBenefit);
                 transaction.Commit();
             }

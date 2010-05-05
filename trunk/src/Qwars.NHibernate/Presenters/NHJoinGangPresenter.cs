@@ -14,21 +14,21 @@ namespace QWars.NHibernate.Presenters
 
         public void Initialize()
         {
-            using (var session = sessionFactory.OpenSession())
+            using (var transaction = session.BeginTransaction())
             {
                 view.Gangs = session.CreateCriteria<IGang>()
                     .List<IGang>();
+                transaction.Commit();
             }
         }
 
         public void JoinGang()
         {
-            using (var session = sessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
             {
-                var player = Get<IPlayer>(view.Player.Id, session);
+                var player = Get<IPlayer>(view.Player.Id);
                 var gang = view.SelectedGang;
-                session.Update(gang);
+                session.SaveOrUpdate(gang);
                 player.Join(gang);
                 transaction.Commit();
             }

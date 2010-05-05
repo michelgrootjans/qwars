@@ -19,10 +19,9 @@ namespace QWars.NHibernate.Presenters
 
         public void CreateTask()
         {
-            using (var session = sessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
             {
-                var boss = Get<IBoss>(view.Player.Id, session);
+                var boss = Get<IBoss>(view.Player.Id);
                 boss.CreateTask(view.Description, view.Difficulty, view.Reward, view.XP);
                 transaction.Commit();
             }

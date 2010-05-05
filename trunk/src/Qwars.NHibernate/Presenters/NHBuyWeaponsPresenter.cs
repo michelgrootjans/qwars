@@ -40,10 +40,9 @@ namespace QWars.NHibernate.Presenters
 
         private void BuyWeapon(IWeapon weapon)
         {
-            using(var session = sessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
             {
-                var player = Get<IPlayer>(view.Player.Id, session);
+                var player = Get<IPlayer>(view.Player.Id);
                 player.Buy(weapon);
                 transaction.Commit();
             }

@@ -10,6 +10,8 @@ namespace QWars.Win
     public partial class PlayerView : Form, IPlayerView
     {
         private readonly IPlayerPresenter presenter;
+        private bool isBoss;
+        private bool isMember;
 
         public PlayerView()
         {
@@ -51,6 +53,42 @@ namespace QWars.Win
         {
             var view = new CreateGangView {Player = Player};
             view.Show();
+        }
+
+        private void btnViewGang_Click(object sender, EventArgs e)
+        {
+            var view = isBoss
+                           ? (Form) new BossView {Player = Player}
+                           : new GangMemberView {Player = Player};
+            view.Show();
+        }
+
+
+        public bool IsBoss
+        {
+            set
+            {
+                isBoss = value;
+                UpdateButtons();
+            }
+        }
+
+
+        public bool IsMember
+        {
+            set
+            {
+                isMember = value;
+                UpdateButtons();
+            }
+        }
+
+        private void UpdateButtons()
+        {
+            var showGoToGangButton = isMember || isBoss;
+            btnViewGang.Enabled = showGoToGangButton;
+            btnCreateGang.Enabled = !showGoToGangButton;
+            btnJoinGang.Enabled = !showGoToGangButton;
         }
 
         public string Title

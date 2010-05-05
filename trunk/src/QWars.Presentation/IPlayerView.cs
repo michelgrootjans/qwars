@@ -11,5 +11,7 @@ namespace QWars.Presentation
         int Money { set; }
         string XP { set; }
         IEnumerable<IWeapon> Weapons { set; }
+        bool IsBoss { set; }
+        bool IsMember { set; }
     }
 }

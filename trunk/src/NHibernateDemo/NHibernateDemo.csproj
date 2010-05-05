@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{EFD066F4-6E96-48EE-854C-EF54BC48AFB8}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{1EF84A30-D12D-4AD3-900C-F2DDF1355083}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>QWars.NHibernate</RootNamespace>
-    <AssemblyName>QWars.NHibernate</AssemblyName>
+    <RootNamespace>NHibernateDemo</RootNamespace>
+    <AssemblyName>NHibernateDemo</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -43,6 +43,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\NHibernate\Required_For_LazyLoading\Castle\Castle.DynamicProxy2.dll</HintPath>
     </Reference>
+    <Reference Include="HibernatingRhinos.Profiler.Appender, Version=1.0.0.0, Culture=neutral, PublicKeyToken=0774796e73ebf640, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\tools\NHibernate.Profiler\HibernatingRhinos.Profiler.Appender.dll</HintPath>
+    </Reference>
     <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\NHibernate\Required_Bins\Iesi.Collections.dll</HintPath>
@@ -59,49 +63,51 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\NHibernate\Required_For_LazyLoading\Castle\NHibernate.ByteCode.Castle.dll</HintPath>
     </Reference>
+    <Reference Include="NHibernate.Linq, Version=1.1.0.1001, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\NHibernate\Linq\NHibernate.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=2.5.3.9345, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\tools\NUnit\nunit.framework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Data.SQLite, Version=1.0.65.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\tools\SQLite\32bit\System.Data.SQLite.DLL</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\Gang.cs" />
-    <Compile Include="Entities\NullGang.cs" />
-    <Compile Include="Entities\Player.cs" />
-    <Compile Include="Entities\Task.cs" />
+    <Compile Include="Tests\PlayerBuysWeaponTests.cs" />
+    <Compile Include="Tests\PlayerCrudTests.cs" />
     <Compile Include="Entities\Weapon.cs" />
-    <Compile Include="Entities\WeaponFactory.cs" />
-    <Compile Include="Entities\Mugging.cs" />
-    <Compile Include="Presenters\NHAdminPresenter.cs" />
-    <Compile Include="Presenters\NHBossPresenter.cs" />
-    <Compile Include="Presenters\NHBuyWeaponsPresenter.cs" />
-    <Compile Include="Presenters\NHCreateGangPresenter.cs" />
-    <Compile Include="Presenters\NHCreateTaskPresenter.cs" />
-    <Compile Include="Presenters\NHGangMemberPresenter.cs" />
-    <Compile Include="Presenters\NHJoinGangPresenter.cs" />
-    <Compile Include="Presenters\NHLogonPresenter.cs" />
-    <Compile Include="Presenters\NHPlayerPresenter.cs" />
-    <Compile Include="Presenters\NHPresenter.cs" />
+    <Compile Include="Utilities\DataAccessTest.cs" />
+    <Compile Include="Utilities\IDatabaseContext.cs" />
+    <Compile Include="Utilities\InMemoryDataAccessTest.cs" />
+    <Compile Include="Entities\Player.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\QWars.Presentation\QWars.Presentation.csproj">
-      <Project>{C137CEEA-AE26-489D-ABD0-1C16D9EC982F}</Project>
-      <Name>QWars.Presentation</Name>
-    </ProjectReference>
+    <Compile Include="Utilities\SqlServerDatabaseContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Entities\Player.hbm.xml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Entities\Weapon.hbm.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Entities\Gang.hbm.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Entities\Task.hbm.xml" />
-    <Content Include="TODO.txt" />
+    <Content Include="hibernate.cfg.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
