@@ -14,25 +14,25 @@ namespace QWars.NHibernate.Presenters
 
         public void Initialize()
         {
-            using (var session = sessionFactory.OpenSession())
+            using (var transaction = session.BeginTransaction())
             {
-                var boss = Get<IBoss>(view.Player.Id, session);
+                var boss = Get<IPlayer>(view.Player.Id);
                 UpdateView(boss);
+                transaction.Commit();
             }
         }
 
         public void ExecuteTask()
         {
-            using (var session = sessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
             {
-                var player = Get<IPlayer>(view.Player.Id, session);
+                var player = Get<IPlayer>(view.Player.Id);
                 player.Execute(view.SelectedTask);
                 transaction.Commit();
             }
         }
 
-        private void UpdateView(IBoss boss)
+        private void UpdateView(IPlayer boss)
         {
             view.Tasks = boss.GetGangTasks();
         }

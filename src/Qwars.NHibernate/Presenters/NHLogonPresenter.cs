@@ -1,4 +1,3 @@
-using NHibernate;
 using NHibernate.Criterion;
 using QWars.NHibernate.Entities;
 using QWars.Presentation;
@@ -10,28 +9,24 @@ namespace QWars.NHibernate.Presenters
     {
         public PlayerInfo LoginWithPlayerName(string playerName)
         {
-            using (var session = sessionFactory.OpenSession())
-            {
-                var player = FindPlayerInDatabase(session, playerName)
-                             ?? CreatePlayer(session, playerName);
-
-                return new PlayerInfo(session.GetIdentifier(player), playerName);
-            }
-        }
-
-        private object CreatePlayer(ISession session, string playerName)
-        {
-            object player;
+            PlayerInfo playerInfo;
             using (var transaction = session.BeginTransaction())
             {
-                player = new Player(playerName);
-                session.Save(player);
+                var player = FindPlayerInDatabase(playerName) ?? CreatePlayer(playerName);
+                playerInfo = new PlayerInfo(session.GetIdentifier(player), playerName);
                 transaction.Commit();
             }
+            return playerInfo;
+        }
+
+        private IPlayer CreatePlayer(string playerName)
+        {
+            var player = new Player(playerName);
+            session.Save(player);
             return player;
         }
 
-        private object FindPlayerInDatabase(ISession session, string playerName)
+        private IPlayer FindPlayerInDatabase(string playerName)
         {
             return session.CreateCriteria<IPlayer>()
                 .Add(Restrictions.Eq("Name", playerName))

@@ -47,6 +47,16 @@ namespace QWars.NHibernate.Entities
             }
         }
 
+        public bool IsBoss
+        {
+            get { return ownedGang != null; }
+        }
+
+        public bool IsMember
+        {
+            get { return memberOf != null; }
+        }
+
         public virtual void Buy(IWeapon weapon)
         {
             weapons.Add(weapon);
@@ -85,7 +95,7 @@ namespace QWars.NHibernate.Entities
 
         private IGang Gang
         {
-            get { return ownedGang ?? memberOf; }
+            get { return ownedGang ?? memberOf ?? new NullGang(); }
         }
 
         public virtual IEnumerable<ITask> GetGangTasks()

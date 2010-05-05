@@ -16,27 +16,30 @@ namespace QWars.NHibernate.Presenters
         {
             view.Title = "Top Players according to NHibernate";
 
-            using (var session = sessionFactory.OpenSession())
+            using (var transaction = session.BeginTransaction())
             {
                 view.Data = session.CreateCriteria<IPlayer>().List();
+                transaction.Commit();
             }
         }
 
         public void ShowRichestPlayers()
         {
             view.Title = "Richest Players according to NHibernate";
-            using (var session = sessionFactory.OpenSession())
+            using (var transaction = session.BeginTransaction())
             {
                 view.Data = session.CreateCriteria<IPlayer>().List();
+                transaction.Commit();
             }
         }
 
         public void ShowBiggestGang()
         {
             view.Title = "Biggest Gang according to NHibernate";
-            using (var session = sessionFactory.OpenSession())
+            using (var transaction = session.BeginTransaction())
             {
                 view.Data = session.CreateCriteria<IGang>().List();
+                transaction.Commit();
             }
         }
     }

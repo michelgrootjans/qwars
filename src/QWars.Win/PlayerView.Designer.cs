@@ -44,6 +44,7 @@
             this.lblExperience = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnViewGang = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.lstWeapons)).BeginInit();
             this.tabs.SuspendLayout();
             this.tabTasks.SuspendLayout();
@@ -160,6 +161,7 @@
             // 
             // tabGang
             // 
+            this.tabGang.Controls.Add(this.btnViewGang);
             this.tabGang.Controls.Add(this.btnJoinGang);
             this.tabGang.Controls.Add(this.btnCreateGang);
             this.tabGang.Location = new System.Drawing.Point(4, 22);
@@ -218,6 +220,16 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Experience";
             // 
+            // btnViewGang
+            // 
+            this.btnViewGang.Location = new System.Drawing.Point(8, 68);
+            this.btnViewGang.Name = "btnViewGang";
+            this.btnViewGang.Size = new System.Drawing.Size(134, 23);
+            this.btnViewGang.TabIndex = 3;
+            this.btnViewGang.Text = "View gang ...";
+            this.btnViewGang.UseVisualStyleBackColor = true;
+            this.btnViewGang.Click += new System.EventHandler(this.btnViewGang_Click);
+            // 
             // PlayerView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -258,5 +270,6 @@
         private System.Windows.Forms.Label lblExperience;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnViewGang;
     }
 }

@@ -1,11 +1,10 @@
 ﻿using System.Linq;
-using QWars.NHibernate.Entities;
 using QWars.Presentation;
 using QWars.Presentation.Entities;
 
 namespace QWars.NHibernate.Presenters
 {
-    public class NHBossPresenter :NHPresenter, IBossPresenter
+    public class NHBossPresenter : NHPresenter, IBossPresenter
     {
         private readonly IBossView view;
 
@@ -16,23 +15,23 @@ namespace QWars.NHibernate.Presenters
 
         public void Initialize()
         {
-            using (var session = sessionFactory.OpenSession())
+            using (var transaction = session.BeginTransaction())
             {
-                var boss = Get<IBoss>(view.Player.Id, session);
+                var boss = Get<IBoss>(view.Player.Id);
                 UpdateView(boss);
+                transaction.Commit();
             }
         }
 
         public void CreateRandomTasks()
         {
-            using (var session = sessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
             {
                 const int numberOfTasks = 20;
 
-                var boss = Get<IBoss>(view.Player.Id, session);
+                var boss = Get<IBoss>(view.Player.Id);
                 for (var i = 0; i < numberOfTasks; i++)
-                    boss.CreateTask("Mug someone", 0, 15, 20);
+                    boss.CreateTask("Ransom task", 0, 15, 20);
                 UpdateView(boss);
                 transaction.Commit();
             }
@@ -40,10 +39,9 @@ namespace QWars.NHibernate.Presenters
 
         public void IncreaseRewardForAllTasks()
         {
-            using (var session = sessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
             {
-                var boss = Get<IBoss>(view.Player.Id, session);
+                var boss = Get<IBoss>(view.Player.Id);
                 boss.IncreaseAllRewardsWith(0.15);
                 UpdateView(boss);
                 transaction.Commit();

@@ -21,39 +21,41 @@ namespace QWars.NHibernate.Presenters
 
         public void MugPedestrian()
         {
-            using (var session = sessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
             {
-                var player = Get<IPlayer>(view.Player.Id, session);
+                var player = Get<IPlayer>(view.Player.Id);
                 player.Execute(new Mugging());
-                transaction.Commit();
                 UpdateView(player);
+                transaction.Commit();
             }
         }
 
         public void SellUnusedWeapons()
         {
-            using (var session = sessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
             {
-                var player = Get<IPlayer>(view.Player.Id, session);
+                var player = Get<IPlayer>(view.Player.Id);
                 player.SellUnusedWeapons();
-                transaction.Commit();
                 UpdateView(player);
+                transaction.Commit();
             }
         }
 
         public void UpdateView()
         {
-            using (var session = sessionFactory.OpenSession())
+            session.Clear();
+            using (var transaction = session.BeginTransaction())
             {
-                var player = Get<IPlayer>(view.Player.Id, session);
+                var player = Get<IPlayer>(view.Player.Id);
                 UpdateView(player);
+                transaction.Commit();
             }
         }
 
         private void UpdateView(IPlayer player)
         {
+            view.IsBoss = player.IsBoss;
+            view.IsMember = player.IsMember;
             view.Title = player.Name;
             view.Money = player.Money;
             view.XP = player.XP.ToString();

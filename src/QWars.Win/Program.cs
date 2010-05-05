@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using HibernatingRhinos.Profiler.Appender.NHibernate;
 
 namespace QWars.Win
 {
@@ -13,6 +14,7 @@ namespace QWars.Win
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            NHibernateProfiler.Initialize();
             Application.Run(new AdministratorView());
         }
     }

@@ -10,6 +10,9 @@ namespace QWars.Presentation.Entities
         int XP { get; }
         int XPWithWeaponBonus { get; }
         int XPBonus { get; }
+        bool IsBoss { get; }
+        bool IsMember { get; }
+        IEnumerable<ITask> GetGangTasks();
 
         void Buy(IWeapon weapon);
         void SellUnusedWeapons();
