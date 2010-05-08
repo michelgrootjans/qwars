@@ -1,35 +1,36 @@
-using NHibernate.Cfg;
+using System.Linq;
 using NHibernate.Criterion;
 using NHibernateDemo.Entities;
+using NHibernateDemo.Utilities;
 using NUnit.Framework;
-using QWars.NHibernate.Tests;
+using NHibernate.Linq;
 
 namespace NHibernateDemo.Tests
 {
     public class PlayerCrudTests : DataAccessTest
     {
-        private object playerId;
+        private object michelId;
 
         protected override void PrepareData()
         {
-            var michel = new Player {Name = "Danny"};
+            var michel = new Player {Name = "Michel"};
             session.Save(michel);
-            playerId = session.GetIdentifier(michel);
-            session.Save(new Player {Name = "Michel"});
+            michelId = session.GetIdentifier(michel);
+            session.Save(new Player {Name = "Danny"});
         }
 
         [Test]
         public void Get_Player_Returns_a_Player()
         {
-            var player = session.Get<Player>(playerId);
+            var player = session.Get<Player>(michelId);
             Assert.IsNotNull(player);
         }
 
         [Test]
         public void Get_Player_returns_the_right_player()
         {
-            var player = session.Get<Player>(playerId);
-            Assert.AreEqual("Danny", player.Name);
+            var player = session.Get<Player>(michelId);
+            Assert.AreEqual("Michel", player.Name);
         }
 
         [Test]
@@ -43,9 +44,10 @@ namespace NHibernateDemo.Tests
         public void Query_specific_player_with_HQL()
         {
             var player = session.CreateQuery("from Player p where p.Name=:name")
-                .SetParameter("name", "Danny")
+                .SetParameter("name", "Michel")
                 .UniqueResult<Player>();
-            Assert.AreEqual("Danny", player.Name);
+            Assert.AreEqual("Michel", player.Name);
+            Assert.AreEqual(michelId, session.GetIdentifier(player));
         }
 
         [Test]
@@ -56,6 +58,16 @@ namespace NHibernateDemo.Tests
                 .UniqueResult<Player>();
             Assert.AreEqual("Danny", player.Name);
         }
+
+        [Test]
+        public void query_specific_player_with_linq()
+        {
+            var player = session.Linq<Player>()
+                .Where(p => p.Name == "Michel")
+                .FirstOrDefault();
+            Assert.AreEqual("Michel", player.Name);
+        }
+
 
         [Test]
         public void future_queries()

@@ -1,19 +1,24 @@
 namespace NHibernateDemo.Entities
 {
-    public class Weapon
+    public abstract class Weapon
     {
+        public int Price { get; private set; }
+
         protected Weapon()
         {
         }
 
-        public Weapon(string name, int price)
+        public Weapon(int price)
         {
-            Name = name;
             Price = price;
         }
 
-        public string Name { get; set; }
+    }
 
-        public int Price { get; set; }
+    class Gun : Weapon
+    {
+        public Gun() : base(1500)
+        {
+        }
     }
 }
