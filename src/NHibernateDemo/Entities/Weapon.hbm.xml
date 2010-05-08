@@ -4,13 +4,17 @@
                    namespace="NHibernateDemo.Entities"
                    default-lazy="false">
 
-  <class name="Weapon">
+  <class name="Weapon" abstract="true">
     <id column="Id" type="Guid">
       <generator class="guid" />
     </id>
 
-    <property name="Name" />
+    <discriminator column="weapon_type" />
+
     <property name="Price" />
+
+    <subclass name="Gun" discriminator-value="Gun">
+    </subclass>
   </class>
 
 </hibernate-mapping>
