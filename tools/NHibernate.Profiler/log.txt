@@ -65,3 +65,21 @@ System.Net.WebException: The proxy name could not be resolved: 'proxy.iconos.be'
 2010-05-05 23:56:37,890 [3] INFO  Rhino.Licensing.LicenseValidator [(null)] - License expiration date is 12/31/9999 23:59:59
 2010-05-06 00:01:38,281 [3] INFO  Rhino.Licensing.LicenseValidator [(null)] - License expiration date is 12/31/9999 23:59:59
 2010-05-06 00:06:38,578 [3] INFO  Rhino.Licensing.LicenseValidator [(null)] - License expiration date is 12/31/9999 23:59:59
+2010-05-06 22:08:47,140 [1] INFO  Rhino.Licensing.LicenseValidator [(null)] - License expiration date is 12/31/9999 23:59:59
+2010-05-06 22:08:47,921 [1] DEBUG Rhino.Licensing.LicenseValidator [(null)] - License accepted for NHibernate Profiler
+2010-05-06 22:09:17,921 [1] INFO  Rhino.Licensing.LicenseValidator [(null)] - License expiration date is 12/31/9999 23:59:59
+2010-05-06 22:09:18,125 [1] DEBUG Rhino.Licensing.LicenseValidator [(null)] - License accepted for NHibernate Profiler
+2010-05-06 22:14:17,921 [8] INFO  Rhino.Licensing.LicenseValidator [(null)] - License expiration date is 12/31/9999 23:59:59
+2010-05-06 22:19:17,937 [12] INFO  Rhino.Licensing.LicenseValidator [(null)] - License expiration date is 12/31/9999 23:59:59
+2010-05-06 22:24:17,953 [3] INFO  Rhino.Licensing.LicenseValidator [(null)] - License expiration date is 12/31/9999 23:59:59
+2010-05-06 22:29:17,953 [6] INFO  Rhino.Licensing.LicenseValidator [(null)] - License expiration date is 12/31/9999 23:59:59
+2010-05-06 22:34:17,968 [8] INFO  Rhino.Licensing.LicenseValidator [(null)] - License expiration date is 12/31/9999 23:59:59
+2010-05-06 22:39:17,968 [6] INFO  Rhino.Licensing.LicenseValidator [(null)] - License expiration date is 12/31/9999 23:59:59
+2010-05-06 22:44:17,984 [3] INFO  Rhino.Licensing.LicenseValidator [(null)] - License expiration date is 12/31/9999 23:59:59
+2010-05-06 22:49:17,984 [8] INFO  Rhino.Licensing.LicenseValidator [(null)] - License expiration date is 12/31/9999 23:59:59
+2010-05-08 14:18:00,640 [1] INFO  Rhino.Licensing.LicenseValidator [(null)] - License expiration date is 12/31/9999 23:59:59
+2010-05-08 14:18:01,343 [1] DEBUG Rhino.Licensing.LicenseValidator [(null)] - License accepted for NHibernate Profiler
+2010-05-08 14:26:24,343 [1] INFO  Rhino.Licensing.LicenseValidator [(null)] - License expiration date is 12/31/9999 23:59:59
+2010-05-08 14:26:24,515 [1] DEBUG Rhino.Licensing.LicenseValidator [(null)] - License accepted for NHibernate Profiler
+2010-05-08 14:31:24,375 [11] INFO  Rhino.Licensing.LicenseValidator [(null)] - License expiration date is 12/31/9999 23:59:59
+2010-05-08 14:36:24,390 [7] INFO  Rhino.Licensing.LicenseValidator [(null)] - License expiration date is 12/31/9999 23:59:59
