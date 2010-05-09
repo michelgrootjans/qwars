@@ -8,14 +8,18 @@ namespace NHibernateDemo.Entities
         {
         }
 
-        public Weapon(int price)
+        protected Weapon(int price)
         {
             Price = price;
         }
 
+        public string Name
+        {
+            get { return GetType().Name; }
+        }
     }
 
-    class Gun : Weapon
+    internal class Gun : Weapon
     {
         public Gun() : base(1500)
         {

@@ -1,16 +1,13 @@
-using System;
 using HibernatingRhinos.Profiler.Appender.NHibernate;
 using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Tool.hbm2ddl;
 
-namespace QWars.NHibernate.Tests
+namespace NHibernateDemo.Utilities
 {
-    public class SqlServerDatabaseContext: IDatabaseContext
+    public class ConfigurationSessionFactory : IDatabaseContext
     {
         private static ISessionFactory sessionFactory;
-        private ISession session;
-        private ITransaction transaction;
 
         public ISession GetSession()
         {
@@ -24,29 +21,7 @@ namespace QWars.NHibernate.Tests
                 new SchemaExport(configuration).Create(false, true);
             }
 
-            session = sessionFactory.OpenSession();
-            transaction = session.BeginTransaction();
-            return session;
-        }
-
-        public void FlushAndClear()
-        {
-            session.Flush();
-            session.Clear();
-        }
-
-        public void Rollback()
-        {
-            transaction.Rollback();
-            transaction.Dispose();
-            session.Dispose();
-        }
-
-        public void Commit()
-        {
-            transaction.Commit();
-            transaction.Dispose();
-            session.Dispose();
+            return sessionFactory.OpenSession();
         }
     }
 }

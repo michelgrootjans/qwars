@@ -1,4 +1,3 @@
-using System;
 using System.IO;
 using System.Text;
 using HibernatingRhinos.Profiler.Appender.NHibernate;
@@ -8,18 +7,15 @@ using NHibernate.Cfg;
 using NHibernate.Dialect;
 using NHibernate.Driver;
 using NHibernate.Tool.hbm2ddl;
-using Environment=NHibernate.Cfg.Environment;
 
-namespace QWars.NHibernate.Tests
+namespace NHibernateDemo.Utilities
 {
-    public class InMemoryDatabaseContext<T> : IDatabaseContext
+    public class InMemorySessionFactory<T> : IDatabaseContext
     {
         private static Configuration configuration;
         private static ISessionFactory sessionFactory;
-        private ISession session;
-        private ITransaction transaction;
 
-        internal InMemoryDatabaseContext()
+        internal InMemorySessionFactory()
         {
             if (sessionFactory != null) return;
 
@@ -42,35 +38,15 @@ namespace QWars.NHibernate.Tests
         public ISession GetSession()
         {
             // create a new NH session
-            session = sessionFactory.OpenSession();
-            transaction = session.BeginTransaction();
-
+            var session = sessionFactory.OpenSession();
 
             // create a clean in mem database schema
-            new SchemaExport(configuration).Execute(false, true, false, session.Connection, new NullOutputter());
+            new SchemaExport(configuration)
+                .Execute(false, true, false, session.Connection, new NullOutputter());
 
             return session;
         }
-
-        public void FlushAndClear()
-        {
-            session.Flush();
-            session.Clear();
-        }
-
-        public void Rollback()
-        {
-            //not necessary, always starting with a clean database
-            transaction.Rollback();
-        }
-
-        public void Commit()
-        {
-            //not possible, always starting with a clean database
-            transaction.Commit();
-        }
     }
-
 
     internal class NullOutputter : TextWriter
     {
