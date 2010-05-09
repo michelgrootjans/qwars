@@ -89,6 +89,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Tests\LazyLoadingPlayerTest.cs" />
+    <Compile Include="Tests\PlayerQueryTests.cs" />
     <Compile Include="Tests\PlayerBuysWeaponTests.cs" />
     <Compile Include="Tests\PlayerCrudTests.cs" />
     <Compile Include="Entities\Weapon.cs" />
@@ -98,7 +100,7 @@
     <Compile Include="Entities\Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utilities\SqlServerDatabaseContext.cs" />
+    <Compile Include="Utilities\ConfigurationSessionFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Entities\Player.hbm.xml" />

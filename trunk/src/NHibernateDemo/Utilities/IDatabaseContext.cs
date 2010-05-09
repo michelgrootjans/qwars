@@ -1,12 +1,9 @@
 using NHibernate;
 
-namespace QWars.NHibernate.Tests
+namespace NHibernateDemo.Utilities
 {
     public interface IDatabaseContext
     {
         ISession GetSession();
-        void FlushAndClear();
-        void Rollback();
-        void Commit();
     }
 }

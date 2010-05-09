@@ -1,7 +1,6 @@
 using NHibernate;
 using NHibernateDemo.Entities;
 using NUnit.Framework;
-using QWars.NHibernate.Tests;
 
 namespace NHibernateDemo.Utilities
 {
@@ -14,7 +13,7 @@ namespace NHibernateDemo.Utilities
 
         static DataAccessTest()
         {
-            useSqlServer = true;
+            useSqlServer = false;
             rollbackTests = true;
         }
 
@@ -26,23 +25,24 @@ namespace NHibernateDemo.Utilities
             FlushAndClear();
         }
 
-        private IDatabaseContext databaseContext;
         protected ISession session;
+        private ITransaction transaction;
 
         private void CreateNewSession()
         {
             if (useSqlServer)
-                databaseContext = new SqlServerDatabaseContext();
+                session = new ConfigurationSessionFactory().GetSession();
             else
-                databaseContext = new InMemoryDatabaseContext<Player>();
-            session = databaseContext.GetSession();
+                session = new InMemorySessionFactory<Player>().GetSession();
+            transaction = session.BeginTransaction();
         }
 
         protected abstract void PrepareData();
 
         protected void FlushAndClear()
         {
-            databaseContext.FlushAndClear();
+            session.Flush();
+            session.Clear();
         }
 
         [TearDown]
@@ -50,9 +50,11 @@ namespace NHibernateDemo.Utilities
         {
             FlushAndClear();
             if (rollbackTests)
-                databaseContext.Rollback();
+                transaction.Rollback();
             else
-                databaseContext.Commit();
+                transaction.Commit();
+            transaction.Dispose();
+            session.Dispose();
         }
     }
 }

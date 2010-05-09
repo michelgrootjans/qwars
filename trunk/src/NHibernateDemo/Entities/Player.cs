@@ -1,4 +1,3 @@
-using System;
 using Iesi.Collections.Generic;
 
 namespace NHibernateDemo.Entities
@@ -10,13 +9,11 @@ namespace NHibernateDemo.Entities
             Weapons = new HashedSet<Weapon>();
         }
 
-        public string Name { get; set; }
-        public int Money { get; set; }
+        public virtual string Name { get; set; }
+        public virtual int Money { get; set; }
+        public virtual ISet<Weapon> Weapons { get; set; }
 
-        public ISet<Weapon> Weapons { get; set; }
-
-
-        public void Buy(Weapon weapon)
+        public virtual void Buy(Weapon weapon)
         {
             Weapons.Add(weapon);
             Money -= weapon.Price;
