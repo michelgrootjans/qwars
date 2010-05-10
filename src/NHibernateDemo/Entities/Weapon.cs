@@ -2,20 +2,31 @@ namespace NHibernateDemo.Entities
 {
     public abstract class Weapon
     {
-        public int Price { get; private set; }
-
-        protected Weapon()
-        {
-        }
+        public virtual int Price { get; private set; }
+        public virtual Player Owner { get; internal set; }
 
         protected Weapon(int price)
         {
             Price = price;
         }
 
-        public string Name
+        public virtual string Name
         {
             get { return GetType().Name; }
+        }
+    }
+
+    public class Sword : Weapon
+    {
+        public Sword() : base(800)
+        {
+        }
+    }
+
+    public class Knife : Weapon
+    {
+        public Knife() : base(200)
+        {
         }
     }
 

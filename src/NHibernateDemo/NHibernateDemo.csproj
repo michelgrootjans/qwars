@@ -90,10 +90,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Tests\LazyLoadingPlayerTest.cs" />
+    <Compile Include="Tests\PagingPlayersTest.cs" />
     <Compile Include="Tests\PlayerQueryTests.cs" />
     <Compile Include="Tests\PlayerBuysWeaponTests.cs" />
     <Compile Include="Tests\PlayerCrudTests.cs" />
     <Compile Include="Entities\Weapon.cs" />
+    <Compile Include="Tests\TestPolymorphism.cs" />
     <Compile Include="Utilities\DataAccessTest.cs" />
     <Compile Include="Utilities\IDatabaseContext.cs" />
     <Compile Include="Utilities\InMemoryDataAccessTest.cs" />

@@ -8,13 +8,15 @@
     <id column="Id" type="Guid">
       <generator class="guid" />
     </id>
-
-    <discriminator column="weapon_type" />
+    <!--<discriminator column="weapon_type" />-->
 
     <property name="Price" />
+    <many-to-one name="Owner" />
 
-    <subclass name="Gun" discriminator-value="Gun">
-    </subclass>
+    <union-subclass name="Knife" table="Knives" />
+    <union-subclass name="Sword" table="Swords" />
+    <union-subclass name="Gun" table="Guns" />
+    
   </class>
 
 </hibernate-mapping>
