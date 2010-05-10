@@ -16,6 +16,7 @@ namespace NHibernateDemo.Entities
         public virtual void Buy(Weapon weapon)
         {
             Weapons.Add(weapon);
+            weapon.Owner = this;
             Money -= weapon.Price;
         }
     }

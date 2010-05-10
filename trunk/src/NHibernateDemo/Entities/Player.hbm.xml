@@ -12,10 +12,10 @@
     <property name="Name" />
     <property name="Money" />
 
-    <set name="Weapons" cascade="all">
+    <set name="Weapons" cascade="all" lazy="true" fetch="join" inverse="true">
       <key column="Owner" />
-      <one-to-many class="Weapon"/>
+      <one-to-many />
     </set>
   </class>
-
+  
 </hibernate-mapping>

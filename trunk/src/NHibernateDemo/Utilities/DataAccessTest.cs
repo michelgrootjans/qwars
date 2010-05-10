@@ -13,7 +13,7 @@ namespace NHibernateDemo.Utilities
 
         static DataAccessTest()
         {
-            useSqlServer = false;
+            useSqlServer = true;
             rollbackTests = true;
         }
 
