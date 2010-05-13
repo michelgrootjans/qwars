@@ -12,9 +12,9 @@
     <property name="Name" />
     <property name="Money" />
 
-    <set name="Weapons" cascade="all" lazy="true" fetch="join" inverse="true">
-      <key column="Owner" />
-      <one-to-many />
+    <set name="Weapons" cascade="all" lazy="false" fetch="join" inverse="true">
+      <key column="OwnerId" />
+      <one-to-many class="Weapon" />
     </set>
   </class>
   

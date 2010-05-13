@@ -8,14 +8,42 @@
     <id column="Id" type="Guid">
       <generator class="guid" />
     </id>
-    <!--<discriminator column="weapon_type" />-->
+    
+    <discriminator column="weapon_type" />
+    <!--
+    -->
 
+    <many-to-one name="Owner" column="OwnerId" />
     <property name="Price" />
-    <many-to-one name="Owner" />
 
-    <union-subclass name="Knife" table="Knives" />
-    <union-subclass name="Sword" table="Swords" />
-    <union-subclass name="Gun" table="Guns" />
+    <subclass name="Knife" />
+    <subclass name="Sword" />
+    <subclass name="Gun" >
+      <property name="NumberOfBullets" />
+    </subclass>
+    <!--
+    -->
+
+    <!--
+    <joined-subclass name="Knife">
+      <key column="WeaponId" />
+    </joined-subclass>
+
+    <joined-subclass name="Sword">
+      <key column="WeaponId" />
+    </joined-subclass>
+
+    <joined-subclass name="Gun">
+      <key column="WeaponId" />
+      <property name="NumberOfBullets" />
+    </joined-subclass>
+
+    <union-subclass name="Knife" />
+    <union-subclass name="Sword" />
+    <union-subclass name="Gun">
+      <property name="NumberOfBullets" />
+    </union-subclass>
+    -->
     
   </class>
 

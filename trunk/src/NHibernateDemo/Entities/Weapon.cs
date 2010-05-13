@@ -1,3 +1,5 @@
+using System;
+
 namespace NHibernateDemo.Entities
 {
     public abstract class Weapon
@@ -34,6 +36,9 @@ namespace NHibernateDemo.Entities
     {
         public Gun() : base(1500)
         {
+            NumberOfBullets = 0;
         }
+
+        protected int NumberOfBullets { get; private set; }
     }
 }
