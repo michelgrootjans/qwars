@@ -21,8 +21,8 @@ namespace NHibernateDemo.Utilities
 
             NHibernateProfiler.Initialize();
 
-            /// Initialize NHibernate and builds a session factory
-            /// Note: this is a costly call so it will be executed only once.            
+            // Initialize NHibernate and builds a session factory
+            // Note: this is a costly call so it will be executed only once.            
             configuration = new Configuration()
                 .SetProperty(Environment.ReleaseConnections, "on_close")
                 .SetProperty(Environment.Dialect, typeof(SQLiteDialect).AssemblyQualifiedName)
