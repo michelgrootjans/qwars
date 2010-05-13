@@ -282,3 +282,34 @@ System.Reflection.TargetInvocationException: Exception has been thrown by the ta
 2010-05-10 22:44:43,936 [7] INFO  Rhino.Licensing.LicenseValidator [(null)] - License expiration date is 12/31/9999 23:59:59
 2010-05-10 22:49:43,931 [3] INFO  Rhino.Licensing.LicenseValidator [(null)] - License expiration date is 12/31/9999 23:59:59
 2010-05-10 22:54:43,940 [11] INFO  Rhino.Licensing.LicenseValidator [(null)] - License expiration date is 12/31/9999 23:59:59
+2010-05-13 16:40:32,847 [1] INFO  Rhino.Licensing.LicenseValidator [(null)] - License expiration date is 12/31/9999 23:59:59
+2010-05-13 16:40:33,706 [1] DEBUG Rhino.Licensing.LicenseValidator [(null)] - License accepted for NHibernate Profiler
+2010-05-13 16:41:41,056 [1] INFO  Rhino.Licensing.LicenseValidator [(null)] - License expiration date is 12/31/9999 23:59:59
+2010-05-13 16:41:41,259 [1] DEBUG Rhino.Licensing.LicenseValidator [(null)] - License accepted for NHibernate Profiler
+2010-05-13 16:46:41,110 [11] INFO  Rhino.Licensing.LicenseValidator [(null)] - License expiration date is 12/31/9999 23:59:59
+2010-05-13 16:51:41,146 [7] INFO  Rhino.Licensing.LicenseValidator [(null)] - License expiration date is 12/31/9999 23:59:59
+2010-05-13 16:56:41,268 [14] INFO  Rhino.Licensing.LicenseValidator [(null)] - License expiration date is 12/31/9999 23:59:59
+2010-05-13 17:01:41,270 [13] INFO  Rhino.Licensing.LicenseValidator [(null)] - License expiration date is 12/31/9999 23:59:59
+2010-05-13 17:06:41,280 [3] INFO  Rhino.Licensing.LicenseValidator [(null)] - License expiration date is 12/31/9999 23:59:59
+2010-05-13 17:11:41,287 [7] INFO  Rhino.Licensing.LicenseValidator [(null)] - License expiration date is 12/31/9999 23:59:59
+2010-05-13 17:16:41,299 [12] INFO  Rhino.Licensing.LicenseValidator [(null)] - License expiration date is 12/31/9999 23:59:59
+2010-05-13 17:21:41,294 [11] INFO  Rhino.Licensing.LicenseValidator [(null)] - License expiration date is 12/31/9999 23:59:59
+2010-05-13 17:26:41,290 [7] INFO  Rhino.Licensing.LicenseValidator [(null)] - License expiration date is 12/31/9999 23:59:59
+2010-05-13 17:31:41,316 [14] INFO  Rhino.Licensing.LicenseValidator [(null)] - License expiration date is 12/31/9999 23:59:59
+2010-05-13 17:36:41,361 [7] INFO  Rhino.Licensing.LicenseValidator [(null)] - License expiration date is 12/31/9999 23:59:59
+2010-05-13 17:41:41,373 [11] INFO  Rhino.Licensing.LicenseValidator [(null)] - License expiration date is 12/31/9999 23:59:59
+2010-05-13 17:46:41,447 [3] INFO  Rhino.Licensing.LicenseValidator [(null)] - License expiration date is 12/31/9999 23:59:59
+2010-05-13 17:51:41,440 [12] INFO  Rhino.Licensing.LicenseValidator [(null)] - License expiration date is 12/31/9999 23:59:59
+2010-05-13 17:56:41,451 [12] INFO  Rhino.Licensing.LicenseValidator [(null)] - License expiration date is 12/31/9999 23:59:59
+2010-05-13 18:01:41,569 [11] INFO  Rhino.Licensing.LicenseValidator [(null)] - License expiration date is 12/31/9999 23:59:59
+2010-05-13 18:06:41,582 [16] INFO  Rhino.Licensing.LicenseValidator [(null)] - License expiration date is 12/31/9999 23:59:59
+2010-05-13 18:11:41,577 [16] INFO  Rhino.Licensing.LicenseValidator [(null)] - License expiration date is 12/31/9999 23:59:59
+2010-05-13 18:16:41,591 [7] INFO  Rhino.Licensing.LicenseValidator [(null)] - License expiration date is 12/31/9999 23:59:59
+2010-05-13 18:21:41,614 [3] INFO  Rhino.Licensing.LicenseValidator [(null)] - License expiration date is 12/31/9999 23:59:59
+2010-05-13 18:26:41,642 [11] INFO  Rhino.Licensing.LicenseValidator [(null)] - License expiration date is 12/31/9999 23:59:59
+2010-05-13 18:31:41,638 [7] INFO  Rhino.Licensing.LicenseValidator [(null)] - License expiration date is 12/31/9999 23:59:59
+2010-05-13 18:36:41,644 [3] INFO  Rhino.Licensing.LicenseValidator [(null)] - License expiration date is 12/31/9999 23:59:59
+2010-05-13 18:41:41,644 [7] INFO  Rhino.Licensing.LicenseValidator [(null)] - License expiration date is 12/31/9999 23:59:59
+2010-05-13 18:46:41,640 [13] INFO  Rhino.Licensing.LicenseValidator [(null)] - License expiration date is 12/31/9999 23:59:59
+2010-05-13 18:51:41,755 [14] INFO  Rhino.Licensing.LicenseValidator [(null)] - License expiration date is 12/31/9999 23:59:59
+2010-05-13 18:56:41,756 [14] INFO  Rhino.Licensing.LicenseValidator [(null)] - License expiration date is 12/31/9999 23:59:59

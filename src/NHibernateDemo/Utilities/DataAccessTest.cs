@@ -1,3 +1,4 @@
+using System.Threading;
 using NHibernate;
 using NHibernateDemo.Entities;
 using NUnit.Framework;
@@ -56,6 +57,12 @@ namespace NHibernateDemo.Utilities
 
             transaction.Dispose();
             session.Dispose();
+        }
+
+        [TestFixtureTearDown]
+        public void AfterAllTests()
+        {
+            Thread.Sleep(500);
         }
     }
 }
