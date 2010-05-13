@@ -10,3 +10,23 @@
       <generator class="guid" />
     </id>
 
+
+    <joined-subclass name="Knife">
+      <key column="WeaponId" />
+    </joined-subclass>
+
+    <joined-subclass name="Sword">
+      <key column="WeaponId" />
+    </joined-subclass>
+
+    <joined-subclass name="Gun">
+      <key column="WeaponId" />
+      <property name="NumberOfBullets" />
+    </joined-subclass>
+
+
+    <union-subclass name="Knife" />
+    <union-subclass name="Sword" />
+    <union-subclass name="Gun">
+      <property name="NumberOfBullets" />
+    </union-subclass>
