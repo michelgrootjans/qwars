@@ -7,14 +7,16 @@ namespace NHibernateDemo.Utilities
     [TestFixture]
     public abstract class DataAccessTest
     {
-        private static readonly bool useSqlServer;
-        private static readonly bool rollbackTests;
+        private static readonly bool inMemoryDatabase;
+        private static readonly bool rollbaceAfterEachTests;
 
+        protected ISession session;
+        private ITransaction transaction;
 
         static DataAccessTest()
         {
-            useSqlServer = true;
-            rollbackTests = true;
+            inMemoryDatabase = false;
+            rollbaceAfterEachTests = true;
         }
 
         [SetUp]
@@ -25,15 +27,12 @@ namespace NHibernateDemo.Utilities
             FlushAndClear();
         }
 
-        protected ISession session;
-        private ITransaction transaction;
-
         private void CreateNewSession()
         {
-            if (useSqlServer)
-                session = new ConfigurationSessionFactory().GetSession();
-            else
+            if (inMemoryDatabase)
                 session = new InMemorySessionFactory<Player>().GetSession();
+            else
+                session = new ConfigurationSessionFactory().GetSession();
             transaction = session.BeginTransaction();
         }
 
@@ -49,10 +48,12 @@ namespace NHibernateDemo.Utilities
         public void TearDown()
         {
             FlushAndClear();
-            if (rollbackTests)
+
+            if (rollbaceAfterEachTests)
                 transaction.Rollback();
             else
                 transaction.Commit();
+
             transaction.Dispose();
             session.Dispose();
         }
