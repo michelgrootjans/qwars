@@ -1,0 +1,85 @@
+﻿<UserControl x:Class="QWars.Module.Gangs.GangView" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Resources\CommonTemplates.xaml" />
+                <ResourceDictionary Source="..\Resources\TaskTemplates.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid Margin="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <!--Gang Information-->
+        <Border Grid.Row="0" BorderBrush="Gold" BorderThickness="2" Background="#19FFFFFF" CornerRadius="2,2,0,0">
+            <Grid Margin="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="75" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Border Grid.Row="0" Grid.ColumnSpan="4" BorderBrush="Gold" BorderThickness="0,0,0,2">
+                    <TextBlock Text="Gang information" Foreground="Gold" FontWeight="Bold" Margin="2" />
+                </Border>
+                <Label Content="Gang Name: " Foreground="Gold" Grid.Column="0" Grid.Row="1" Margin="2" VerticalAlignment="Center" />
+                <TextBox Text="{Binding Gang.Name, Mode=OneWay }" Foreground="White" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" Margin="2" Height="Auto" Width="Auto" IsReadOnly="True" BorderThickness="0" Background="Transparent" VerticalAlignment="Center" />
+                <Label Content="Boss: " Foreground="Gold" Grid.Column="0" Grid.Row="2" Margin="2" VerticalAlignment="Center" />
+                <TextBox Text="{Binding Gang.Boss.Name, Mode=OneWay}" Foreground="White" Grid.Column="1" Grid.Row="2" Margin="2" Height="Auto" Width="Auto" IsReadOnly="True" BorderThickness="0" Background="Transparent" VerticalAlignment="Center" />
+                <Label Content="Money: " Foreground="Gold" Grid.Column="2" Grid.Row="2" Margin="2" VerticalAlignment="Center" />
+                <TextBox Text="{Binding Gang.Money, Mode=OneWay}" Foreground="White" Grid.Column="3" Grid.Row="2" Margin="2" Height="Auto" Width="Auto" IsReadOnly="True" BorderThickness="0" Background="Transparent" VerticalAlignment="Center" />
+            </Grid>
+        </Border>
+
+        <!--Gang Actions-->
+        <Border Grid.Row="1" Margin="0,5,0,0" BorderBrush="Gold" BorderThickness="2" Background="#19FFFFFF" CornerRadius="2,2,0,0">
+            <Grid Margin="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Border Grid.Row="0" Grid.ColumnSpan="2" BorderBrush="Gold" BorderThickness="0,0,0,2" Margin="0">
+                    <TextBlock Text="Gang actions" Foreground="Gold" FontWeight="Bold" Margin="2" />
+                </Border>
+                <Button Content="Gang statistics" Margin="2" Grid.Row="1" Grid.Column="0" Command="{Binding GangStatisticsCommand}" />
+                <Button Content="Disband gang" Margin="0,2,2,2" Grid.Row="1" Grid.Column="1" Command="{Binding DisbandGangCommand}" />
+            </Grid>
+        </Border>
+
+        <!--Tasks-->
+        <Border Grid.Row="2" Margin="0,5,0,0" BorderBrush="Gold" BorderThickness="2" Background="#19FFFFFF" CornerRadius="2,2,0,0">
+            <Grid Margin="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Border Grid.Row="0" BorderBrush="Gold" BorderThickness="0,0,0,2" Margin="0">
+                    <TextBlock Text="Tasks" Foreground="Gold" FontWeight="Bold" Margin="2" />
+                </Border>
+                <ListBox Grid.Row="1" Margin="0" Background="Transparent" BorderThickness="0" ItemsSource="{Binding Gang.Tasks}" SelectedItem="{Binding SelectedTask}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" VirtualizingStackPanel.IsVirtualizing="True" VirtualizingStackPanel.VirtualizationMode="Recycling" />
+                <Border Grid.Row="2" BorderBrush="Gold" BorderThickness="0,2,0,0">
+                    <UniformGrid Columns="2">
+                        <Button Content="Create task" Margin="2" Grid.Row="1" Grid.Column="0" Command="{Binding CreateTaskCommand}" />
+                        <Button Content="Execute task" Margin="0,2,2,2" Grid.Row="1" Grid.Column="1" Command="{Binding ExecuteTaskCommand}" />
+                    </UniformGrid>
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

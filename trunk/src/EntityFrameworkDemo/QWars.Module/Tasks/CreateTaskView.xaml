@@ -1,0 +1,71 @@
+﻿<UserControl x:Class="QWars.Module.Tasks.CreateTaskView" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="300">
+    <Border BorderBrush="Gold" BorderThickness="2" Background="#FF4F4F4F" CornerRadius="5,5,0,0" Margin="10">
+        <Border.BitmapEffect>
+            <DropShadowBitmapEffect Color="Gold" Opacity="0.7" ShadowDepth="7" />
+        </Border.BitmapEffect>
+        <Grid Margin="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" MinWidth="150" />
+            </Grid.ColumnDefinitions>
+            <Border Grid.Row="0" Grid.ColumnSpan="2"  BorderBrush="Gold" BorderThickness="0,0,0,2">
+                <TextBlock Text="Create new task" Foreground="Gold" FontWeight="Bold" Margin="2" />
+            </Border>
+            <Label 
+                Content="Description: "
+                Foreground="gold"
+                Margin="2" 
+                Grid.Row="1" Grid.Column="0" 
+                VerticalAlignment="Center" />
+            <TextBox 
+                Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}"
+                Margin="2"
+                Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" />
+            <Label 
+                Content="Difficulty: "
+                Foreground="gold"
+                Margin="2" 
+                Grid.Row="2" Grid.Column="0" 
+                VerticalAlignment="Center" />
+            <TextBox 
+                Text="{Binding Difficulty, UpdateSourceTrigger=PropertyChanged}"
+                Margin="2"
+                Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" />
+            <Label 
+                Content="Reward: "
+                Foreground="gold"
+                Margin="2" 
+                Grid.Row="3" Grid.Column="0" 
+                VerticalAlignment="Center" />
+            <TextBox 
+                Text="{Binding Reward, UpdateSourceTrigger=PropertyChanged}"
+                Margin="2"
+                Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" />
+            <Label 
+                Content="XP: "
+                Foreground="gold"
+                Margin="2" 
+                Grid.Row="4" Grid.Column="0" 
+                VerticalAlignment="Center" />
+            <TextBox 
+                Text="{Binding XP, UpdateSourceTrigger=PropertyChanged}"
+                Margin="2"
+                Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" />
+            <Border Grid.Row="5" Grid.ColumnSpan="2" BorderBrush="Gold" BorderThickness="0,2,0,0">
+                <UniformGrid Columns="2">
+                    <Button Command="{Binding CreateTaskCommand}" Content="Create task" Margin="2" />
+                    <Button Command="{Binding CancelCommand}" Content="Cancel" Margin="0,2,2,2" />
+                </UniformGrid>
+
+            </Border>
+        </Grid>
+    </Border>
+</UserControl>

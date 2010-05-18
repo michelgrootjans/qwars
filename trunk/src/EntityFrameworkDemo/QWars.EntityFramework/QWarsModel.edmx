@@ -1,0 +1,476 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="QWars.EntityFramework.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="QWarsEntityFrameworkStoreContainer">
+          <EntitySet Name="Gangs" EntityType="QWars.EntityFramework.Store.Gangs" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Players" EntityType="QWars.EntityFramework.Store.Players" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PlayerWeapon" EntityType="QWars.EntityFramework.Store.PlayerWeapon" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Tasks" EntityType="QWars.EntityFramework.Store.Tasks" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Weapons" EntityType="QWars.EntityFramework.Store.Weapons" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_GangPlayer" Association="QWars.EntityFramework.Store.FK_GangPlayer">
+            <End Role="Gangs" EntitySet="Gangs" />
+            <End Role="Players" EntitySet="Players" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GangTask" Association="QWars.EntityFramework.Store.FK_GangTask">
+            <End Role="Gangs" EntitySet="Gangs" />
+            <End Role="Tasks" EntitySet="Tasks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlayerGang" Association="QWars.EntityFramework.Store.FK_PlayerGang">
+            <End Role="Players" EntitySet="Players" />
+            <End Role="Gangs" EntitySet="Gangs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlayerTask" Association="QWars.EntityFramework.Store.FK_PlayerTask">
+            <End Role="Players" EntitySet="Players" />
+            <End Role="Tasks" EntitySet="Tasks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlayerWeapon_Player" Association="QWars.EntityFramework.Store.FK_PlayerWeapon_Player">
+            <End Role="Players" EntitySet="Players" />
+            <End Role="PlayerWeapon" EntitySet="PlayerWeapon" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlayerWeapon_Weapon" Association="QWars.EntityFramework.Store.FK_PlayerWeapon_Weapon">
+            <End Role="Weapons" EntitySet="Weapons" />
+            <End Role="PlayerWeapon" EntitySet="PlayerWeapon" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Gangs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Money" Type="int" Nullable="false" />
+          <Property Name="Boss_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Players">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Money" Type="int" Nullable="false" />
+          <Property Name="XP" Type="int" Nullable="false" />
+          <Property Name="JoinedGang_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="PlayerWeapon">
+          <Key>
+            <PropertyRef Name="Player_Id" />
+            <PropertyRef Name="Weapons_Id" />
+          </Key>
+          <Property Name="Player_Id" Type="int" Nullable="false" />
+          <Property Name="Weapons_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tasks">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="250" />
+          <Property Name="Difficulty" Type="int" Nullable="false" />
+          <Property Name="Reward" Type="int" Nullable="false" />
+          <Property Name="XP" Type="int" Nullable="false" />
+          <Property Name="Gang_Id" Type="int" />
+          <Property Name="ExecutedByPlayer_Id" Type="int" />
+          <Property Name="Outcome" Type="bit" />
+        </EntityType>
+        <EntityType Name="Weapons">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="XpBonus" Type="float" Nullable="false" />
+          <Property Name="Price" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_GangPlayer">
+          <End Role="Gangs" Type="QWars.EntityFramework.Store.Gangs" Multiplicity="0..1" />
+          <End Role="Players" Type="QWars.EntityFramework.Store.Players" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gangs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Players">
+              <PropertyRef Name="JoinedGang_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GangTask">
+          <End Role="Gangs" Type="QWars.EntityFramework.Store.Gangs" Multiplicity="0..1" />
+          <End Role="Tasks" Type="QWars.EntityFramework.Store.Tasks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gangs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tasks">
+              <PropertyRef Name="Gang_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlayerGang">
+          <End Role="Players" Type="QWars.EntityFramework.Store.Players" Multiplicity="1" />
+          <End Role="Gangs" Type="QWars.EntityFramework.Store.Gangs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Players">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Gangs">
+              <PropertyRef Name="Boss_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlayerTask">
+          <End Role="Players" Type="QWars.EntityFramework.Store.Players" Multiplicity="0..1" />
+          <End Role="Tasks" Type="QWars.EntityFramework.Store.Tasks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Players">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tasks">
+              <PropertyRef Name="ExecutedByPlayer_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlayerWeapon_Player">
+          <End Role="Players" Type="QWars.EntityFramework.Store.Players" Multiplicity="1" />
+          <End Role="PlayerWeapon" Type="QWars.EntityFramework.Store.PlayerWeapon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Players">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PlayerWeapon">
+              <PropertyRef Name="Player_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlayerWeapon_Weapon">
+          <End Role="Weapons" Type="QWars.EntityFramework.Store.Weapons" Multiplicity="1" />
+          <End Role="PlayerWeapon" Type="QWars.EntityFramework.Store.PlayerWeapon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Weapons">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PlayerWeapon">
+              <PropertyRef Name="Weapons_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="DeleteGang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="gangId" Type="int" Mode="In" />
+        </Function>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QWars.EntityFramework" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="QWarsContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Gangs" EntityType="QWars.EntityFramework.Gang" />
+          <EntitySet Name="Players" EntityType="QWars.EntityFramework.Player" />
+          <EntitySet Name="Tasks" EntityType="QWars.EntityFramework.Task" />
+          <EntitySet Name="Weapons" EntityType="QWars.EntityFramework.Weapon" />
+          <AssociationSet Name="FK_GangPlayer" Association="QWars.EntityFramework.FK_GangPlayer">
+            <End Role="Gang" EntitySet="Gangs" />
+            <End Role="Player" EntitySet="Players" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GangTask" Association="QWars.EntityFramework.FK_GangTask">
+            <End Role="Gang" EntitySet="Gangs" />
+            <End Role="Task" EntitySet="Tasks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlayerGang" Association="QWars.EntityFramework.FK_PlayerGang">
+            <End Role="Player" EntitySet="Players" />
+            <End Role="Gang" EntitySet="Gangs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlayerTask" Association="QWars.EntityFramework.FK_PlayerTask">
+            <End Role="Player" EntitySet="Players" />
+            <End Role="Task" EntitySet="Tasks" />
+          </AssociationSet>
+          <AssociationSet Name="PlayerWeapon" Association="QWars.EntityFramework.PlayerWeapon">
+            <End Role="Player" EntitySet="Players" />
+            <End Role="Weapon" EntitySet="Weapons" />
+          </AssociationSet>
+          <FunctionImport Name="DeleteGang">
+          <Parameter Name="gangId" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="Gang">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" a:SetterAccess="Private" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+          <Property Type="Int32" Name="Money" Nullable="false" a:SetterAccess="Private" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+          <NavigationProperty Name="Members" Relationship="QWars.EntityFramework.FK_GangPlayer" FromRole="Gang" ToRole="Player" />
+          <NavigationProperty Name="Tasks" Relationship="QWars.EntityFramework.FK_GangTask" FromRole="Gang" ToRole="Task" />
+          <NavigationProperty Name="Boss" Relationship="QWars.EntityFramework.FK_PlayerGang" FromRole="Gang" ToRole="Player" />
+        </EntityType>
+        <EntityType Name="Player">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" a:SetterAccess="Private" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+          <Property Type="Int32" Name="Money" Nullable="false" a:SetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" ConcurrencyMode="Fixed" />
+          <Property Type="Int32" Name="XP" Nullable="false" a:SetterAccess="Private" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" ConcurrencyMode="None" />
+          <NavigationProperty Name="MemberOf" Relationship="QWars.EntityFramework.FK_GangPlayer" FromRole="Player" ToRole="Gang" />
+          <NavigationProperty Name="OwnerOf" Relationship="QWars.EntityFramework.FK_PlayerGang" FromRole="Player" ToRole="Gang" />
+          <NavigationProperty Name="ExecutedTasks" Relationship="QWars.EntityFramework.FK_PlayerTask" FromRole="Player" ToRole="Task" />
+          <NavigationProperty Name="Weapons" Relationship="QWars.EntityFramework.PlayerWeapon" FromRole="Player" ToRole="Weapon" />
+        </EntityType>
+        <EntityType Name="Task">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Difficulty" Nullable="false" />
+          <Property Type="Int32" Name="Reward" Nullable="false" />
+          <Property Type="Int32" Name="XP" Nullable="false" />
+          <NavigationProperty Name="Gang" Relationship="QWars.EntityFramework.FK_GangTask" FromRole="Task" ToRole="Gang" />
+          <NavigationProperty Name="ExecutedBy" Relationship="QWars.EntityFramework.FK_PlayerTask" FromRole="Task" ToRole="Player" />
+          <Property Type="Boolean" Name="Outcome" Nullable="true" />
+        </EntityType>
+        <EntityType Name="Weapon" Abstract="true">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Double" Name="XpBonus" Nullable="false" />
+          <Property Type="Int32" Name="Price" Nullable="false" />
+          <NavigationProperty Name="OwnedBy" Relationship="QWars.EntityFramework.PlayerWeapon" FromRole="Weapon" ToRole="Player" />
+        </EntityType>
+        <Association Name="FK_GangPlayer">
+          <End Type="QWars.EntityFramework.Gang" Role="Gang" Multiplicity="0..1" />
+          <End Type="QWars.EntityFramework.Player" Role="Player" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_GangTask">
+          <End Type="QWars.EntityFramework.Gang" Role="Gang" Multiplicity="0..1" />
+          <End Type="QWars.EntityFramework.Task" Role="Task" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_PlayerGang">
+          <End Type="QWars.EntityFramework.Player" Role="Player" Multiplicity="1" />
+          <End Type="QWars.EntityFramework.Gang" Role="Gang" Multiplicity="0..1" />
+        </Association>
+        <Association Name="FK_PlayerTask">
+          <End Type="QWars.EntityFramework.Player" Role="Player" Multiplicity="0..1" />
+          <End Type="QWars.EntityFramework.Task" Role="Task" Multiplicity="*" />
+        </Association>
+        <Association Name="PlayerWeapon">
+          <End Type="QWars.EntityFramework.Player" Role="Player" Multiplicity="*" />
+          <End Type="QWars.EntityFramework.Weapon" Role="Weapon" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Club" BaseType="QWars.EntityFramework.Weapon">
+          </EntityType>
+        <EntityType Name="Knife" BaseType="QWars.EntityFramework.Weapon">
+          </EntityType>
+        <EntityType Name="Taser" BaseType="QWars.EntityFramework.Weapon">
+          </EntityType>
+        <EntityType Name="Gun" BaseType="QWars.EntityFramework.Weapon">
+          </EntityType>
+        <EntityType Name="Bomb" BaseType="QWars.EntityFramework.Weapon">
+          </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QWarsEntityFrameworkStoreContainer" CdmEntityContainer="QWarsContext">
+          <EntitySetMapping Name="Gangs">
+            <EntityTypeMapping TypeName="QWars.EntityFramework.Gang">
+              <MappingFragment StoreEntitySet="Gangs">
+                <ScalarProperty Name="Money" ColumnName="Money" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Players">
+            <EntityTypeMapping TypeName="QWars.EntityFramework.Player">
+              <MappingFragment StoreEntitySet="Players">
+                <ScalarProperty Name="XP" ColumnName="XP" />
+                <ScalarProperty Name="Money" ColumnName="Money" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tasks">
+            <EntityTypeMapping TypeName="QWars.EntityFramework.Task">
+              <MappingFragment StoreEntitySet="Tasks">
+                <ScalarProperty Name="Outcome" ColumnName="Outcome" />
+                <ScalarProperty Name="XP" ColumnName="XP" />
+                <ScalarProperty Name="Reward" ColumnName="Reward" />
+                <ScalarProperty Name="Difficulty" ColumnName="Difficulty" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Weapons">
+            <EntityTypeMapping TypeName="IsTypeOf(QWars.EntityFramework.Weapon)">
+              <MappingFragment StoreEntitySet="Weapons">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="XpBonus" ColumnName="XpBonus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="IsTypeOf(QWars.EntityFramework.Club)">
+              <MappingFragment StoreEntitySet="Weapons">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <Condition ColumnName="Name" Value="Club" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="IsTypeOf(QWars.EntityFramework.Knife)">
+              <MappingFragment StoreEntitySet="Weapons">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <Condition ColumnName="Name" Value="Knife" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="IsTypeOf(QWars.EntityFramework.Taser)">
+              <MappingFragment StoreEntitySet="Weapons">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <Condition ColumnName="Name" Value="Taser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="IsTypeOf(QWars.EntityFramework.Gun)">
+              <MappingFragment StoreEntitySet="Weapons">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <Condition ColumnName="Name" Value="Gun" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="IsTypeOf(QWars.EntityFramework.Bomb)">
+              <MappingFragment StoreEntitySet="Weapons">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <Condition ColumnName="Name" Value="Bomb" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FK_GangPlayer" TypeName="QWars.EntityFramework.FK_GangPlayer" StoreEntitySet="Players">
+            <EndProperty Name="Player">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+            <EndProperty Name="Gang">
+              <ScalarProperty Name="Id" ColumnName="JoinedGang_Id" />
+            </EndProperty>
+            <Condition ColumnName="JoinedGang_Id" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_GangTask" TypeName="QWars.EntityFramework.FK_GangTask" StoreEntitySet="Tasks">
+            <EndProperty Name="Task">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+            <EndProperty Name="Gang">
+              <ScalarProperty Name="Id" ColumnName="Gang_Id" />
+            </EndProperty>
+            <Condition ColumnName="Gang_Id" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_PlayerGang" TypeName="QWars.EntityFramework.FK_PlayerGang" StoreEntitySet="Gangs">
+            <EndProperty Name="Gang">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+            <EndProperty Name="Player">
+              <ScalarProperty Name="Id" ColumnName="Boss_Id" />
+            </EndProperty>
+            <Condition ColumnName="Boss_Id" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_PlayerTask" TypeName="QWars.EntityFramework.FK_PlayerTask" StoreEntitySet="Tasks">
+            <EndProperty Name="Task">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+            <EndProperty Name="Player">
+              <ScalarProperty Name="Id" ColumnName="ExecutedByPlayer_Id" />
+            </EndProperty>
+            <Condition ColumnName="ExecutedByPlayer_Id" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="PlayerWeapon" TypeName="QWars.EntityFramework.PlayerWeapon" StoreEntitySet="PlayerWeapon">
+            <EndProperty Name="Weapon">
+              <ScalarProperty Name="Id" ColumnName="Weapons_Id" />
+            </EndProperty>
+            <EndProperty Name="Player">
+              <ScalarProperty Name="Id" ColumnName="Player_Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="DeleteGang" FunctionName="QWars.EntityFramework.Store.DeleteGang" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="QWarsModel">
+        <EntityTypeShape EntityType="QWars.EntityFramework.Gang" Width="1.5" PointX="3" PointY="1.125" Height="2.1725878906249996" />
+        <EntityTypeShape EntityType="QWars.EntityFramework.Player" Width="1.5" PointX="0.75" PointY="2.375" Height="2.5571907552083322" />
+        <EntityTypeShape EntityType="QWars.EntityFramework.Task" Width="1.5" PointX="5.25" PointY="1.875" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="QWars.EntityFramework.Weapon" Width="1.5" PointX="3" PointY="4.125" Height="1.7879850260416665" />
+        <AssociationConnector Association="QWars.EntityFramework.FK_GangPlayer" >
+          <ConnectorPoint PointX="3" PointY="2.8362939453125" />
+          <ConnectorPoint PointX="2.25" PointY="2.8362939453125" />
+        </AssociationConnector>
+        <AssociationConnector Association="QWars.EntityFramework.FK_GangTask" >
+          <ConnectorPoint PointX="4.5" PointY="2.5862939453125" />
+          <ConnectorPoint PointX="5.25" PointY="2.5862939453125" />
+        </AssociationConnector>
+        <AssociationConnector Association="QWars.EntityFramework.FK_PlayerGang" >
+          <ConnectorPoint PointX="2.25" PointY="2.54314697265625" />
+          <ConnectorPoint PointX="3" PointY="2.54314697265625" />
+        </AssociationConnector>
+        <AssociationConnector Association="QWars.EntityFramework.FK_PlayerTask" >
+          <ConnectorPoint PointX="2.25" PointY="3.7112939453125" />
+          <ConnectorPoint PointX="5.25" PointY="3.7112939453125" />
+        </AssociationConnector>
+        <AssociationConnector Association="QWars.EntityFramework.PlayerWeapon" >
+          <ConnectorPoint PointX="2.25" PointY="4.5285953776041659" />
+          <ConnectorPoint PointX="3" PointY="4.5285953776041659" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="QWars.EntityFramework.Club" Width="1.5" PointX="1" PointY="6.625" Height="1.0187792968749996" />
+        <EntityTypeShape EntityType="QWars.EntityFramework.Knife" Width="1.5" PointX="2.75" PointY="6.625" Height="1.0187792968749996" />
+        <EntityTypeShape EntityType="QWars.EntityFramework.Taser" Width="1.5" PointX="4.5" PointY="6.625" Height="1.0187792968749996" />
+        <EntityTypeShape EntityType="QWars.EntityFramework.Gun" Width="1.5" PointX="6.125" PointY="6.625" Height="1.0187792968749996" />
+        <EntityTypeShape EntityType="QWars.EntityFramework.Bomb" Width="1.5" PointX="7.875" PointY="6.625" Height="1.0187792968749996" />
+        <InheritanceConnector EntityType="QWars.EntityFramework.Club">
+          <ConnectorPoint PointX="3.75" PointY="5.9129850260416665" />
+          <ConnectorPoint PointX="3.75" PointY="6.25" />
+          <ConnectorPoint PointX="1.75" PointY="6.25" />
+          <ConnectorPoint PointX="1.75" PointY="6.625" />
+        </InheritanceConnector>
+        <InheritanceConnector EntityType="QWars.EntityFramework.Knife">
+          <ConnectorPoint PointX="3.75" PointY="5.9129850260416665" />
+          <ConnectorPoint PointX="3.75" PointY="6.25" />
+          <ConnectorPoint PointX="3.5" PointY="6.25" />
+          <ConnectorPoint PointX="3.5" PointY="6.625" />
+        </InheritanceConnector>
+        <InheritanceConnector EntityType="QWars.EntityFramework.Taser">
+          <ConnectorPoint PointX="3.75" PointY="5.9129850260416665" />
+          <ConnectorPoint PointX="3.75" PointY="6.25" />
+          <ConnectorPoint PointX="5.25" PointY="6.25" />
+          <ConnectorPoint PointX="5.25" PointY="6.625" />
+        </InheritanceConnector>
+        <InheritanceConnector EntityType="QWars.EntityFramework.Gun">
+          <ConnectorPoint PointX="3.75" PointY="5.9129850260416665" />
+          <ConnectorPoint PointX="3.75" PointY="6.25" />
+          <ConnectorPoint PointX="6.875" PointY="6.25" />
+          <ConnectorPoint PointX="6.875" PointY="6.625" />
+        </InheritanceConnector>
+        <InheritanceConnector EntityType="QWars.EntityFramework.Bomb">
+          <ConnectorPoint PointX="3.75" PointY="5.9129850260416665" />
+          <ConnectorPoint PointX="3.75" PointY="6.25" />
+          <ConnectorPoint PointX="8.625" PointY="6.25" />
+          <ConnectorPoint PointX="8.625" PointY="6.625" />
+        </InheritanceConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

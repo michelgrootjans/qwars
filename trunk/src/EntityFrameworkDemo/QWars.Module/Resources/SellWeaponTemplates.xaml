@@ -1,0 +1,97 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:entities="clr-namespace:QWars.Entities;assembly=QWars.Entities">
+
+	<DataTemplate DataType="{x:Type entities:Club}">
+		<Border BorderBrush="Gold" BorderThickness="0,0,0,1" Margin="2">
+			<Grid Margin="0,0,0,2">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition />
+					<ColumnDefinition MinWidth="25" />
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+				</Grid.RowDefinitions>
+				<TextBlock Text="Club" Foreground="Gold" Grid.ColumnSpan="3" />
+				<TextBlock Text="{Binding XpBonus, StringFormat='XP-Bonus: {0:p}'}" Foreground="White" Grid.Row="1" Grid.Column="0" />
+				<TextBlock Text="{Binding SellPrice, StringFormat='Sell Price: {0:C}'}" Foreground="White" Grid.Row="1" Grid.Column="2" />
+			</Grid>
+		</Border>
+	</DataTemplate>
+
+	<DataTemplate DataType="{x:Type entities:Knife}">
+		<Border BorderBrush="Gold" BorderThickness="0,0,0,1" Margin="2">
+			<Grid Margin="0,0,0,2">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition />
+					<ColumnDefinition MinWidth="25" />
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+				</Grid.RowDefinitions>
+				<TextBlock Text="Knife" Foreground="Gold" Grid.ColumnSpan="3" />
+				<TextBlock Text="{Binding XpBonus, StringFormat='XP-Bonus: {0:p}'}" Foreground="White" Grid.Row="1" Grid.Column="0" />
+				<TextBlock Text="{Binding SellPrice, StringFormat='Sell Price: {0:C}'}" Foreground="White" Grid.Row="1" Grid.Column="2" />
+			</Grid>
+		</Border>
+	</DataTemplate>
+
+	<DataTemplate DataType="{x:Type entities:Taser}">
+		<Border BorderBrush="Gold" BorderThickness="0,0,0,1" Margin="2">
+			<Grid Margin="0,0,0,2">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition />
+					<ColumnDefinition MinWidth="25" />
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+				</Grid.RowDefinitions>
+				<TextBlock Text="Taser" Foreground="Gold" Grid.ColumnSpan="3" />
+				<TextBlock Text="{Binding XpBonus, StringFormat='XP-Bonus: {0:p}'}" Foreground="White" Grid.Row="1" Grid.Column="0" />
+				<TextBlock Text="{Binding SellPrice, StringFormat='Sell Price: {0:C}'}" Foreground="White" Grid.Row="1" Grid.Column="2" />
+			</Grid>
+		</Border>
+	</DataTemplate>
+
+	<DataTemplate DataType="{x:Type entities:Gun}">
+		<Border BorderBrush="Gold" BorderThickness="0,0,0,1" Margin="2">
+			<Grid Margin="0,0,0,2">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition />
+					<ColumnDefinition MinWidth="25" />
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+				</Grid.RowDefinitions>
+				<TextBlock Text="Gun" Foreground="Gold" Grid.ColumnSpan="3" />
+				<TextBlock Text="{Binding XpBonus, StringFormat='XP-Bonus: {0:p}'}" Foreground="White" Grid.Row="1" Grid.Column="0" />
+				<TextBlock Text="{Binding SellPrice, StringFormat='Sell Price: {0:C}'}" Foreground="White" Grid.Row="1" Grid.Column="2" />
+			</Grid>
+		</Border>
+	</DataTemplate>
+
+	<DataTemplate DataType="{x:Type entities:Bomb}">
+		<Border BorderBrush="Gold" BorderThickness="0,0,0,1" Margin="2">
+			<Grid Margin="0,0,0,2">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition />
+					<ColumnDefinition MinWidth="25" />
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+				</Grid.RowDefinitions>
+				<TextBlock Text="Bomb" Foreground="Gold" Grid.ColumnSpan="3" />
+				<TextBlock Text="{Binding XpBonus, StringFormat='XP-Bonus: {0:p}'}" Foreground="White" Grid.Row="1" Grid.Column="0" />
+				<TextBlock Text="{Binding SellPrice, StringFormat='Sell Price: {0:C}'}" Foreground="White" Grid.Row="1" Grid.Column="2" />
+			</Grid>
+		</Border>
+	</DataTemplate>
+</ResourceDictionary>
